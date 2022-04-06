@@ -139,9 +139,9 @@
           </div>
         </div>
       </div>
-      <div class="center">
-        <button class="theme-btn me-4">Start action planning</button>
-        <button class="theme-btn hover w-238">Export Report</button>
+      <div class="center flex-wrap flex-md-nowrap">
+        <button class="theme-btn me-md-2">Start action planning</button>
+        <button class="theme-btn hover w-238 mt-4 mt-md-0">Export Report</button>
       </div>
     </section>
     <div>

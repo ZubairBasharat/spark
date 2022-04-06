@@ -1,6 +1,6 @@
 @extends('components.app')
 @section('content')
-    <section class="main-wrap-resource px-5 py-5">
+    <section class="main-wrap-resource px-md-5 px-4 py-5">
       <div class="pe-lg-5">
         <h5>Content Library</h5>
         <p class="mb-0 col-lg-10 heading-detail">

@@ -20,6 +20,9 @@ Route::middleware(['verified_token'])->group(function () {
     Route::get('/about-us', function () {
         return view('about_us');
     });
+    Route::get('/contact', function () {
+        return view('contact_us');
+    });
     Route::get('/personal-dashboard', function () {
         return view('personal_dashboard');
     });

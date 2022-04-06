@@ -1,6 +1,6 @@
 @extends('components.app')
 @section('content')
-<section class="px-5">
+<section class="px-md-5 px-3">
     <div class="row mx-0 py-5 align-items-center">
         <div class="col-md-6">
             <div class="landing-content">
@@ -17,7 +17,7 @@
                 </p>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-md-0 mt-5">
             <img src="{{('assets/images/home-layer.png')}}" alt="Curve Layer" class="img-fluid" />
         </div>
     </div>
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-md-0 mt-4">
             <div class="border-clip">
                 <img src="{{('assets/images/pexels-layer.png')}}" alt="Curve Layer" class="img-fluid" />
             </div>

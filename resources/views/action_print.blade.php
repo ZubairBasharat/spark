@@ -1,6 +1,6 @@
 @extends('components.app')
 @section('content')
-    <section class="px-5 py-5 mt-4">
+    <section class="p-md-5 p-4 mt-md-4 mt-2">
       <div class="bg-white print-page p-4 col-lg-9 mx-auto">
         <div>
           <img src="{{asset('/assets/images/slide-logo.png')}}" alt="slide-logo" />
@@ -12,7 +12,7 @@
               <h4 class="text-uppercase">
                 <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Celebrate SMALL WINS
               </h4>
-              <div class="px-4 px-xl-5 mt-4">
+              <div class="px-md-4 px-2 px-xl-5 mt-4">
                 <p>
                   Your expectations for progress may be high. For example, you
                   may expect change to happen quickly or you may hope for large
@@ -62,7 +62,7 @@
                   <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Celebrate SMALL Get
                   Clarity
                 </h4>
-                <div class="px-4 px-xl-5">
+                <div class="px-md-4 px-2 px-xl-5">
                   <p>
                     Ensure you are clear on the values of your team/organization
                     and how they are defined in practice. For example, if
@@ -79,7 +79,7 @@
                   <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Determine Purpose
                   Clarity
                 </h4>
-                <div class="px-4 px-xl-5">
+                <div class="px-md-4 px-2 px-xl-5">
                   <p>
                     Reflect on the extent to which you can support them:
                     Consider how they benefit your stakeholders, how they
@@ -91,7 +91,7 @@
                   <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Determine Purpose
                   Take action
                 </h4>
-                <div class="px-4 px-xl-5">
+                <div class="px-md-4 px-2 px-xl-5">
                   <p>
                     Reflect on the extent to which you can support them: Reflect
                     on the extent to which you can support them: Consider how

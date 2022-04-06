@@ -1,6 +1,6 @@
 @extends('components.app')
 @section('content')
-    <section class="px-5 py-5">
+    <section class="p-md-5 p-4">
       <div class="px-4">
         <div class="progress-wrapper bg-white">
           <div class="progress-container mx-auto">
