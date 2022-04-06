@@ -1152,8 +1152,6 @@ footer {
     }
   }
   h1 {
-    font-weight: 600;
-    font-size: 50px;
     line-height: 27px;
     color: #48403C;
     margin-bottom: 30px;
@@ -1287,6 +1285,12 @@ footer {
   }
 }
 @media (max-width:767px) {
+  .full-modal{
+    h1{
+      font-weight: 600;
+      font-size: 25px;
+    }
+  }
   .chart-desc-p {
     font-size: 16px;
   }
@@ -1408,6 +1412,12 @@ footer {
   }
 }
 @media(min-width:768px){
+  .full-modal{
+    h1{
+      font-weight: 600;
+      font-size: 50px;
+    }
+  }
   .auth-content h1{
     font-size: 46px;
     line-height: 24px;
