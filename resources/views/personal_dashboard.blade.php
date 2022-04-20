@@ -1,6 +1,14 @@
 @extends('components.app')
 @section('content')
-
+    <style>
+      .hover_properties {
+        box-shadow: -10px -10px 0px 0px #48403d !important; 
+        opacity: 1 !important;
+        -webkit-transform: translate(10px, 10px) !important;
+        transform: translate(10px, 10px) !important;
+         z-index: 5 !important;
+      }
+    </style>
     <section class="theme-container">
       <div>
         <div class="progress-wrapper bg-white">
@@ -20,8 +28,8 @@
           <div class="col-lg-6 col-12">
             <div class="personal-db-info">
               <h6>Your Personal Dashboard</h6>
-              <h1>Hi Sam Smith!</h1>
-              <h2>Your Engagement State: Frustrated</h2>
+              <h1>Hi {{Session::get('user_name')}}!</h1>
+              <h2>Your Engagement State: {{$states[$phase_code]}}</h2>
               <h3>Definition of Frustrated</h3>
               <p>
                 Cras vel tortor nec nunc porttitor ornare pellentesque et est. Nam viverra sollicitudin molestie.
@@ -43,35 +51,35 @@
                   <img src="{{asset('/assets/images/arrow-up.svg')}}" alt="arrow" class="arrow-up" />
                   <img src="{{asset('/assets/images/arrow-right.svg')}}" alt="arrow" class="arrow-right" />
                   <div class="d-flex flex-wrap">
-                    <div class="block center flex-column frustrated">
+                    <div class="block center flex-column {{$states[$phase_code] == 'Frustrated' ? 'hover_properties' : ''}} frustrated">
                       <h2>Frustrated</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#frustrated-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column energized">
+                    <div class="block center flex-column {{$states[$phase_code] == 'Energized' ? 'hover_properties' : ''}} energized">
                       <h2>Energized</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#energized-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column pers-engaged">
+                    <div class="block center flex-column pers-engaged {{$states[$phase_code] == 'Passionately Engaged' ? 'hover_properties' : ''}}">
                       <h2>Passionately Engaged</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#pass-engage-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column unfilled">
+                    <div class="block center flex-column {{$states[$phase_code] == 'Unfulfilled' ? 'hover_properties' : ''}} unfilled">
                       <h2>Unfulfilled</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#unfilled-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column neutral">
+                    <div class="block center flex-column {{$states[$phase_code] == 'Neutral' ? 'hover_properties' : ''}} neutral">
                       <h2>Neutral</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#neutral-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column engaged">
+                    <div class="block center flex-column {{$states[$phase_code] == 'Engaged' ? 'hover_properties' : ''}} engaged">
                       <h2>Engaged</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#engage-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column stagnated last">
+                    <div class="block center flex-column stagnated {{$states[$phase_code] == 'Stagnated' ? 'hover_properties' : ''}} last">
                       <h2>Stagnated</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#stagnated-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column disconnected last">
+                    <div class="block center flex-column disconnected {{$states[$phase_code] == 'Disconnected' ? 'hover_properties' : ''}} last">
                       <h2>Disconnected</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#disconnected-modal">Learn More</a>
                     </div>
@@ -154,7 +162,7 @@
       <div class="modal-dialog full-modal">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="modal-banner" style="background-image: url(/assets/images/res1.png);">
+            <div class="modal-banner" style="background-image: url({{asset('assets/images/res1.png')}});">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h1>Frustrated</h1>
@@ -191,7 +199,7 @@
       <div class="modal-dialog full-modal">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="modal-banner" style="background-image: url(/assets/images/energized-bg.png);">
+            <div class="modal-banner" style="background-image: url({{asset('assets/images/energized-bg.png')}});">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h1>Energized</h1>
@@ -217,7 +225,7 @@
       <div class="modal-dialog full-modal">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="modal-banner" style="background-image: url(/assets/images/pass-engaged-bg.png);">
+            <div class="modal-banner" style="background-image: url({{asset('assets/images/pass-engaged-bg.png')}});">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h1>Passionately Engaged</h1>
@@ -246,7 +254,7 @@
       <div class="modal-dialog full-modal">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="modal-banner" style="background-image: url(/assets/images/res1.png);">
+            <div class="modal-banner" style="background-image: url({{asset('assets/images/res1.png')}});">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h1>Unfulfilled</h1>
@@ -281,7 +289,7 @@
       <div class="modal-dialog full-modal">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="modal-banner" style="background-image: url(/assets/images/neutral-bg.png);">
+            <div class="modal-banner" style="background-image: url({{asset('assets/images/neutral-bg.png')}});">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h1>Neutral</h1>
@@ -326,7 +334,7 @@
       <div class="modal-dialog full-modal">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="modal-banner" style="background-image: url(/assets/images/res1.png);">
+            <div class="modal-banner" style="background-image: url({{asset('assets/images/res1.png')}});">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h1>Engaged</h1>
@@ -356,7 +364,7 @@
       <div class="modal-dialog full-modal">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="modal-banner" style="background-image: url(/assets/images/res1.png);">
+            <div class="modal-banner" style="background-image: url({{asset('assets/images/res1.png')}});">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h1>Stagnated</h1>
@@ -396,7 +404,7 @@
       <div class="modal-dialog full-modal">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="modal-banner" style="background-image: url(/assets/images/res1.png);">
+            <div class="modal-banner" style="background-image: url({{asset('assets/images/res1.png')}});">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h1>Disconnected</h1>
@@ -427,4 +435,53 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="{{asset('/assets/js/charts.js')}}"></script>
+    <script>
+      var labels_ = [];
+      var data_= [];
+      "<?php
+      foreach($phase_distribution as $index=>$phase){ ?>"
+      labels_["<?= $index ?>"] = "<?= $states[$phase->phase_code] ?>";
+      data_["<?= $index ?>"] = "<?= $phase->percentage ?>";
+      "<?php } ?>"
+      const myChart5 = new Chart(ctx5, {
+    type: "doughnut",
+    data: {
+    labels: labels_,
+    datasets: [
+        {
+        data: data_,
+        backgroundColor: [
+            "#7E706C",
+            "#695D5A",
+            "#584E4C",
+            "#48403D",
+            "#ED1846",
+            "#F15A22",
+            "#F47920",
+            "#EAE8EA",
+        ],
+        borderColor: [
+            "#7E706C",
+            "#695D5A",
+            "#584E4C",
+            "#48403D",
+            "#ED1846",
+            "#F15A22",
+            "#F47920",
+            "#EAE8EA",
+        ],
+        borderWidth: [1, 1, 1, 1, 1, 1, 1, 1]
+        }
+    ]
+    },
+    options: {
+    responsive: true,
+    plugins: {
+        legend: {
+        position: 'left'
+        }
+    }
+    },
+});
+    </script>
 @endsection

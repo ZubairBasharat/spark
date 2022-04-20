@@ -23,9 +23,7 @@ Route::middleware(['verified_token'])->group(function () {
     Route::get('/contact', function () {
         return view('contact_us');
     });
-    Route::get('/personal-dashboard', function () {
-        return view('personal_dashboard');
-    });
+    Route::get('/personal-dashboard', [AuthController::class, 'personalDashboard']);
     Route::get('/resources', function () {
         return view('recources');
     });
