@@ -483,5 +483,83 @@
     }
     },
 });
+
+const myChart3 = new Chart(ctx3, {
+    type: "bar",
+    data: {
+        labels: ["Feeling Of Career meaning", "Feeling Of work meaning", "Feeling Of Past work meaning"],
+        datasets: [
+        {
+            label: "You",
+            backgroundColor: "#ED1846",
+            borderColor: "#ED1846",
+            borderWidth: 1,
+            borderRadius: 4,
+            data: ["<?= $question_values[0] ?>", "<?= $question_values[1] ?>", "<?= $question_values[2] ?>"]
+        },
+        {
+            label: "Others in the world",
+            backgroundColor: "#979797",
+            borderColor: "#979797",
+            borderWidth: 1,
+            borderRadius: 4,
+            data: ["<?= $contrast_values[0] ?>", "<?= $contrast_values[1] ?>", "<?= $contrast_values[2] ?>"]
+        },
+        ],
+    },
+    options: {
+        indexAxis: "y",
+        responsive: true,
+        plugins: {
+        legend: {
+            display: false,
+            position: "right",
+        },
+        title: {
+            display: false,
+            text: "Feeling Of Career meaning",
+        },
+        },
+    },
+    });
+
+    const myChart4 = new Chart(ctx4, {
+    type: "bar",
+    data: {
+    labels: ["Feeling Of Career meaning", "Feeling Of work meaning", "Feeling Of Past work meaning"],
+    datasets: [
+        {
+        label: "You",
+        backgroundColor: "#ED1846",
+        borderColor: "#ED1846",
+        borderWidth: 1,
+        borderRadius: 4,
+        data: ["<?= $question_values[3] ?>", "<?= $question_values[4] ?>", "<?= $question_values[5] ?>"]
+        },
+        {
+        label: "Others in the world",
+        backgroundColor: "#979797",
+        borderColor: "#979797",
+        borderWidth: 1,
+        borderRadius: 4,
+        data: ["<?= $contrast_values[3] ?>", "<?= $contrast_values[4] ?>", "<?= $contrast_values[5] ?>"]
+        },
+    ],
+    },
+    options: {
+    indexAxis: "y",
+    responsive: true,
+    plugins: {
+        legend: {
+        display: false,
+        position: "right",
+        },
+        title: {
+        display: false,
+        text: "Feeling Of Career meaning",
+        },
+    },
+    },
+});
     </script>
 @endsection

@@ -63,6 +63,9 @@ class AuthController extends Controller
     public function personalDashboard()
     {
         $phase_distribution = array();
+        $question_values  = array(0=>0,1=>0,2=>0,3=>0,4=>0,5=>0,);
+        $contrast_values  = array(0=>0,1=>0,2=>0,3=>0,4=>0,5=>0,);
+        $phase_code = "";
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
         $response = Http::withToken(Session::get('access_token'))->get($apiURL);
         if(!empty($response)){
@@ -73,16 +76,45 @@ class AuthController extends Controller
         $compareable = $this->comparable();
         if(!empty($compareable)){
             $compareable = json_decode($compareable)->data;
+            $questions = $compareable->question_values;
+            foreach($questions as $index=>$question )
+            {
+                $question_values[$index] = $question->question_value;
+                if($index == 5)
+                {
+                    break;
+                }
+            }
             $phase_code = $compareable->phase_code;
         }
 
+        $contrast = $this->contrast();
+        if(!empty($contrast))
+        {
+            $contrast = json_decode($contrast)->data;
+            foreach($contrast->question_averages as $contrast_index=>$average)
+            {
+                $contrast_values[$contrast_index] = $average->question_average;
+                if($contrast_index == 5)
+                {
+                    break;
+                }
+            }
+        }
+
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-        return view('personal_dashboard',compact('phase_distribution', 'states','phase_code'));
+        return view('personal_dashboard',compact('phase_distribution', 'states','phase_code','question_values','contrast_values'));
     }
 
     public function comparable()
     {
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/comparable';
+        return $response = Http::withToken(Session::get('access_token'))->get($apiURL);   
+    }
+
+    public function contrast()
+    {
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
         return $response = Http::withToken(Session::get('access_token'))->get($apiURL);   
     }
 }
