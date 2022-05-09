@@ -148,7 +148,7 @@
         </div>
       </div>
       <div class="center flex-wrap flex-md-nowrap">
-        <a href="{{url('myActionPlans')}}"><button class="theme-btn me-md-2">Start action planning</button></a>
+        <a href="{{url('myActionPlans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">Start action planning</button></a>
         <button class="theme-btn hover w-238 mt-4 mt-md-0">Export Report</button>
       </div>
     </section>
