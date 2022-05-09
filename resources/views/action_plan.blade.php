@@ -5,13 +5,18 @@
         <div class="progress-wrapper bg-white">
           <div class="progress-container mx-auto">
             <ul class="progress-steps ps-0 mb-0">
-              <li data-counter="1" class="active"></li>
-              <li data-counter="2"></li>
+              <li data-counter="1"></li>
+              <li data-counter="2" class="active"></li>
               <li data-counter="3"></li>
               <li data-counter="4"></li>
             </ul>
           </div>
         </div>
+        @if(session('success_message'))
+        <div id="alert_message" class="mt-3 alert alert-success alert-dismissible col-md-12">
+          <strong>{{session('success_message')}}</strong>
+        </div>
+        @endif
         <div class="transform-heading mt-4 d-flex align-items-center">
           <h5 class="mb-0">My Action Plan</h5>
           <button type="text" class="border-0 ms-auto">
@@ -61,7 +66,7 @@
         </section>
         <section class="faq-ideas mt-4">
           <div class="my-5">
-            <h5>Action Ideas for Frustrated</h5>
+            <h5>Action Ideas for {{$phase_code}}</h5>
             <p class="mb-0">
               Review the suggestions from our research and clients below and see
               which ones will work for you!
@@ -71,23 +76,24 @@
             <div class="col-lg-8">
               <div class="accordion-box p-4">
                 <div class="accordion" id="accordionExample">
+                  @foreach($available_action_plans as $index=>$available_action_plan)
                   <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
+                    <h2 class="accordion-header" id="">
                       <button
                         class="accordion-button collapsed"
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne"
+                        data-bs-target="#collapse{{$index}}"
                         aria-expanded="true"
-                        aria-controls="collapseOne"
+                        aria-controls=""
                       >
-                        Applaud Small Wins
+                        {{$available_action_plan->short_description}}
                       </button>
                     </h2>
                     <div
-                      id="collapseOne"
+                      id="collapse{{$index}}"
                       class="accordion-collapse collapse"
-                      aria-labelledby="headingOne"
+                      aria-labelledby=""
                       data-bs-parent="#accordionExample"
                     >
                       <div class="accordion-body">
@@ -106,245 +112,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo"
-                        aria-expanded="false"
-                        aria-controls="collapseTwo"
-                      >
-                        Find the Bright Spots
-                      </button>
-                    </h2>
-                    <div
-                      id="collapseTwo"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="headingTwo"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body">
-                        <strong
-                          >This is the second item's accordion body.</strong
-                        >
-                        It is hidden by default, until the collapse plugin adds
-                        the appropriate classes that we use to style each
-                        element. These classes control the overall appearance,
-                        as well as the showing and hiding via CSS transitions.
-                        You can modify any of this with custom CSS or overriding
-                        our default variables. It's also worth noting that just
-                        about any HTML can go within the
-                        <code>.accordion-body</code>, though the transition does
-                        limit overflow.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree"
-                        aria-expanded="false"
-                        aria-controls="collapseThree"
-                      >
-                        Focus on the Big Things
-                      </button>
-                    </h2>
-                    <div
-                      id="collapseThree"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="headingThree"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body">
-                        <strong
-                          >This is the third item's accordion body.</strong
-                        >
-                        It is hidden by default, until the collapse plugin adds
-                        the appropriate classes that we use to style each
-                        element. These classes control the overall appearance,
-                        as well as the showing and hiding via CSS transitions.
-                        You can modify any of this with custom CSS or overriding
-                        our default variables. It's also worth noting that just
-                        about any HTML can go within the
-                        <code>.accordion-body</code>, though the transition does
-                        limit overflow.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFour">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseFour"
-                        aria-expanded="false"
-                        aria-controls="collapseFour"
-                      >
-                        Focus on the Big Things
-                      </button>
-                    </h2>
-                    <div
-                      id="collapseFour"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="headingFour"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body">
-                        <strong
-                          >This is the third item's accordion body.</strong
-                        >
-                        It is hidden by default, until the collapse plugin adds
-                        the appropriate classes that we use to style each
-                        element. These classes control the overall appearance,
-                        as well as the showing and hiding via CSS transitions.
-                        You can modify any of this with custom CSS or overriding
-                        our default variables. It's also worth noting that just
-                        about any HTML can go within the
-                        <code>.accordion-body</code>, though the transition does
-                        limit overflow.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFive">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseFive"
-                        aria-expanded="false"
-                        aria-controls="collapseFive"
-                      >
-                        Focus on the Big Things
-                      </button>
-                    </h2>
-                    <div
-                      id="collapseFive"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="headingFive"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body">
-                        <strong
-                          >This is the third item's accordion body.</strong
-                        >
-                        It is hidden by default, until the collapse plugin adds
-                        the appropriate classes that we use to style each
-                        element. These classes control the overall appearance,
-                        as well as the showing and hiding via CSS transitions.
-                        You can modify any of this with custom CSS or overriding
-                        our default variables. It's also worth noting that just
-                        about any HTML can go within the
-                        <code>.accordion-body</code>, though the transition does
-                        limit overflow.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingSix">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseSix"
-                        aria-expanded="true"
-                        aria-controls="collapseSix"
-                      >
-                        Applaud Small Wins
-                      </button>
-                    </h2>
-                    <div
-                      id="collapseSix"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="headingSix"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body">
-                        <div class="d-flex">
-                          <div class="me-3">
-                            <p>
-                              Your expectations for progress may be high. For
-                              example, you may expect change to happen quickly
-                              or you may hope for large shifts to occuror you
-                              may feel very impatient with the inefficiencies
-                              and bureaucracy. If thisis the case, you may be
-                              depriving yourself of a sense of progress. One way
-                              toinfuse your day, week or month with a sense of
-                              achievement is to see and celebrate the small
-                              wins.
-                            </p>
-                            <p>
-                              Your expectations for progress may be high. For
-                              example, you may expect change to happen quickly
-                              or you may hope for large shifts to occuror you
-                              may feel very impatient with the inefficiencies
-                              and bureaucracy. If thisis the case, you may be
-                              depriving yourself of a sense of progress. One way
-                              toinfuse your day, week or month with a sense of
-                              achievement is to see and celebrate the small
-                              wins.
-                            </p>
-                          </div>
-                          <div>
-                            <img
-                              src="/assets/images/pie-user.svg"
-                              alt="pie-chart"
-                            />
-                          </div>
-                        </div>
-                        <div class="print-content pe-xl-5">
-                          <h6>Examples of small wins:</h6>
-                          <ul class="me-0 my-0 ps-3 ms-1">
-                            <li>
-                              - You finally got the task done that you'd been
-                              postponing!
-                            </li>
-                            <li>
-                              - You managed to get a colleague on side for a new
-                              project idea.
-                            </li>
-                            <li>
-                              - You had a very good conversation with a team
-                              member and got to thebottom of a problem.
-                            </li>
-                            <li>
-                              - You didn't buy any junk food from the vending
-                              machines today!
-                            </li>
-                            <li>
-                              - You figured out a piece of the solution to an
-                              ongoing problem.
-                            </li>
-                            <li>
-                              - You chaired a meeting that went very well.
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="d-flex flex justify-content-center">
-                          <button
-                            type="button"
-                            class="btn-theme-outline me-3 mt-4 text-uppercase rounded-pill"
-                            style="height: 30px"
-                          >
-                            edit
-                          </button>
-                          <button
-                            type="button"
-                            class="btn-theme-outline text-uppercase border-0 mt-4 bg-red text-white rounded-pill"
-                            style="height: 30px"
-                          >
-                            Edit Action Plan
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  @endforeach
                 </div>
               </div>
             </div>
@@ -353,40 +121,24 @@
                 <div class="transform-heading">
                   <h6 class="mb-0">My action plan</h6>
                 </div>
-                <!-- <p
-                  class="px-4 py-4 mb-0"
-                  style="font-size: 14px; line-height: 1.5"
-                >
-                  You are yet to add an action plan, add action plans by opening
-                  either of the dropdowns by your left hand side.
-                </p> -->
                 <ul class="list-unstyled list-added-actions mb-0 px-4 my-2">
+                  @foreach($myactions as $myaction)
                   <li class="mb-2">
                     <div class="d-flex py-2 align-items-center">
                       <h6 class="me-3 mb-0 me-2">
-                        Find the bright spots
+                        {{$myaction->action->short_description}}
                       </h6>
+                      <a class="ms-auto border-0 bg-transparent p-0" href="{{url('delete-action',$myaction->id)}}">
                       <button
                         type="button"
                         class="ms-auto border-0 bg-transparent p-0"
                       >
                         <i class="bi bi-trash"></i>
                       </button>
+                      </a>
                     </div>
                   </li>
-                  <li>
-                    <div class="d-flex py-2 align-items-center">
-                      <h6 class="me-3 mb-0 me-2">
-                        celebrate SMALL WINS
-                      </h6>
-                      <button
-                        type="button"
-                        class="ms-auto border-0 bg-transparent p-0"
-                      >
-                        <i class="bi bi-trash"></i>
-                      </button>
-                    </div>
-                  </li>
+                  @endforeach
                 </ul>
               </div>
             </div>

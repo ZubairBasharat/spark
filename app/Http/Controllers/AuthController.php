@@ -79,7 +79,7 @@ class AuthController extends Controller
             $questions = $compareable->question_values;
             foreach($questions as $index=>$question )
             {
-                $question_values[$index] = $question->question_value;
+                $question_values[$question->display_order - 1] = $question->question_value;
                 if($index == 5)
                 {
                     break;
@@ -94,7 +94,7 @@ class AuthController extends Controller
             $contrast = json_decode($contrast)->data;
             foreach($contrast->question_averages as $contrast_index=>$average)
             {
-                $contrast_values[$contrast_index] = $average->question_average;
+                $contrast_values[$average->display_order - 1] = $average->question_average;
                 if($contrast_index == 5)
                 {
                     break;
@@ -116,5 +116,44 @@ class AuthController extends Controller
     {
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
         return $response = Http::withToken(Session::get('access_token'))->get($apiURL);   
+    }
+
+    public function actionPlans()
+    {
+        $phase_code = "";
+        $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
+        $myactions = array();
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions';
+        $myactions = Http::withToken(Session::get('access_token'))->get($apiURL);  
+        $myactions = json_decode($myactions);
+        if(isset($myactions->data)){
+            $myactions = $myactions->data;
+        }
+
+        $compareable = $this->comparable();
+        if(!empty($compareable)){
+            $compareable = json_decode($compareable)->data;
+            $questions = $compareable->question_values;
+            $phase_code = $compareable->phase_code;
+        }
+
+        $available_action_plans = $this->available_action_plans();
+        $available_action_plans = json_decode($available_action_plans)->data;
+
+        $phase_code = $phase_code != "" ? $states[$phase_code] : '';
+        return view('action_plan', compact('myactions', 'phase_code','available_action_plans'));
+    }
+
+    public function deleteAction($action_id)
+    {
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/'.$action_id;
+        $response = Http::withToken(Session::get('access_token'))->delete($apiURL); 
+       return redirect()->back()->with(['success_message'=> 'Action plan deleted successfully']);
+    }
+
+    public function available_action_plans()
+    {
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/available';
+        return Http::withToken(Session::get('access_token'))->get($apiURL);  
     }
 }

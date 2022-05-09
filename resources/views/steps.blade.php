@@ -9,26 +9,26 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="../assets/libraries/bootstrap/bootstrap.min.css"
+      href="{{asset('assets/libraries/bootstrap/bootstrap.min.css')}}"
     />
-    <link rel="stylesheet" type="text/css" href="../assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/main.css')}}" />
     <script
       type="text/javascript"
-      src="../assets/libraries/jquery/jquery.min.js"
+      src="{{asset('assets/libraries/jquery/jquery.min.js')}}"
     ></script>
   </head>
   <body>
     <section
       class="main-wrap-auth slides-steps"
       style="
-        background: url(../assets/images/steps-layer.png);
+        background: url({{asset('assets/images/steps-layer.png')}});
         background-repeat: no-repeat;
         background-position: top right;
       "
     >
       <nav class="px-custom auth-nav">
         <a href="#" class="d-inline-block">
-          <img src="../assets/images/logo.png" width="290px" alt="Logo" />
+          <img src="{{asset('assets/images/logo.png')}}" width="290px" alt="Logo" />
         </a>
       </nav>
       <div class="px-custom col-lg-10 mx-auto col-xl-9 my-5">
@@ -49,7 +49,7 @@
                   <!-- <blockquote class="f-rock end">”</blockquote> -->
                 </blockquote>
                 <img
-                  src="../assets/images/dots.svg"
+                  src="{{asset('assets/images/dots.svg')}}"
                   alt="dots"
                   width="100%"
                   class="mt-5"
@@ -60,7 +60,7 @@
               <div
                 class="px-3 py-4 h-100 position-relative bitmap-side"
                 style="
-                  background: url(../assets/images/Bitmap.png) no-repeat;
+                  background: url({{asset('assets/images/Bitmap.png')}}) no-repeat;
                   background-size: cover;
                 "
               >
@@ -117,7 +117,7 @@
               <div class="ps-3 pe-1 pt-5 pb-4 slide-box-top-content">
                 <h2 class="d-flex align-items-center">
                   <span>What’s the</span>
-                  <img src="../assets/images/slide-logo.png" alt="slide logo" />
+                  <img src="{{asset('assets/images/slide-logo.png')}}" alt="slide logo" />
                 </h2>
                 <p>
                   The <b>Spark’dLens</b> is a way of seeing your work experience
@@ -129,7 +129,7 @@
                   of progress you most desire.
                 </p>
                 <img
-                  src="../assets/images/dots.svg"
+                  src="{{asset('assets/images/dots.svg')}}"
                   alt="dots"
                   width="100%"
                   class="mt-5"
@@ -140,7 +140,7 @@
               <div
                 class="px-3 py-4 h-100 position-relative bitmap-side"
                 style="
-                  background: url(../assets/images/Bitmap2.png) no-repeat;
+                  background: url({{asset('assets/images/Bitmap2.png')}}) no-repeat;
                   background-size: cover;
                   background-position: center;
                 "
@@ -211,7 +211,7 @@
                   <b>INSIGHT</b> needed to take <b>MEANINGFUL ACTION.</b>
                 </p>
                 <img
-                  src="../assets/images/dots.svg"
+                  src="{{asset('assets/images/dots.svg')}}"
                   alt="dots"
                   width="100%"
                   class="mt-5"
@@ -222,7 +222,7 @@
               <div
                 class="px-3 py-4 h-100 position-relative bitmap-side"
                 style="
-                  background: url(../assets/images/Bitmap3.png) no-repeat;
+                  background: url({{asset('assets/images/Bitmap3.png')}}) no-repeat;
                   background-size: cover;
                   background-position: center;
                 "

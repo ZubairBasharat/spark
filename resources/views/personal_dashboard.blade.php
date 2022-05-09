@@ -153,7 +153,7 @@
       </div>
     </section>
     <div>
-      <img src="../assets/images/bottom-layer.svg" alt="bottom Layer" class="w-100" />
+      <img src="{{asset('assets/images/bottom-layer.svg')}}" alt="bottom Layer" class="w-100" />
     </div>
     <footer id="site-footer"></footer>
 

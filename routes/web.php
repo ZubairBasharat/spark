@@ -30,7 +30,12 @@ Route::middleware(['verified_token'])->group(function () {
     Route::get('/action-plan', function () {
         return view('action_print');
     });
+    Route::get('/steps', function () {
+        return view('steps');
+    });
+    Route::get('/myActionPlans',[AuthController::class, 'actionPlans']);
     Route::GET('logout',[AuthController::class, 'logout']);
+    Route::GET('delete-action/{action_id}', [AuthController::class, 'deleteAction']);
 });
 Route::get('/login', function () {
     return view('login');
