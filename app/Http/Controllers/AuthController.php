@@ -156,4 +156,25 @@ class AuthController extends Controller
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/available';
         return Http::withToken(Session::get('access_token'))->get($apiURL);  
     }
+
+    public function save_action_plan($plan_id)
+    {
+        $postInput = [
+            'action_id' => $plan_id,
+        ];
+  
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions';
+        $response = Http::withToken(Session::get('access_token'))->post($apiURL,$postInput);
+        $response = json_decode($response);
+        if(isset($response->data)){
+            $message = [
+                'success_message' => 'Action Plan Saved Successfully'
+            ];
+        }else{
+            $message = [
+                'error_message' => $response[0]->message
+            ];
+        }
+        return redirect()->back()->with($message);
+    }
 }

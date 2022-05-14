@@ -17,6 +17,11 @@
           <strong>{{session('success_message')}}</strong>
         </div>
         @endif
+        @if(session('error_message'))
+        <div id="alert_message" class="mt-3 alert alert-danger alert-dismissible col-md-12">
+          <strong>{{session('error_message')}}</strong>
+        </div>
+        @endif
         <div class="transform-heading mt-4 d-flex align-items-center">
           <h5 class="mb-0">My Action Plan</h5>
           <button type="text" class="border-0 ms-auto">
@@ -26,7 +31,7 @@
         <div class="mt-4 plan-heading pe-lg-5">
           <h5>HOW TO CREATE MY ACTION PLAN?</h5>
           <p class="mb-0">
-            Understanding your state of engagement is the first step in
+            Understanding your state of {{$phase_code}} is the first step in
             self-managing your work experience. Once you have this
             self-awareness, you can take action!
           </p>
@@ -110,6 +115,11 @@
                         <code>.accordion-body</code>, though the transition does
                         limit overflow.
                       </div>
+                      <div class="transform-heading" style="background: none !important">
+                      <a href="{{url('save-action-plan', $available_action_plan->id)}}"><button type="text" class="border-0">
+                        Save Action Plan
+                      </button></a>
+                      </div>
                     </div>
                   </div>
                   @endforeach
@@ -146,13 +156,13 @@
         </section>
       </div>
       <div class="mx-auto text-center mt-5">
-        <button
+        <!-- <button
           type="button"
           disabled
           class="border-0 mx-auto print-btn rounded-pill f-medium px-4 text-uppercase"
         >
           Save Action PLAn
-        </button>
+        </button> -->
       </div>
     </section>
     <div class="footer-layer-bottom">
