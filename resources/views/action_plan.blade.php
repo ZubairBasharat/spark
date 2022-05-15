@@ -102,7 +102,15 @@
                       data-bs-parent="#accordionExample"
                     >
                       <div class="accordion-body">
-                        <strong
+                        @php
+                        $plan_description = "";
+                         $plan = str_replace(' ', '',$available_action_plan->short_description);
+                         if(isset($description[strtoupper($plan)]))
+                         $plan_description = $description[strtoupper($plan)]
+                        @endphp
+
+                        {!!$plan_description!!}
+                        <!-- <strong
                           >This is the first item's accordion body.</strong
                         >
                         It is shown by default, until the collapse plugin adds
@@ -113,7 +121,7 @@
                         our default variables. It's also worth noting that just
                         about any HTML can go within the
                         <code>.accordion-body</code>, though the transition does
-                        limit overflow.
+                        limit overflow. -->
                       </div>
                       <div class="transform-heading" style="background: none !important">
                       <a href="{{url('save-action-plan', $available_action_plan->id)}}"><button type="text" class="border-0">
