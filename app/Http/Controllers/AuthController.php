@@ -197,4 +197,17 @@ class AuthController extends Controller
 
         return $description;
     }
+
+    public function action_plan_print()
+    {
+        $description = $this->actionPlansDescription();
+        $myactions = array();
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions';
+        $myactions = Http::withToken(Session::get('access_token'))->get($apiURL);  
+        $myactions = json_decode($myactions);
+        if(isset($myactions->data)){
+            $myactions = $myactions->data;
+        }
+        return view('action_print',compact('myactions','description'));
+    }
 }

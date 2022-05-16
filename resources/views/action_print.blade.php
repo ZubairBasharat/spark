@@ -1,5 +1,27 @@
 @extends('components.app')
 @section('content')
+<style type="text/css" media="print">
+      footer,
+      header,
+      button,
+      .footer-layer-bottom {
+        display: none !important;
+      }
+      section {
+        padding: 0px !important;
+        margin: 0px !important;
+      }
+      .print-page {
+        box-shadow: none;
+        width:100% !important;
+      }
+      @page {
+        margin-left:0;
+        margin-right:0;
+        margin-top:20px;
+        size:auto;
+      }
+    </style>
     <section class="p-md-5 p-4 mt-md-4 mt-2">
       <div class="bg-white print-page p-4 col-lg-9 mx-auto">
         <div>
@@ -9,11 +31,20 @@
               <h5 class="mb-0">My Action Plan</h5>
             </div>
             <div>
+            @foreach($myactions as $index=>$myaction)
               <h4 class="text-uppercase">
-                <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Celebrate SMALL WINS
+                <i class="bi bi-star-fill"></i>&nbsp;&nbsp;{{$myaction->action->short_description}}
               </h4>
               <div class="px-md-4 px-2 px-xl-5 mt-4">
-                <p>
+              @php
+              $plan_description = "";
+                $plan = str_replace(' ', '',$myaction->action->short_description);
+                if(isset($description[strtoupper($plan)]))
+                $plan_description = $description[strtoupper($plan)]
+              @endphp
+
+              {!!$plan_description!!}
+                <!-- <p>
                   Your expectations for progress may be high. For example, you
                   may expect change to happen quickly or you may hope for large
                   shifts to occuror you may feel very impatient with the
@@ -52,17 +83,20 @@
                     </li>
                     <li>- You chaired a meeting that went very well.</li>
                   </ul>
-                </div>
+                </div> -->
               </div>
-              <div class="print-title my-4 text-center">
+              <br>
+              <br>
+              @endforeach
+              <!-- <div class="print-title my-4 text-center">
                 <h5 class="mb-0">Engagement Drivers</h5>
-              </div>
+              </div> -->
               <div>
-                <h4 class="text-uppercase">
+                <!-- <h4 class="text-uppercase">
                   <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Celebrate SMALL Get
                   Clarity
-                </h4>
-                <div class="px-md-4 px-2 px-xl-5">
+                </h4> -->
+                <!-- <div class="px-md-4 px-2 px-xl-5">
                   <p>
                     Ensure you are clear on the values of your team/organization
                     and how they are defined in practice. For example, if
@@ -74,24 +108,24 @@
                     by behaviors that speak to how the work gets done within
                     your organization.
                   </p>
-                </div>
-                <h4 class="text-uppercase pt-3">
+                </div> -->
+                <!-- <h4 class="text-uppercase pt-3">
                   <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Determine Purpose
                   Clarity
-                </h4>
-                <div class="px-md-4 px-2 px-xl-5">
+                </h4> -->
+                <!-- <div class="px-md-4 px-2 px-xl-5">
                   <p>
                     Reflect on the extent to which you can support them:
                     Consider how they benefit your stakeholders, how they
                     support the mission and vision of your organization, and how
                     the values help create a healthy work environment
                   </p>
-                </div>
-                <h4 class="text-uppercase mt-5">
+                </div> -->
+                <!-- <h4 class="text-uppercase mt-5">
                   <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Determine Purpose
                   Take action
-                </h4>
-                <div class="px-md-4 px-2 px-xl-5">
+                </h4> -->
+                <!-- <div class="px-md-4 px-2 px-xl-5">
                   <p>
                     Reflect on the extent to which you can support them: Reflect
                     on the extent to which you can support them: Consider how
@@ -99,7 +133,7 @@
                     and vision of your organization, and how the values help
                     create a healthy work environment
                   </p>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
