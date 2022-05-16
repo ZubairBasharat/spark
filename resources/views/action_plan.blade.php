@@ -24,9 +24,9 @@
         @endif
         <div class="transform-heading mt-4 d-flex align-items-center">
           <h5 class="mb-0">My Action Plan</h5>
-          <button type="text" class="border-0 ms-auto">
+          <a href="{{url('action-plan')}}" class="ms-auto" style="text-decoration: none;"><button type="text" class="border-0 ">
             Export Action Plan
-          </button>
+          </button></a>
         </div>
         <div class="mt-4 plan-heading pe-lg-5">
           <h5>HOW TO CREATE MY ACTION PLAN?</h5>
