@@ -120,6 +120,7 @@ class AuthController extends Controller
 
     public function actionPlans()
     {
+        $myactions_ids_array = array();
         $description = $this->actionPlansDescription();
         $phase_code = "";
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
@@ -129,6 +130,11 @@ class AuthController extends Controller
         $myactions = json_decode($myactions);
         if(isset($myactions->data)){
             $myactions = $myactions->data;
+        }
+        // print_r($myactions);
+        foreach($myactions as $index=>$myaction)
+        {
+            $myactions_ids_array[$index] = $myaction->action_id;
         }
 
         $compareable = $this->comparable();
@@ -140,9 +146,9 @@ class AuthController extends Controller
 
         $available_action_plans = $this->available_action_plans();
         $available_action_plans = json_decode($available_action_plans)->data;
-
         $phase_code = $phase_code != "" ? $states[$phase_code] : '';
-        return view('action_plan', compact('myactions', 'phase_code','available_action_plans','description'));
+        // print_r($available_action_plans);die;
+        return view('action_plan', compact('myactions', 'phase_code','available_action_plans','description','myactions_ids_array'));
     }
 
     public function deleteAction($action_id)

@@ -30,7 +30,7 @@
               <h6>Your Personal Dashboard</h6>
               <h1>Hi {{Session::get('user_name')}}!</h1>
               <h2>Your Engagement State: {{$states[$phase_code]}}</h2>
-              <h3>Definition of Frustrated</h3>
+              <h3>Definition of {{$states[$phase_code]}}</h3>
               <p>
                 Cras vel tortor nec nunc porttitor ornare pellentesque et est. Nam viverra sollicitudin molestie.
                 Pellentesque sed mi convallis sapien aliquet consequat sed vel nunc. Donec viverra cursus magna. Fusce

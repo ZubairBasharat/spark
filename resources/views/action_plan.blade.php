@@ -82,6 +82,10 @@
               <div class="accordion-box p-4">
                 <div class="accordion" id="accordionExample">
                   @foreach($available_action_plans as $index=>$available_action_plan)
+                  @php
+                    if(in_array($available_action_plan->id, $myactions_ids_array))
+                    continue;
+                  @endphp
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="">
                       <button
