@@ -109,8 +109,8 @@
                         @php
                         $plan_description = "";
                          $plan = str_replace(' ', '',$available_action_plan->short_description);
-                         if(isset($description[strtoupper($plan)]))
-                         $plan_description = $description[strtoupper($plan)]
+                         if(isset($description[strtoupper($plan.'_'.$available_action_plan->phase_code)]))
+                         $plan_description = $description[strtoupper($plan.'_'.$available_action_plan->phase_code)]
                         @endphp
 
                         {!!$plan_description!!}
@@ -128,9 +128,11 @@
                         limit overflow. -->
                       </div>
                       <div class="transform-heading" style="background: none !important">
-                      <a href="{{url('save-action-plan', $available_action_plan->id)}}"><button type="text" class="border-0">
-                        Save Action Plan
-                      </button></a>
+                      <!-- <a href="{{url('save-action-plan', $available_action_plan->id)}}"> -->
+                        <button type="text" data-id="{{$available_action_plan->id}}" data-plan ="{{$available_action_plan->short_description}}" class="border-0 save_action_plan_btn">
+                        Add Action Plan
+                      </button>
+                    <!-- </a> -->
                       </div>
                     </div>
                   </div>
@@ -143,7 +145,7 @@
                 <div class="transform-heading">
                   <h6 class="mb-0">My action plan</h6>
                 </div>
-                <ul class="list-unstyled list-added-actions mb-0 px-4 my-2">
+                <ul class="list-unstyled list-added-actions mb-0 px-4 my-2 myactions">
                   @foreach($myactions as $myaction)
                   <li class="mb-2">
                     <div class="d-flex py-2 align-items-center">
@@ -193,6 +195,44 @@
       $(window).on("load", function () {
         $("#spark-header").load("./layout/header.html");
         $("#site-footer").load("./layout/footer.html");
+      });
+
+      $(document).on('click','.save_action_plan_btn',function(){
+        $('.save_action_plan_btn').prop('disabled', true);
+        var id = $(this).data('id');
+        var plan = $(this).data('plan');
+        var btn = $(this);
+        $.ajax({
+          'method' : 'POST',
+          'url' : "{{url('save-action-plan')}}",
+          'data' : {id: id, _token: "{{ csrf_token() }}"},
+          success:function(response)
+          {
+            $('.save_action_plan_btn').prop('disabled', false);
+            if(response.status_code == 200){
+              btn.parent().parent().parent().remove();
+              $('.myactions').append(`
+                 <li class="mb-2">
+                    <div class="d-flex py-2 align-items-center">
+                      <h6 class="me-3 mb-0 me-2">
+                          ${plan}
+                      </h6>
+                      <a class="ms-auto border-0 bg-transparent p-0" href="{{url('delete-action')}}/${response.id}">
+                      <button
+                        type="button"
+                        class="ms-auto border-0 bg-transparent p-0"
+                      >
+                        <i class="bi bi-trash"></i>
+                      </button>
+                      </a>
+                    </div>
+                  </li>
+                `);
+            }else{
+              alert("Some thing went wrong, Please try again later");
+            }
+          }
+        });
       });
     </script>
  @endsection

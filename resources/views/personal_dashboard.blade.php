@@ -31,12 +31,17 @@
               <h1>Hi {{Session::get('user_name')}}!</h1>
               <h2>Your Engagement State: {{$states[$phase_code]}}</h2>
               <h3>Definition of {{$states[$phase_code]}}</h3>
-              <p>
+              @php
+              $state = str_replace(' ', '',$states[$phase_code]);
+              $description = $phase_code_description[$state];
+              @endphp
+              {!!$description!!}
+              <!-- <p>
                 Cras vel tortor nec nunc porttitor ornare pellentesque et est. Nam viverra sollicitudin molestie.
                 Pellentesque sed mi convallis sapien aliquet consequat sed vel nunc. Donec viverra cursus magna. Fusce
                 sollicitudin leo elit, at fermentum enim maximus vel. Cras ac finibus elit. Ut sed aliquam dolor. Duis a
                 velit vitae velit consequat fringilla quis id tortor.
-              </p>
+              </p> -->
               <button class="theme-btn mb-5">MORE ABOUT YOU</button>
             </div>
           </div>
