@@ -39,8 +39,8 @@
               @php
               $plan_description = "";
                 $plan = str_replace(' ', '',$myaction->action->short_description);
-                if(isset($description[strtoupper($plan)]))
-                $plan_description = $description[strtoupper($plan)]
+                if(isset($description[strtoupper($plan.'_'.$myaction->action->phase_code)]))
+                $plan_description = $description[strtoupper($plan.'_'.$myaction->action->phase_code)]
               @endphp
 
               {!!$plan_description!!}

@@ -275,6 +275,7 @@ class AuthController extends Controller
         if(isset($myactions->data)){
             $myactions = $myactions->data;
         }
+        // return $myactions;
         return view('action_print',compact('myactions','description'));
     }
 }
