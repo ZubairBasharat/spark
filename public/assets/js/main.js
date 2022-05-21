@@ -4,5 +4,8 @@ $(document).ready(function(){
         $('.mobile-menu').toggleClass('active');
         $('body').toggleClass('overflow-hidden');
     })
-
+    $('.more_btn').click(function(){
+        $('.more_data_content').toggleClass('fullshow');
+        $('.more_container').toggleClass('text-center')
+    })
 });

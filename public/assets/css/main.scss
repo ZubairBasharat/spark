@@ -1466,3 +1466,12 @@ footer {
 .mobile-menu.active{
   left: 0;
 }
+.more_data_content{
+  &:not(.fullshow){
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
