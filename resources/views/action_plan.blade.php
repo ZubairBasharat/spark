@@ -36,9 +36,9 @@
             self-awareness, you can take action!
           </p>
         </div>
-        <section class="plan-video-section d-flex mt-4 align-items-center">
+        <section class="plan-video-section d-flex flex-wrap mt-4 align-items-center">
           <div class="position-relative plan-video">
-            <video
+            <!-- <video
               class="h-100"
               poster="{{asset('/assets/images/thumbnail.png')}}"
             ></video>
@@ -55,6 +55,9 @@
                   </div>
                 </div>
               </div>
+            </div> -->
+            <div class="h-100 d-flex align-items-center">
+              <img src="{{asset('/assets/images/with_ bg.svg')}}" class="img-fluid" alt="layer" />
             </div>
           </div>
           <div class="py-4 ps-lg-5 ps-4 pe-lg-4 pe-4 plans-detail">
