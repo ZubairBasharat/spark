@@ -154,6 +154,13 @@
             <canvas id="dougnut-chart" height="auto"></canvas>
           </div>
         </div>
+        <div class="head mt-4">
+          <h2>You Compared to Others in the world</h2>
+        </div>
+        <div>
+          <p class="text-center">Employee loyalty, Retention & Advocacy for where you work</p>
+          @include('components.Personal_charts')
+        </div>
       </div>
       <div class="center flex-wrap flex-md-nowrap">
         <a href="{{url('myActionPlans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">Start action planning</button></a>
@@ -164,7 +171,6 @@
       <img src="{{asset('assets/images/bottom-layer.svg')}}" alt="bottom Layer" class="w-100" />
     </div>
     <footer id="site-footer"></footer>
-
     <!-- Modals -->
     <div class="modal fade" id="frustrated-modal" tabindex="-1" aria-labelledby="frustrated-modalLabel" aria-hidden="true">
       <div class="modal-dialog full-modal">
