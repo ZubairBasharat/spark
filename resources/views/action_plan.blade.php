@@ -190,6 +190,19 @@
       />
     </div>
     <footer id="site-footer"></footer>
+    <div class="modal fade" id="confirmation_modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmation_modal_label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body py-4">
+            <div class="text-center">
+              <img src="{{asset('assets/images/check-fill-circle.svg')}}" height="100px" />
+              <p class="my-4">Your action plan has been saved successfully</p>
+              <a href="{{url('/personal-dashboard')}}" class="text-decoration-none dash-btn text-uppercase">Go to dashboard</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script
       type="text/javascript"
       src="{{asset('/assets/libraries/jquery/jquery.min.js')}}"
@@ -199,7 +212,6 @@
         $("#spark-header").load("./layout/header.html");
         $("#site-footer").load("./layout/footer.html");
       });
-
       $(document).on('click','.save_action_plan_btn',function(){
         $('.save_action_plan_btn').prop('disabled', true);
         var id = $(this).data('id');
@@ -231,6 +243,7 @@
                     </div>
                   </li>
                 `);
+                $('#confirmation_modal').modal('show');
             }else{
               alert("Some thing went wrong, Please try again later");
             }

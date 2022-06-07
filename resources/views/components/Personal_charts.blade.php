@@ -20,6 +20,20 @@
         <p>Below shows your average score for 21 survey statements that represent the core Drivers of passion. These 21 Drivers naturally group into four categories that we call Purpose & Inspiration, Organizational Patterns, Mastery and Autonomy. The graph below shows your average scores for each category. Compare each of the four categories to one another to understand your strengths and improvement areas. Note any significant discrepancies between the categories to focus your action plan on the critical opportunities. It is just as important to build on strengths as it is to address improvement areas. Spend equal time understanding both. 
         <br />  <br />Where are your  strengths or opportunities? Which of these engagement drivers, if part of an action plan, would support your passion at work?</p>
     </div>
+    <div class="row">
+        <div class="col-lg-6 mt-4">
+            <h5 class="mb-4 text-center">Your Top Strengths</h5>
+            <div class="px-3">
+                <canvas id="line_chart_data1" height="200"></canvas>
+            </div>
+        </div>
+        <div class="col-lg-6 mt-4">
+            <h5 class="mb-4 text-center">Your Top Improvement Areas</h5>
+            <div class="px-3">
+                <canvas id="line_chart_data2" height="200"></canvas>
+            </div>
+        </div>
+    </div>
     <div class="head mt-5">
         <h2>What Fuels Your Passion</h2>
     </div>
@@ -418,6 +432,102 @@
                     title: {
                         display: false,
                     },
+                },
+            },
+        });
+        // line chart data1
+        const line_chart_data_canvas1 = document.getElementById("line_chart_data1").getContext("2d");
+        const line_chart_data1 = new Chart(line_chart_data_canvas1, {
+            type: "bar",
+            data: {
+                labels: ["I believe in the values of my organization","I regularly celebrate my accomplishment at work",
+            "I have The Resources I Need To Be Successful"],
+                datasets: [
+                {
+                    data: [25, 50,100],
+                    backgroundColor: ["#ED1846", "#FFC20E","#03BD5B"],
+                    borderColor: ["#ED1846", "#FFC20E","#03BD5B"],
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    barThickness:31
+                },
+                ],
+            },
+            options: {
+              
+                scales:{
+                    x: {
+                        display: false
+                    }
+                },
+                responsive: true,
+                plugins: {
+                legend: {
+                    display: true,
+                    position: "bottom",
+              
+                        labels: {
+                        generateLabels: (chart) => {
+                            const datasets = chart.data.datasets;
+                            return datasets[0].data.map((data, i) => ({
+                            text: `${chart.data.labels[i]} ${data}`,
+                            fillStyle: datasets[0].backgroundColor[i],
+                            }))
+                        }
+                        }
+                    
+                },
+                title: {
+                    display: false,
+                },
+                },
+            },
+        });
+          // line chart data2
+          const line_chart_data_canvas2 = document.getElementById("line_chart_data2").getContext("2d");
+        const line_chart_data2 = new Chart(line_chart_data_canvas2, {
+            type: "bar",
+            data: {
+                labels: ["I believe in the values of my organization","I regularly celebrate my accomplishment at work",
+            "I have The Resources I Need To Be Successful"],
+                datasets: [
+                {
+                    data: [25, 50,100],
+                    backgroundColor: ["#ED1846", "#FFC20E","#03BD5B"],
+                    borderColor: ["#ED1846", "#FFC20E","#03BD5B"],
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    barThickness:31
+                },
+                ],
+            },
+            options: {
+              
+                scales:{
+                    x: {
+                        display: false
+                    }
+                },
+                responsive: true,
+                plugins: {
+                legend: {
+                    display: true,
+                    position: "bottom",
+              
+                        labels: {
+                        generateLabels: (chart) => {
+                            const datasets = chart.data.datasets;
+                            return datasets[0].data.map((data, i) => ({
+                            text: `${chart.data.labels[i]} ${data}`,
+                            fillStyle: datasets[0].backgroundColor[i],
+                            }))
+                        }
+                        }
+                    
+                },
+                title: {
+                    display: false,
+                },
                 },
             },
         });

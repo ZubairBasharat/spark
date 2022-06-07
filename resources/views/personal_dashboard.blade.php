@@ -51,7 +51,7 @@
           <div class="col-lg-6 col-12">
             <div class="report-blocks-main">
               <div class="head">
-                <img src="{{asset('/assets/images/blocks-logo.png')}}" alt="logo" />
+                <img src="{{asset('/assets/images/blocks-logo.png')}}" height="32px" alt="logo" />
               </div>
               <div class="body">
                 <h5 class="progress-text meaning">Meaning</h5>
@@ -484,17 +484,58 @@
             "#F47920",
             "#EAE8EA",
         ],
-        borderWidth: [1, 1, 1, 1, 1, 1, 1, 1]
+        borderWidth: [1, 1, 1, 1, 1, 1, 1, 1],
+        datalabels: {
+        anchor: 'end'
+      },
+
         }
     ]
     },
     options: {
     responsive: true,
+    tooltips: {
+      callbacks: {
+        label: function(tooltipItem, data) {
+          return data['labels'][tooltipItem['index']] + ': ' + data['datasets'][0]['data'][tooltipItem['index']] + '%';
+        }
+      }
+    },
     plugins: {
         legend: {
         position: 'left'
+        },
+        tooltip: {
+        enabled: true,
+        callbacks: {
+          footer: (ttItem) => {
+            let sum = 0;
+            let dataArr = ttItem[0].dataset.data;
+            dataArr.map(data => {
+              sum += Number(data);
+            });
+
+            let percentage = (ttItem[0].parsed * 100 / sum).toFixed(2) + '%';
+            return `Percentage of data: ${percentage}`;
+          }
         }
-    }
+      },
+      datalabels: {
+        color: 'blue',
+        labels: {
+          title: {
+            font: {
+              weight: 'bold'
+            }
+          },
+          value: {
+            color: 'green'
+          }
+        }
+      }
+
+
+      },
     },
 });
 
