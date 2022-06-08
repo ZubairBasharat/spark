@@ -488,13 +488,13 @@
         const line_chart_data2 = new Chart(line_chart_data_canvas2, {
             type: "bar",
             data: {
-                labels: ["I believe in the values of my organization","I regularly celebrate my accomplishment at work",
-            "I have The Resources I Need To Be Successful"],
+                labels: ["I Have the skills to do my job well","I am able to be creative in the way i work",
+            "I have clear prioritized goals"],
                 datasets: [
                 {
                     data: [25, 50,100],
-                    backgroundColor: ["#ED1846", "#FFC20E","#03BD5B"],
-                    borderColor: ["#ED1846", "#FFC20E","#03BD5B"],
+                    backgroundColor: ["#7E706C", "#0F0F10","#8D2F07"],
+                    borderColor: ["#7E706C", "#0F0F10","#8D2F07"],
                     borderWidth: 1,
                     borderRadius: 4,
                     barThickness:31
