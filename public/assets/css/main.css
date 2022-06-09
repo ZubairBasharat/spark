@@ -781,7 +781,7 @@ footer .footer-bottom-side {
   content: none;
 }
 
-.progress-container .progress-steps li.active + .progress-container .progress-steps li:after {
+.progress-container .progress-steps li.active:after {
   background-color: #d81f43;
 }
 
@@ -856,11 +856,38 @@ footer .footer-bottom-side {
 }
 
 .plan-video-section {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(-6.41%, #ffc20e), to(rgba(255, 194, 14, 0.26)));
-  background: linear-gradient(180deg, #ffc20e -6.41%, rgba(255, 194, 14, 0.26) 100%);
   -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
           box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
   border-radius: 20px;
+}
+
+.plan-video-section:not(.red) {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(-6.41%, #ffc20e), to(rgba(255, 194, 14, 0.26)));
+  background: linear-gradient(180deg, #ffc20e -6.41%, rgba(255, 194, 14, 0.26) 100%);
+}
+
+.plan-video-section:not(.red) .plans-detail h5 {
+  color: #000000;
+}
+
+.plan-video-section:not(.red) ul li {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.plan-video-section:not(.red) ul li::before {
+  background-image: url(../images/pointer.svg);
+}
+
+.plan-video-section.red {
+  background-color: #DC3A59;
+}
+
+.plan-video-section.red ul li::before {
+  background-image: url(../images/pointer-yellow.svg);
+}
+
+.plan-video-section.red .plans-detail h5, .plan-video-section.red ul li {
+  color: #fff;
 }
 
 .button-circle {
@@ -939,14 +966,12 @@ footer .footer-bottom-side {
   font-size: 20px;
   line-height: 30px;
   text-transform: uppercase;
-  color: #000000;
 }
 
 .plans-detail ul li {
   font-weight: 400;
   font-size: 16px;
   margin-bottom: 13px;
-  color: rgba(0, 0, 0, 0.7);
   mix-blend-mode: normal;
   position: relative;
   padding-left: 35px;
@@ -1817,5 +1842,23 @@ footer .footer-bottom-side {
 .dash-btn:hover {
   color: #fff;
   background-color: #d81f43;
+}
+
+#innerAccordionMain .accordion-button.inner-btn {
+  background: #FFC20E !important;
+}
+
+#innerAccordionMain .accordion-button.inner-btn:not(.collapsed):after {
+  content: "\f282" !important;
+  color: #151515;
+  font-size: 18px;
+  top: 35px;
+}
+
+#innerAccordionMain .accordion-button.inner-btn.collapsed:after {
+  content: "\f286" !important;
+  color: #151515;
+  font-size: 18px;
+  top: 35px;
 }
 /*# sourceMappingURL=main.css.map */
