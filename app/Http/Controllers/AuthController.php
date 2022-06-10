@@ -152,6 +152,39 @@ class AuthController extends Controller
         // print_r($available_action_plans);die;
         return view('action_plan', compact('myactions', 'phase_code','available_action_plans','description','myactions_ids_array'));
     }
+    public function actionPlansDriver()
+    {
+        $myactions_ids_array = array();
+        $description = $this->actionPlansDescription();
+        $phase_code = "";
+        $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
+        $myactions = array();
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions';
+        $myactions_api = Http::withToken(Session::get('access_token'))->get($apiURL);  
+        $myactions_api = json_decode($myactions_api);
+        if(isset($myactions_api->data)){
+            $myactions = $myactions_api->data;
+        }
+        // print_r($myactions);
+        foreach($myactions as $index=>$myaction)
+        {
+            $myactions_ids_array[$index] = $myaction->action_id;
+        }
+
+        $compareable = $this->comparable();
+        if(!empty($compareable)){
+            $compareable = json_decode($compareable)->data;
+            $questions = $compareable->question_values;
+            $phase_code = $compareable->phase_code;
+        }
+
+        $available_action_plans = $this->available_action_plans();
+        $available_action_plans = json_decode($available_action_plans);
+        $available_action_plans = !empty($available_action_plans)? $available_action_plans->data : array();
+        $phase_code = $phase_code != "" ? $states[$phase_code] : '';
+        // print_r($available_action_plans);die;
+        return view('action_plans_drivers', compact('myactions', 'phase_code','available_action_plans','description','myactions_ids_array'));
+    }
 
     public function deleteAction($action_id)
     {
