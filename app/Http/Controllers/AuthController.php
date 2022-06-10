@@ -126,7 +126,7 @@ class AuthController extends Controller
         $phase_code = "";
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
         $myactions = array();
-        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions';
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/1';
         $myactions_api = Http::withToken(Session::get('access_token'))->get($apiURL);  
         $myactions_api = json_decode($myactions_api);
         if(isset($myactions_api->data)){
@@ -188,14 +188,17 @@ class AuthController extends Controller
 
     public function deleteAction($action_id)
     {
+        $postInput = [
+            'action_id' => $action_id
+        ];
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/'.$action_id;
-        $response = Http::withToken(Session::get('access_token'))->delete($apiURL); 
+        return $response = Http::withToken(Session::get('access_token'))->post($apiURL, $postInput); 
        return redirect()->back()->with(['success_message'=> 'Action plan deleted successfully']);
     }
 
     public function available_action_plans()
     {
-        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/available';
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/1/available';
         return Http::withToken(Session::get('access_token'))->get($apiURL);  
     }
 
@@ -205,7 +208,7 @@ class AuthController extends Controller
             'action_id' => $request->id,
         ];
   
-        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions';
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/1';
         $response = Http::withToken(Session::get('access_token'))->post($apiURL,$postInput);
         $response = json_decode($response);
         if(isset($response->data)){
@@ -303,7 +306,7 @@ class AuthController extends Controller
     {
         $description = $this->actionPlansDescription();
         $myactions = array();
-        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions';
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/1';
         $myactions_api = Http::withToken(Session::get('access_token'))->get($apiURL);  
         $myactions_api = json_decode($myactions_api);
         if(isset($myactions_api->data)){
