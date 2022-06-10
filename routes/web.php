@@ -28,6 +28,7 @@ Route::middleware(['verified_token'])->group(function () {
         return view('recources');
     });
     Route::get('/action-plan',[AuthController::class,'action_plan_print']);
+    Route::get('/export-report',[AuthController::class,'export_report']);
     Route::get('/steps', function () {
         return view('steps');
     });

@@ -1861,4 +1861,13 @@ footer .footer-bottom-side {
   font-size: 18px;
   top: 35px;
 }
+
+.print-box-des {
+  max-width: 1075px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  -webkit-box-shadow: 1px 4px 19px rgba(0, 0, 0, 0.12);
+          box-shadow: 1px 4px 19px rgba(0, 0, 0, 0.12);
+}
 /*# sourceMappingURL=main.css.map */
