@@ -192,8 +192,8 @@ class AuthController extends Controller
             'action_id' => $action_id
         ];
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/'.$action_id;
-        return $response = Http::withToken(Session::get('access_token'))->post($apiURL, $postInput); 
-       return redirect()->back()->with(['success_message'=> 'Action plan deleted successfully']);
+        $response = Http::withToken(Session::get('access_token'))->delete($apiURL, $postInput); 
+        return redirect()->back()->with(['success_message'=> 'Action plan deleted successfully']);
     }
 
     public function available_action_plans()
