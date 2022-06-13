@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::middleware(['verified_token'])->group(function () {
     Route::get('/', function () {
-        return view('index');
+        return view('about_us');
     });
     Route::get('/about-us', function () {
         return view('about_us');

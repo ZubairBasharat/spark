@@ -29,7 +29,7 @@
             <div class="personal-db-info">
               <h6>Your Personal Dashboard</h6>
               <h1>Hi {{Session::get('user_name')}}!</h1>
-              <h2>Your Engagement State: {{$states[$phase_code]}}</h2>
+              <h2>Your Engagement State: <span class="text-red">{{$states[$phase_code]}}</span></h2>
               <h3>Definition of {{$states[$phase_code]}}</h3>
               <div class="more_data_content mb-4">
                 @php

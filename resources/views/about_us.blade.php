@@ -7,7 +7,7 @@
       ">
     <div class="auth-content px-custom pe-lg-5 col-lg-7 col-xl-6">
         <div class="more_data_content">
-            <h1>About Us</h1>
+            <h1 style="line-height: 1;">About Us</h1>
             <h6>
                 What is <span class="text-lred">Spark'd</span> and who’s it for?
             </h6>

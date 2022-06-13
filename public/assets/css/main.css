@@ -113,7 +113,7 @@ textarea {
   color: #666666;
 }
 
-.navbar-links li a:hover, footer ul.footer-helper-links li a:hover {
+.navbar-links li a:hover, footer ul.footer-helper-links li a:hover, .navbar-links li a.active, footer ul.footer-helper-links li a.active {
   color: #d81f43;
 }
 

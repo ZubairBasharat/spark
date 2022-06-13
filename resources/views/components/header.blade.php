@@ -5,16 +5,16 @@
         </a>
         <ul class="d-lg-flex list-unstyled align-items-center mb-0 mx-auto navbar-links d-none">
             <li>
-                <a href="{{url('/about-us')}}" class="text-decoration-none"> About </a>
+                <a href="{{url('/')}}" class="text-decoration-none {{activeMenu('about-us')}} {{activeMenu('/')}}"> About </a>
             </li>
             <li>
-                <a href="{{url('personal-dashboard')}}" class="text-decoration-none"> My Personal Dashboard </a>
+                <a href="{{url('personal-dashboard')}}" class="text-decoration-none {{activeMenu('personal-dashboard')}}"> My Personal Dashboard </a>
             </li>
             <li>
-                <a href="{{url('action-plan')}}" class="text-decoration-none"> My Action Plan </a>
+                <a href="{{url('action-plan')}}" class="text-decoration-none {{activeMenu('action-plan')}}"> My Action Plan </a>
             </li>
             <li>
-                <a href="{{url('resources')}}" class="text-decoration-none"> Resources </a>
+                <a href="{{url('resources')}}" class="text-decoration-none {{activeMenu('resources')}}"> Resources </a>
             </li>
         </ul>
         <div class="user-auth-dropdown ms-auto ms-lg-0">

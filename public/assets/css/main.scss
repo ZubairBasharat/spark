@@ -78,7 +78,7 @@ textarea {
             font-size: 15px;
             line-height: 22px;
             color: #666666;
-            &:hover {
+            &:hover , &.active {
                 color: $red;
             }
         }
