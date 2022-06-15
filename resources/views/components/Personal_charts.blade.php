@@ -1,6 +1,16 @@
 <div class="border-0">
     <div class="col-lg-9 mx-auto">
         <canvas id="meaning-chart-employee" height="60"></canvas>
+        <div class="text-center">
+            <ul class="list-unstyled mb-0 indicator-container list-inline">
+                <li class="list-inline-item mt-3 me-4">
+                    <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                </li>
+                <li class="list-inline-item mt-3">
+                    <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="chart-seperate-border mb-4"></div>
     <div class="col-lg-9 mx-auto mb-4">
@@ -11,6 +21,16 @@
     </div>
     <div class="col-lg-9 mx-auto">
         <canvas id="meaning-chart-employee_inner3" height="60"></canvas>
+        <div class="text-center">
+            <ul class="list-unstyled mb-0 indicator-container list-inline">
+                <li class="list-inline-item mt-3 me-4">
+                    <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                </li>
+                <li class="list-inline-item mt-3">
+                    <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="head mt-5">
         <h2 class="d-flex align-items-center"><span style="width: 108px;overflow: hidden;display: inline-block;"><img src="{{asset('assets/images/slide-logo.png')}}" alt="logo" /></span>&nbsp;21 Engagement Drivers</h2>
@@ -47,6 +67,16 @@
     <div class="chart-seperate-border mb-5"></div>
     <div class="col-lg-9 mx-auto">
         <canvas id="meaning-chart-employee_inner6" height="60"></canvas>
+        <div class="text-center">
+            <ul class="list-unstyled mb-0 pb-3 indicator-container list-inline">
+                <li class="list-inline-item mt-3 me-4">
+                    <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                </li>
+                <li class="list-inline-item mt-3">
+                    <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-6 mt-4">
@@ -63,6 +93,16 @@
                         Celebrating accomplishments, along the way, is a distinguishing feature of passionate people.
                     </p>
                     <canvas id="meaning-chart-employee_inner7" height="auto"></canvas>
+                    <div class="text-center">
+                        <ul class="list-unstyled mb-0 pb-3 indicator-container list-inline">
+                            <li class="list-inline-item mt-3 me-4">
+                                <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                            </li>
+                            <li class="list-inline-item mt-3">
+                                <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="chart-main mt-4">
@@ -73,6 +113,16 @@
                     <p>This measures how empowered you feel to do what you know needs to be done without having to check-in all the time or wait for decisions to be made. Our research shows that autonomy and ownership come from knowing clearly what you need to accomplish, making decisions about how you achieve these goals, learning from the mistakes along the way, and understanding that there is always a way forward, even with great challenges. 
                     </p>
                     <canvas id="meaning-chart-employee_inner9" height="auto"></canvas>
+                    <div class="text-center">
+                        <ul class="list-unstyled mb-0 pb-3 indicator-container list-inline">
+                            <li class="list-inline-item mt-3 me-4">
+                                <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                            </li>
+                            <li class="list-inline-item mt-3">
+                                <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,6 +135,16 @@
                     <p>This category has eight elements ranging from communications to support as well as the importance of contribution. Notice how the three communication statements relate (i.e., general communications, input and feedback). Then consider the support systems from policies to resources to the team. And, finally, notice how connected people feel to the purpose of the organization and the contributions of their peers. 
                     </p>
                     <canvas id="meaning-chart-employee_inner8" height="auto"></canvas>
+                    <div class="text-center">
+                        <ul class="list-unstyled mb-0 pb-3 indicator-container list-inline">
+                            <li class="list-inline-item mt-3 me-4">
+                                <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                            </li>
+                            <li class="list-inline-item mt-3">
+                                <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="chart-main mt-4">
@@ -95,6 +155,16 @@
                     <p>This measures how empowered you feel to do what you know needs to be done without having to check-in all the time or wait for decisions to be made. Our research shows that autonomy and ownership come from knowing clearly what you need to accomplish, making decisions about how you achieve these goals, learning from the mistakes along the way, and understanding that there is always a way forward, even with great challenges. 
                     </p>
                     <canvas id="meaning-chart-employee_inner10" height="auto"></canvas>
+                    <div class="text-center">
+                        <ul class="list-unstyled mb-0 pb-3 indicator-container list-inline">
+                            <li class="list-inline-item mt-3 me-4">
+                                <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                            </li>
+                            <li class="list-inline-item mt-3">
+                                <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,6 +185,7 @@
                     borderColor: ["#ED1846", "#F15A22"],
                     borderWidth: 1,
                     borderRadius: 4,
+                    barThickness:20,
                 },
                 ],
             },
@@ -147,6 +218,7 @@
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
                     borderRadius: 4,
+                    barThickness:20
                 },
                 ],
             },
@@ -177,6 +249,7 @@
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
                     borderRadius: 4,
+                    barThickness:20
                 },
                 ],
             },
@@ -207,6 +280,7 @@
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
                     borderRadius: 4,
+                    barThickness:20
                 },
                 ],
             },
@@ -249,6 +323,7 @@
                     borderColor: ["#ED1846", "#F15A22"],
                     borderWidth: 1,
                     borderRadius: 4,
+                    barThickness:20
                 },
                 ],
             },
@@ -280,6 +355,7 @@
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
                     borderRadius: 4,
+                    barThickness:20
                 },
                 ],
             },
@@ -311,6 +387,7 @@
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
                     borderRadius: 4,
+                    barThickness:20
                 },
                 ],
             },
@@ -344,6 +421,7 @@
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
                     borderRadius: 4,
+                    barThickness:20
                 },
                 ],
             },
@@ -376,6 +454,7 @@
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
                     borderRadius: 4,
+                    barThickness:20
                 },
                 ],
             },
@@ -407,6 +486,7 @@
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
                     borderRadius: 4,
+                    barThickness:20,
                 },
                 ],
             },
@@ -467,13 +547,17 @@
                     position: "bottom",
               
                         labels: {
-                        generateLabels: (chart) => {
-                            const datasets = chart.data.datasets;
-                            return datasets[0].data.map((data, i) => ({
-                            text: `${chart.data.labels[i]} ${data}`,
-                            fillStyle: datasets[0].backgroundColor[i],
-                            }))
-                        }
+                            generateLabels: (chart) => {
+                                const datasets = chart.data.datasets;
+                                return datasets[0].data.map((data, i) => ({
+                                text: `${chart.data.labels[i]} ${data}`,
+                                fillStyle: datasets[0].backgroundColor[i],
+                                }))
+                            },
+                            fontColor: '#333',
+                            usePointStyle: true,
+                            borderRadius:10,
+                            padding:15
                         }
                     
                 },
@@ -510,18 +594,24 @@
                 },
                 responsive: true,
                 plugins: {
+                    
                 legend: {
                     display: true,
                     position: "bottom",
               
                         labels: {
-                        generateLabels: (chart) => {
-                            const datasets = chart.data.datasets;
-                            return datasets[0].data.map((data, i) => ({
-                            text: `${chart.data.labels[i]} ${data}`,
-                            fillStyle: datasets[0].backgroundColor[i],
-                            }))
-                        }
+                            generateLabels: (chart) => {
+                                const datasets = chart.data.datasets;
+                                return datasets[0].data.map((data, i) => ({
+                                text: `${chart.data.labels[i]} ${data}`,
+                                fillStyle: datasets[0].backgroundColor[i],
+                                }))
+                            },
+
+                            fontColor: '#333',
+                            usePointStyle: true,
+                            borderRadius:10,
+                            padding:15
                         }
                     
                 },

@@ -1,7 +1,7 @@
 @extends('components.app')
 @section('content')
 <section class="main-wrap-auth" style="
-        background: url(../assets/images/about-layer.png);
+        background: url({{asset('assets/images/about-layer.png')}});
         background-repeat: no-repeat;
         background-position: top -65px right;
       ">

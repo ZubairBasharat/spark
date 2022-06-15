@@ -1870,4 +1870,27 @@ footer .footer-bottom-side {
   -webkit-box-shadow: 1px 4px 19px rgba(0, 0, 0, 0.12);
           box-shadow: 1px 4px 19px rgba(0, 0, 0, 0.12);
 }
+
+.indicator-container li {
+  font-size: 12px;
+}
+
+.indicator-container .chart-indicator {
+  width: 10.39px;
+  height: 10.39px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.indicator-container .chart-indicator.red {
+  background-color: #d81f43;
+}
+
+.indicator-container .chart-indicator.grey {
+  background-color: #979797;
+}
+
+.indicator-container .chart-indicator.orange {
+  background-color: #F15A22;
+}
 /*# sourceMappingURL=main.css.map */

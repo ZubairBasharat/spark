@@ -197,7 +197,7 @@
             <div class="text-center">
               <img src="{{asset('assets/images/check-fill-circle.svg')}}" height="100px" />
               <p class="my-4">Your action plan has been saved successfully</p>
-              <a href="{{url('/personal-dashboard')}}" class="text-decoration-none dash-btn text-uppercase">Go to dashboard</a>
+              <a href="{{url('/personal-dashboard?is_resume=true')}}" class="text-decoration-none dash-btn text-uppercase">Go to dashboard</a>
             </div>
           </div>
         </div>

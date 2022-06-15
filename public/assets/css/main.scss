@@ -1536,3 +1536,23 @@ footer {
   padding:30px;
   box-shadow: 1px 4px 19px rgba(0, 0, 0, 0.12);
 }
+.indicator-container{
+    li{
+        font-size:12px;
+    }
+    .chart-indicator{
+        width: 10.39px;
+        height: 10.39px;
+        border-radius:50%;
+        display: inline-block;
+        &.red{
+            background-color:$red;
+        }
+        &.grey{
+            background-color:#979797;
+        }
+        &.orange{
+            background-color: #F15A22;
+        }
+    }
+}

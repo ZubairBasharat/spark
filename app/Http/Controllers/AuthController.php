@@ -60,7 +60,7 @@ class AuthController extends Controller
         return $response = Http::withToken(Session::get('access_token'))->get($apiURL);
     }
 
-    public function personalDashboard()
+    public function personalDashboard(Request $request)
     {
         $phase_code_description = $this->phaseCodeDescription();
         $phase_distribution = array();
@@ -102,9 +102,9 @@ class AuthController extends Controller
                 }
             }
         }
-
+        $resume = $request->is_resume;
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-        return view('personal_dashboard',compact('phase_distribution', 'states','phase_code','question_values','contrast_values','phase_code_description'));
+        return view('personal_dashboard',compact('phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description'));
     }
 
     public function comparable()

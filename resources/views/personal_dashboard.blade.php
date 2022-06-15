@@ -54,7 +54,7 @@
                 <img src="{{asset('/assets/images/blocks-logo.png')}}" height="32px" alt="logo" />
               </div>
               <div class="body">
-                <h5 class="progress-text meaning">Meaning</h5>
+                <h5 class="progress-text meaning" style="left:50px;">Meaning</h5>
                 <div class="blocks">
                   <img src="{{asset('/assets/images/arrow-up.svg')}}" alt="arrow" class="arrow-up" />
                   <img src="{{asset('/assets/images/arrow-right.svg')}}" alt="arrow" class="arrow-right" />
@@ -109,6 +109,16 @@
                 <canvas id="meaning-chart" height="60"></canvas>
                 <div class="chart-seperate-border"></div>
                 <canvas id="meaning-group-chart" height="auto"></canvas>
+                <div class="text-center">
+                  <ul class="list-unstyled mb-0 indicator-container list-inline">
+                    <li class="list-inline-item mt-3 me-4">
+                      <span class="chart-indicator red me-2"></span>&nbsp;You
+                    </li>
+                    <li class="list-inline-item mt-3 grey">
+                    <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -121,6 +131,16 @@
                 <canvas id="progress-chart" height="60"></canvas>
                 <div class="chart-seperate-border"></div>
                 <canvas id="progress-group-chart" height="auto"></canvas>
+                <div class="text-center">
+                  <ul class="list-unstyled mb-0 indicator-container list-inline">
+                    <li class="list-inline-item mt-3 me-4">
+                      <span class="chart-indicator red me-2"></span>&nbsp;You
+                    </li>
+                    <li class="list-inline-item mt-3 grey">
+                    <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -163,7 +183,7 @@
         </div>
       </div>
       <div class="center flex-wrap flex-md-nowrap">
-        <a href="{{url('myActionPlans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">Start action planning</button></a>
+        <a href="{{url($resume?'driver-action-plans':'myActionPlans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">{{$resume?"Resume":"Start"}} action planning</button></a>
         <a href="{{url('export-report')}}" style="text-decoration: none;"><button class="theme-btn hover w-238 mt-4 mt-md-0">Export Report</button></a>
       </div>
     </section>
@@ -448,7 +468,9 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    
     <script src="{{asset('/assets/js/charts.js')}}"></script>
+   
     <script>
       var labels_ = [];
       var data_= [];
@@ -503,8 +525,27 @@
     },
     plugins: {
         legend: {
-        position: 'left'
+        position: 'left',
+        labels: {
+          fontColor: '#333',
+          usePointStyle: true,
+          borderRadius:10,
+          padding:15
+        }
         },
+        datalabels: {
+       formatter: (value, ctx) => {
+         let datasets = ctx.chart.data.datasets;
+         if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
+           let sum = datasets[0].data.reduce((a, b) => a + b, 0);
+           let percentage = Math.round((value / sum) * 100) + '%';
+           return percentage;
+         } else {
+           return percentage;
+         }
+       },
+       color: '#fff',
+     },
         tooltip: {
         enabled: true,
         callbacks: {
@@ -550,14 +591,16 @@ const myChart3 = new Chart(ctx3, {
             borderColor: "#ED1846",
             borderWidth: 1,
             borderRadius: 4,
-            data: ["<?= $question_values[0] ?>", "<?= $question_values[1] ?>", "<?= $question_values[2] ?>"]
+            borderRadius: 4,
+            barThickness:20,
+            data: ["<?= $question_values[0] ?>", "<?= $question_values[1] ?>", "<?= $question_values[2] ?>"],
         },
         {
             label: "Others in the world",
             backgroundColor: "#979797",
             borderColor: "#979797",
-            borderWidth: 1,
             borderRadius: 4,
+            barThickness:20,
             data: ["<?= $contrast_values[0] ?>", "<?= $contrast_values[1] ?>", "<?= $contrast_values[2] ?>"]
         },
         ],
@@ -589,6 +632,7 @@ const myChart3 = new Chart(ctx3, {
         borderColor: "#ED1846",
         borderWidth: 1,
         borderRadius: 4,
+        barThickness:20,
         data: ["<?= $question_values[3] ?>", "<?= $question_values[4] ?>", "<?= $question_values[5] ?>"]
         },
         {
@@ -597,6 +641,7 @@ const myChart3 = new Chart(ctx3, {
         borderColor: "#979797",
         borderWidth: 1,
         borderRadius: 4,
+        barThickness:20,
         data: ["<?= $contrast_values[3] ?>", "<?= $contrast_values[4] ?>", "<?= $contrast_values[5] ?>"]
         },
     ],
@@ -630,6 +675,7 @@ const myChart1 = new Chart(ctx1, {
             borderColor: ["#ED1846", "#F15A22"],
             borderWidth: 1,
             borderRadius: 4,
+            barThickness:20,
         },
         ],
     },
@@ -656,12 +702,13 @@ const myChart1 = new Chart(ctx1, {
         labels: ["Your Score", "Others in the world"],
         datasets: [
         {
-            label: "Feeling Of Overall Meaning",
+            label: "Feeling Of Overall Progress",
             data: ["<?= ($question_values[3] + $question_values[4] + $question_values[5]) / 3 ?>", "<?= ($contrast_values[3] + $contrast_values[4] + $contrast_values[5]) / 3 ?>"],
             backgroundColor: ["#ED1846", "#F15A22"],
             borderColor: ["#ED1846", "#F15A22"],
             borderWidth: 1,
             borderRadius: 4,
+            barThickness:20,
         },
         ],
     },
