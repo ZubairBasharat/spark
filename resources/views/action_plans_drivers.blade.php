@@ -102,48 +102,38 @@
                     >
                       <div class="accordion-body px-2">
                       <div class="accordion" id="innerAccordion">
+                        @foreach($available_action_plans as $index=>$available_action_plan)
                   <div class="accordion-item bg-transparent">
                     <h2 class="accordion-header" id="">
                       <button
                         class="accordion-button  collapsed"
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#collapseinner1"
+                        data-bs-target="#collapseinner{{$index}}"
                         aria-expanded="true"
                         aria-controls=""
                       >
-                        I believe in the values of my team/organization
+                        {{$available_action_plan->short_description}}
                       </button>
                     </h2>
                     <div
-                      id="collapseinner1"
+                      id="collapseinner{{$index}}"
                       class="accordion-collapse collapse"
                       aria-labelledby=""
                       data-bs-parent="#innerAccordion"
                     >
                       <div class="accordion-body">
 
-                        <strong
-                          >This is the first item's accordion body.</strong
-                        >
-                        It is shown by default, until the collapse plugin adds
-                        the appropriate classes that we use to style each
-                        element. These classes control the overall appearance,
-                        as well as the showing and hiding via CSS transitions.
-                        You can modify any of this with custom CSS or overriding
-                        our default variables. It's also worth noting that just
-                        about any HTML can go within the
-                        <code>.accordion-body</code>, though the transition does
-                        limit overflow.
                       </div>
                       <div class="transform-heading" style="background: none !important">
 
-                        <button type="text" data-id="4" data-plan ="4" class="border-0 save_action_plan_btn">
+                        <button type="text" data-id="4" data-id="{{$available_action_plan->id}}" data-plan ="{{$available_action_plan->short_description}}" data-plan ="4" class="border-0">
                         Add Action Plan
                       </button>
                       </div>
                     </div>
                   </div>
+                  @endforeach
                 </div>
                       </div>
                     </div>

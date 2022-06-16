@@ -178,7 +178,7 @@ class AuthController extends Controller
             $phase_code = $compareable->phase_code;
         }
 
-        $available_action_plans = $this->available_action_plans();
+        $available_action_plans = $this->available_action_plans_two();
         $available_action_plans = json_decode($available_action_plans);
         $available_action_plans = !empty($available_action_plans)? $available_action_plans->data : array();
         $phase_code = $phase_code != "" ? $states[$phase_code] : '';
@@ -199,6 +199,11 @@ class AuthController extends Controller
     public function available_action_plans()
     {
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/1/available';
+        return Http::withToken(Session::get('access_token'))->get($apiURL);  
+    }
+    public function available_action_plans_two()
+    {
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/2/available';
         return Http::withToken(Session::get('access_token'))->get($apiURL);  
     }
 
