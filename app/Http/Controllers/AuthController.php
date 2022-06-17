@@ -159,7 +159,7 @@ class AuthController extends Controller
         $phase_code = "";
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
         $myactions = array();
-        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions';
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/2';
         $myactions_api = Http::withToken(Session::get('access_token'))->get($apiURL);  
         $myactions_api = json_decode($myactions_api);
         if(isset($myactions_api->data)){
@@ -214,6 +214,31 @@ class AuthController extends Controller
         ];
   
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/1';
+        $response = Http::withToken(Session::get('access_token'))->post($apiURL,$postInput);
+        $response = json_decode($response);
+        if(isset($response->data)){
+            $response = [
+                'success_message' => 'Action Plan Saved Successfully',
+                'id' => $response->data->id,
+                'status_code' => 200
+            ];
+        }else{
+            $response = [
+                'error_message' => $response[0]->message,
+                'id' => '',
+                'status_code' => 202
+            ];
+        }
+        return response()->json($response);
+        // return redirect()->back()->with($message);
+    }
+    public function save_action_plan_two(Request $request)
+    {
+        $postInput = [
+            'action_id' => $request->id,
+        ];
+  
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/2';
         $response = Http::withToken(Session::get('access_token'))->post($apiURL,$postInput);
         $response = json_decode($response);
         if(isset($response->data)){

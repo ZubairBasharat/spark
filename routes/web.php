@@ -37,6 +37,7 @@ Route::middleware(['verified_token'])->group(function () {
     Route::GET('logout',[AuthController::class, 'logout']);
     Route::GET('delete-action/{action_id}', [AuthController::class, 'deleteAction']);
     Route::POST('save-action-plan',[AuthController::class, 'save_action_plan']);
+    Route::POST('save-action-plan-two',[AuthController::class, 'save_action_plan_two']);
 });
 Route::get('/login', function () {
     return view('login');

@@ -103,6 +103,10 @@
                       <div class="accordion-body px-2">
                       <div class="accordion" id="innerAccordion">
                         @foreach($available_action_plans as $index=>$available_action_plan)
+                        @php
+                          if(in_array($available_action_plan->id, $myactions_ids_array))
+                          continue;
+                        @endphp
                   <div class="accordion-item bg-transparent">
                     <h2 class="accordion-header" id="">
                       <button
@@ -127,7 +131,7 @@
                       </div>
                       <div class="transform-heading" style="background: none !important">
 
-                        <button type="text" data-id="4" data-id="{{$available_action_plan->id}}" data-plan ="{{$available_action_plan->short_description}}" data-plan ="4" class="border-0">
+                        <button type="text" data-id="{{$available_action_plan->id}}" data-plan ="{{$available_action_plan->short_description}}" data-plan ="4" class="border-0 save_action_plan_btn">
                         Add Action Plan
                       </button>
                       </div>
@@ -211,17 +215,17 @@
         $("#site-footer").load("./layout/footer.html");
       });
       $(document).on('click','.save_action_plan_btn',function(){
-        $('.save_action_plan_btn').prop('disabled', true);
+        // $('.save_action_plan_btn').prop('disabled', true);
         var id = $(this).data('id');
         var plan = $(this).data('plan');
         var btn = $(this);
         $.ajax({
           'method' : 'POST',
-          'url' : "{{url('save-action-plan')}}",
+          'url' : "{{url('save-action-plan-two')}}",
           'data' : {id: id, _token: "{{ csrf_token() }}"},
           success:function(response)
           {
-            $('.save_action_plan_btn').prop('disabled', false);
+           
             if(response.status_code == 200){
               btn.parent().parent().parent().remove();
               $('.myactions').append(`
@@ -245,6 +249,7 @@
             }else{
               alert("Some thing went wrong, Please try again later");
             }
+            $('.save_action_plan_btn').prop('disabled', false);
           }
         });
       });
