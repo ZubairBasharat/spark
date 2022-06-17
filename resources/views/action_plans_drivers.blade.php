@@ -157,7 +157,7 @@
                       <h6 class="me-3 mb-0 me-2">
                         {{$myaction->action->short_description}}
                       </h6>
-                      <a class="ms-auto border-0 bg-transparent p-0" href="{{url('delete-action',$myaction->id)}}">
+                      <a class="ms-auto border-0 bg-transparent p-0" href="{{url('delete-action',$myaction->id)}}/2">
                       <button
                         type="button"
                         class="ms-auto border-0 bg-transparent p-0"

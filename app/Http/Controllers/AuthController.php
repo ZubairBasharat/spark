@@ -186,12 +186,12 @@ class AuthController extends Controller
         return view('action_plans_drivers', compact('myactions', 'phase_code','available_action_plans','description','myactions_ids_array'));
     }
 
-    public function deleteAction($action_id)
+    public function deleteAction($action_id, $action_type)
     {
         $postInput = [
             'action_id' => $action_id
         ];
-        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/'.$action_id;
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/'.$action_id.'/'.$action_type;
         $response = Http::withToken(Session::get('access_token'))->delete($apiURL, $postInput); 
         return redirect()->back()->with(['success_message'=> 'Action plan deleted successfully']);
     }

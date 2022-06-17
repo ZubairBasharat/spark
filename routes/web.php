@@ -35,7 +35,7 @@ Route::middleware(['verified_token'])->group(function () {
     Route::get('/myActionPlans',[AuthController::class, 'actionPlans']);
     Route::get('/driver-action-plans',[AuthController::class, 'actionPlansDriver']);
     Route::GET('logout',[AuthController::class, 'logout']);
-    Route::GET('delete-action/{action_id}', [AuthController::class, 'deleteAction']);
+    Route::GET('delete-action/{action_id}/{action_type}', [AuthController::class, 'deleteAction']);
     Route::POST('save-action-plan',[AuthController::class, 'save_action_plan']);
     Route::POST('save-action-plan-two',[AuthController::class, 'save_action_plan_two']);
 });
