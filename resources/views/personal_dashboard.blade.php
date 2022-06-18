@@ -174,11 +174,13 @@
             <canvas id="dougnut-chart" height="auto"></canvas>
           </div>
         </div>
+        @if(count($myactions) > 0)
         <div class="head mt-4">
           <h2>You Compared to Others in the world</h2>
         </div>
+        @endif
         <div>
-          <p class="text-center">Employee loyalty, Retention & Advocacy for where you work</p>
+        @if(count($myactions) > 0) <p class="text-center">Employee loyalty, Retention & Advocacy for where you work</p> @endif
           @include('components.Personal_charts')
         </div>
       </div>

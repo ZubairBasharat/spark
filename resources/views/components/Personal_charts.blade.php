@@ -1,4 +1,5 @@
 <div class="border-0">
+@if(count($myactions) > 0)
     <div class="col-lg-9 mx-auto">
         <canvas id="meaning-chart-employee" height="60"></canvas>
         <div class="text-center">
@@ -32,6 +33,8 @@
             </ul>
         </div>
     </div>
+    @endif
+    @if(count($myactions_two) > 0)
     <div class="head mt-5">
         <h2 class="d-flex align-items-center"><span style="width: 108px;overflow: hidden;display: inline-block;"><img src="{{asset('assets/images/slide-logo.png')}}" alt="logo" /></span>&nbsp;21 Engagement Drivers</h2>
     </div>
@@ -54,6 +57,8 @@
             </div>
         </div>
     </div>
+    @endif
+    @if(count($myactions) > 0)
     <div class="head mt-5">
         <h2>What Fuels Your Passion</h2>
     </div>
@@ -169,10 +174,12 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 @section('scripts')
 <script>
     $(document).ready(function(){
+        "@if(count($myactions) > 0)"
         const ctx_employee = document.getElementById("meaning-chart-employee").getContext("2d");
         const Chart_employee = new Chart(ctx_employee, {
             type: "bar",
@@ -515,6 +522,9 @@
                 },
             },
         });
+        "@endif"
+
+        "@if(count($myactions_two) > 0)"
         // line chart data1
         const line_chart_data_canvas1 = document.getElementById("line_chart_data1").getContext("2d");
         const line_chart_data1 = new Chart(line_chart_data_canvas1, {
@@ -621,6 +631,7 @@
                 },
             },
         });
+        "@endif"
     })
 </script>
 @endsection

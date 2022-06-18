@@ -102,9 +102,28 @@ class AuthController extends Controller
                 }
             }
         }
+
+        //get saved action plans 1
+        $myactions = array();
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/1';
+        $myactions_api = Http::withToken(Session::get('access_token'))->get($apiURL);  
+        $myactions_api = json_decode($myactions_api);
+        if(isset($myactions_api->data)){
+            $myactions = $myactions_api->data;
+        }
+        
+        //get saved action plans 2
+        $myactions_two = array();
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/2';
+        $myactions_api = Http::withToken(Session::get('access_token'))->get($apiURL);  
+        $myactions_api = json_decode($myactions_api);
+        if(isset($myactions_api->data)){
+            $myactions_two = $myactions_api->data;
+        }
+
         $resume = $request->is_resume;
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-        return view('personal_dashboard',compact('phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description'));
+        return view('personal_dashboard',compact('phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
     }
 
     public function comparable()
