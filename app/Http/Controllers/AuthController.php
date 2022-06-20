@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Session;
 use Config;
+use Illuminate\Support\Arr;
 
 class AuthController extends Controller
 {
@@ -121,9 +122,26 @@ class AuthController extends Controller
             $myactions_two = $myactions_api->data;
         }
 
+        //engagement
+        $top_strength = array(0 => 0, 1=>0, 2=>0);
+        $top_improvements = array(0 => 0, 1=>0, 2=>0);
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/engagement';
+        $engagement = Http::withToken(Session::get('access_token'))->get($apiURL);  
+        $engagement = json_decode($engagement);
+        if(isset($engagement->data)){
+            $lowest_engagements = $engagement->data->lowest_engagement;
+            foreach($lowest_engagements as $index=>$lowest_engagement){
+                $top_strength[$index] = $lowest_engagement->rating;
+            }
+            $highest_engagements = $engagement->data->highest_engagement;
+            foreach($highest_engagements as $index=>$highest_engagement){
+                $top_improvements[$index] = $highest_engagement->rating;
+            }
+        }
+        // print_r($top_improvements);die;
         $resume = $request->is_resume;
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-        return view('personal_dashboard',compact('phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
+        return view('personal_dashboard',compact('top_improvements','top_strength','phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
     }
 
     public function comparable()
