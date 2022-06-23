@@ -70,6 +70,8 @@ class AuthController extends Controller
         $contrast_values  = array(0=>0,1=>0,2=>0,3=>0,4=>0,5=>0,);
         $phase_code = "";
         $questions = array();
+        $compare_graphs = array(0=>0,0=>0,0=>0);
+        $compare_graphs_rating = array(0=>0,0=>0,0=>0);
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
         $response = Http::withToken(Session::get('access_token'))->get($apiURL);
         if(!empty($response)){
@@ -78,6 +80,8 @@ class AuthController extends Controller
                 $response = $response->data;
                 if(isset($response->phase_distribution))
                 $phase_distribution = $response->phase_distribution;
+
+
             }
         }
 
@@ -90,15 +94,24 @@ class AuthController extends Controller
                 $compareable = $compareable->data;
                 if(isset($compareable->question_values))
                 $questions = $compareable->question_values;
-            }
 
-            foreach($questions as $index=>$question )
-            {
-                $question_values[$question->display_order - 1] = $question->question_value;
-                if($index == 5)
+                foreach($questions as $index=>$question )
                 {
-                    break;
+                    $question_values[$question->display_order - 1] = $question->question_value;
+                    if($index == 5)
+                    {
+                        break;
+                    }
                 }
+                foreach($questions as $index=>$question_rating )
+                {
+                    if($question_rating->bucket == 3)
+                    {
+                        $compare_graphs_rating[$question_rating->display_order - 1] = $question_rating->question_value;   
+                    }
+                   
+                }
+
             }
 
             if(isset($compareable->phase_code))
@@ -120,6 +133,15 @@ class AuthController extends Controller
                 {
                     break;
                 }
+            }
+            
+            foreach($contrast->question_averages as $contrast_index=>$question_average)
+            {
+                if($question_average->bucket == 3)
+                {
+                    $compare_graphs[$question_average->display_order - 1] = $question_average->question_average;   
+                }
+               
             }
         }
         }
@@ -161,7 +183,7 @@ class AuthController extends Controller
         // print_r($top_improvements);die;
         $resume = $request->is_resume;
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-        return view('personal_dashboard',compact('top_improvements','top_strength','phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
+        return view('personal_dashboard',compact('compare_graphs_rating','compare_graphs','top_improvements','top_strength','phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
     }
 
     public function comparable()

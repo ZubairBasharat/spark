@@ -220,7 +220,7 @@
                 labels: ["The organization provides a better place to work than our competititors", ""],
                 datasets: [
                 {
-                    data: [1, 9],
+                    data: ["<?= $compare_graphs_rating[0] ?>", "<?= $compare_graphs[0] ?>"],
                     backgroundColor: ["#ED1846", "#7E706C"],
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
@@ -251,7 +251,7 @@
                 labels: ["i have no reason to look elsewhere for a job", ""],
                 datasets: [
                 {
-                    data: [1, 9],
+                    data: ["<?= $compare_graphs_rating[1] ?>", "<?= $compare_graphs[1] ?>"],
                     backgroundColor: ["#ED1846", "#7E706C"],
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
@@ -282,7 +282,7 @@
                 labels: ["i would definitely recommend this organization as a place to work", ""],
                 datasets: [
                 {
-                    data: [1, 9],
+                    data: ["<?= $compare_graphs_rating[2] ?>", "<?= $compare_graphs[2] ?>"],
                     backgroundColor: ["#ED1846", "#7E706C"],
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
