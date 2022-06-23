@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Session;
 use Config;
 use Illuminate\Support\Arr;
+use Psy\CodeCleaner\IssetPass;
 
 class AuthController extends Controller
 {
@@ -21,8 +22,8 @@ class AuthController extends Controller
         $apiURL = $this->base_url.'/oauth/token';
         $postInput = [
             'grant_type' => 'password',
-            'client_id' => '96022a85-d94d-494b-8991-38368e0d2763',
-            'client_secret' => 'wbvlDOzhKkmPaW7kLdBP7uj2sCuIpJ6nKsUKjhAm',
+            'client_id' => '969981be-3bd3-4976-94f7-63ce09c9f9a5',
+            'client_secret' => 'nu5XDpPfOmXMpi3IN3K9wk454nRCHBdFBLopvHK2',
             'username' => $request->user_id,
             'password' => $request->password
         ];
@@ -68,17 +69,29 @@ class AuthController extends Controller
         $question_values  = array(0=>0,1=>0,2=>0,3=>0,4=>0,5=>0,);
         $contrast_values  = array(0=>0,1=>0,2=>0,3=>0,4=>0,5=>0,);
         $phase_code = "";
+        $questions = array();
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
         $response = Http::withToken(Session::get('access_token'))->get($apiURL);
         if(!empty($response)){
-            $response = json_decode($response)->data;
-            $phase_distribution = $response->phase_distribution;
+            $response = json_decode($response);
+            if(isset($response->data)){
+                $response = $response->data;
+                if(isset($response->phase_distribution))
+                $phase_distribution = $response->phase_distribution;
+            }
         }
 
         $compareable = $this->comparable();
+        $phase_code = '';
         if(!empty($compareable)){
-            $compareable = json_decode($compareable)->data;
-            $questions = $compareable->question_values;
+            $compareable = json_decode($compareable);
+            if(isset($compareable->data))
+            {
+                $compareable = $compareable->data;
+                if(isset($compareable->question_values))
+                $questions = $compareable->question_values;
+            }
+
             foreach($questions as $index=>$question )
             {
                 $question_values[$question->display_order - 1] = $question->question_value;
@@ -87,13 +100,19 @@ class AuthController extends Controller
                     break;
                 }
             }
+
+            if(isset($compareable->phase_code))
             $phase_code = $compareable->phase_code;
         }
 
         $contrast = $this->contrast();
         if(!empty($contrast))
         {
-            $contrast = json_decode($contrast)->data;
+            $contrast = json_decode($contrast);
+            if(isset($contrast->data))
+            $contrast = $contrast->data;
+
+            if(isset($contrast->question_averages)){
             foreach($contrast->question_averages as $contrast_index=>$average)
             {
                 $contrast_values[$average->display_order - 1] = $average->question_average;
@@ -102,6 +121,7 @@ class AuthController extends Controller
                     break;
                 }
             }
+        }
         }
 
         //get saved action plans 1
@@ -176,15 +196,20 @@ class AuthController extends Controller
         }
 
         $compareable = $this->comparable();
+        $phase_code = "";
         if(!empty($compareable)){
-            $compareable = json_decode($compareable)->data;
-            $questions = $compareable->question_values;
+            $compareable = json_decode($compareable);
+            if(isset($compareable->data)){
+            $compareable = $compareable->data;
+            // $questions = $compareable->question_values;
+            if(isset($compareable->phase_code))
             $phase_code = $compareable->phase_code;
+            }
         }
 
         $available_action_plans = $this->available_action_plans();
         $available_action_plans = json_decode($available_action_plans);
-        $available_action_plans = !empty($available_action_plans)? $available_action_plans->data : array();
+        $available_action_plans = !empty($available_action_plans)? (isset($available_action_plans->data) ? $available_action_plans->data :array())  : array();
         $phase_code = $phase_code != "" ? $states[$phase_code] : '';
         // print_r($available_action_plans);die;
         return view('action_plan', compact('myactions', 'phase_code','available_action_plans','description','myactions_ids_array'));
@@ -208,16 +233,22 @@ class AuthController extends Controller
             $myactions_ids_array[$index] = $myaction->action_id;
         }
 
+        // $questions = array();
+        $phase_code = "";
         $compareable = $this->comparable();
         if(!empty($compareable)){
-            $compareable = json_decode($compareable)->data;
-            $questions = $compareable->question_values;
+            $compareable = json_decode($compareable);
+            if(isset($compareable->data)){
+                $compareable = $compareable->data;
+            // $questions = $compareable->question_values;
+            if(isset($compareable->phase_code))
             $phase_code = $compareable->phase_code;
+            }
         }
 
         $available_action_plans = $this->available_action_plans_two();
         $available_action_plans = json_decode($available_action_plans);
-        $available_action_plans = !empty($available_action_plans)? $available_action_plans->data : array();
+        $available_action_plans = !empty($available_action_plans)? (isset($available_action_plans->data) ? $available_action_plans->data : array())  : array();
         $phase_code = $phase_code != "" ? $states[$phase_code] : '';
         // print_r($available_action_plans);die;
         return view('action_plans_drivers', compact('myactions', 'phase_code','available_action_plans','description','myactions_ids_array'));
@@ -393,37 +424,54 @@ class AuthController extends Controller
             $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
             $response = Http::withToken(Session::get('access_token'))->get($apiURL);
             if(!empty($response)){
-                $response = json_decode($response)->data;
+                $response = json_decode($response);
+                if(isset($response->data)){
+                $response = $response->data;
+                
+                if(isset($response->phase_distribution))
                 $phase_distribution = $response->phase_distribution;
+                }
             }
     
+            $phase_code = "";
             $compareable = $this->comparable();
             if(!empty($compareable)){
-                $compareable = json_decode($compareable)->data;
-                $questions = $compareable->question_values;
-                foreach($questions as $index=>$question )
+                $compareable = json_decode($compareable);
+                if(isset($compareable->data))
                 {
-                    $question_values[$question->display_order - 1] = $question->question_value;
-                    if($index == 5)
-                    {
-                        break;
+                    $compareable = $compareable->data;
+                    if(isset($compareable->question_values)){
+                        $questions = $compareable->question_values;
+                        foreach($questions as $index=>$question )
+                        {
+                            $question_values[$question->display_order - 1] = $question->question_value;
+                            if($index == 5)
+                            {
+                                break;
+                            }
+                        }
                     }
+                    if(isset($compareable->phase_code))
+                    $phase_code = $compareable->phase_code;
                 }
-                $phase_code = $compareable->phase_code;
             }
     
             $contrast = $this->contrast();
             if(!empty($contrast))
             {
-                $contrast = json_decode($contrast)->data;
-                foreach($contrast->question_averages as $contrast_index=>$average)
-                {
-                    $contrast_values[$average->display_order - 1] = $average->question_average;
-                    if($contrast_index == 5)
+                $contrast = json_decode($contrast);
+                if(isset($contrast->data)){
+                    $contrast = $contrast->data;
+                    foreach($contrast->question_averages as $contrast_index=>$average)
                     {
-                        break;
+                        $contrast_values[$average->display_order - 1] = $average->question_average;
+                        if($contrast_index == 5)
+                        {
+                            break;
+                        }
                     }
                 }
+
             }
     
             $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 

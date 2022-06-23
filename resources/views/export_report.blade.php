@@ -43,7 +43,7 @@
               </div>
             <div class="personal-db-info text-center mt-4">
               <h1 style="font-size: 34px;font-weight:600;color: rgba(0, 0, 0, 0.87);">Hi {{Session::get('user_name')}}!</h1>
-              <h2 style="font-size: 20px;">Your Engagement State: <span class="text-red">{{$states[$phase_code]}}</span></h2>
+              <h2 style="font-size: 20px;">Your Engagement State: <span class="text-red">{{(isset($states[$phase_code])) ?  $states[$phase_code] : ''}}</span></h2>
             </div>
             <div class="report-blocks-main border-0">
               <div class="body mx-auto position-relative" style=" width: fit-content;">
@@ -52,35 +52,35 @@
                   <img src="{{asset('/assets/images/arrow-up.svg')}}" alt="arrow" class="arrow-up" />
                   <img src="{{asset('/assets/images/arrow-right.svg')}}" alt="arrow" class="arrow-right" />
                   <div class="d-flex flex-wrap">
-                    <div class="block center flex-column {{$states[$phase_code] == 'Frustrated' ? 'hover_properties' : ''}} frustrated">
+                    <div class="block center flex-column @if(isset($states[$phase_code])) {{$states[$phase_code] == 'Frustrated' ? 'hover_properties' : ''}} @endif frustrated">
                       <h2>Frustrated</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#frustrated-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column {{$states[$phase_code] == 'Energized' ? 'hover_properties' : ''}} energized">
+                    <div class="block center flex-column @if(isset($states[$phase_code])) {{$states[$phase_code] == 'Energized' ? 'hover_properties' : ''}} @endif energized">
                       <h2>Energized</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#energized-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column pers-engaged {{$states[$phase_code] == 'Passionately Engaged' ? 'hover_properties' : ''}}">
+                    <div class="block center flex-column pers-engaged @if(isset($states[$phase_code])) {{$states[$phase_code] == 'Passionately Engaged' ? 'hover_properties' : ''}} @endif">
                       <h2>Passionately Engaged</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#pass-engage-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column {{$states[$phase_code] == 'Unfulfilled' ? 'hover_properties' : ''}} unfilled">
+                    <div class="block center flex-column @if(isset($states[$phase_code])) {{$states[$phase_code] == 'Unfulfilled' ? 'hover_properties' : ''}} @endif unfilled">
                       <h2>Unfulfilled</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#unfilled-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column {{$states[$phase_code] == 'Neutral' ? 'hover_properties' : ''}} neutral">
+                    <div class="block center flex-column @if(isset($states[$phase_code])) {{$states[$phase_code] == 'Neutral' ? 'hover_properties' : ''}} @endif neutral">
                       <h2>Neutral</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#neutral-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column {{$states[$phase_code] == 'Engaged' ? 'hover_properties' : ''}} engaged">
+                    <div class="block center flex-column @if(isset($states[$phase_code])) {{$states[$phase_code] == 'Engaged' ? 'hover_properties' : ''}} @endif engaged">
                       <h2>Engaged</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#engage-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column stagnated {{$states[$phase_code] == 'Stagnated' ? 'hover_properties' : ''}} last">
+                    <div class="block center flex-column stagnated @if(isset($states[$phase_code])) {{$states[$phase_code] == 'Stagnated' ? 'hover_properties' : ''}} @endif last">
                       <h2>Stagnated</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#stagnated-modal">Learn More</a>
                     </div>
-                    <div class="block center flex-column disconnected {{$states[$phase_code] == 'Disconnected' ? 'hover_properties' : ''}} last">
+                    <div class="block center flex-column disconnected @if(isset($states[$phase_code])) {{$states[$phase_code] == 'Disconnected' ? 'hover_properties' : ''}} @endif last">
                       <h2>Disconnected</h2>
                       <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#disconnected-modal">Learn More</a>
                     </div>
@@ -141,8 +141,10 @@
     ></script>
     <script src="{{asset('/assets/js/charts.js')}}"></script>
     <script>
-      var labels_ = [];
-      var data_= [];
+      "<?php if(count($phase_distribution) == 0){ ?>"
+        var labels_ = ['DatA Not Available'];
+        var data_= [1];
+        "<?php } ?>"
       "<?php
       foreach($phase_distribution as $index=>$phase){ ?>"
       labels_["<?= $index ?>"] = "<?= $states[$phase->phase_code] ?>";
