@@ -88,15 +88,16 @@
               <br>
               <br>
               @endforeach
-              <!-- <div class="print-title my-4 text-center">
+              <div class="print-title my-4 text-center">
                 <h5 class="mb-0">Engagement Drivers</h5>
-              </div> -->
+              </div>
               <div>
-                <!-- <h4 class="text-uppercase">
+              @foreach($myactions_two as $myaction_two)  
+                <h4 class="text-uppercase">
                   <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Celebrate SMALL Get
-                  Clarity
-                </h4> -->
-                <!-- <div class="px-md-4 px-2 px-xl-5">
+                  {{$myaction_two->action->short_description}}
+                </h4>
+                <div class="px-md-4 px-2 px-xl-5">
                   <p>
                     Ensure you are clear on the values of your team/organization
                     and how they are defined in practice. For example, if
@@ -108,24 +109,25 @@
                     by behaviors that speak to how the work gets done within
                     your organization.
                   </p>
-                </div> -->
+                </div>
+              @endforeach  
                 <!-- <h4 class="text-uppercase pt-3">
                   <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Determine Purpose
                   Clarity
-                </h4> -->
-                <!-- <div class="px-md-4 px-2 px-xl-5">
+                </h4>
+                <div class="px-md-4 px-2 px-xl-5">
                   <p>
                     Reflect on the extent to which you can support them:
                     Consider how they benefit your stakeholders, how they
                     support the mission and vision of your organization, and how
                     the values help create a healthy work environment
                   </p>
-                </div> -->
-                <!-- <h4 class="text-uppercase mt-5">
+                </div>
+                <h4 class="text-uppercase mt-5">
                   <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Determine Purpose
                   Take action
-                </h4> -->
-                <!-- <div class="px-md-4 px-2 px-xl-5">
+                </h4>
+                <div class="px-md-4 px-2 px-xl-5">
                   <p>
                     Reflect on the extent to which you can support them: Reflect
                     on the extent to which you can support them: Consider how

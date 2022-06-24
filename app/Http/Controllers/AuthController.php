@@ -432,8 +432,17 @@ class AuthController extends Controller
         if(isset($myactions_api->data)){
             $myactions = $myactions_api->data;
         }
+
+        $myactions_two = array();
+        $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/2';
+        $myactions_api = Http::withToken(Session::get('access_token'))->get($apiURL);  
+        $myactions_api = json_decode($myactions_api);
+        if(isset($myactions_api->data)){
+            $myactions_two = $myactions_api->data;
+        }
+        
         // return $myactions;
-        return view('action_print',compact('myactions','description'));
+        return view('action_print',compact('myactions','description','myactions_two'));
     }
     public function export_report()
     {
@@ -443,6 +452,8 @@ class AuthController extends Controller
             $question_values  = array(0=>0,1=>0,2=>0,3=>0,4=>0,5=>0,);
             $contrast_values  = array(0=>0,1=>0,2=>0,3=>0,4=>0,5=>0,);
             $phase_code = "";
+            $compare_graphs = array(0=>0,0=>0,0=>0);
+            $compare_graphs_rating = array(0=>0,0=>0,0=>0);
             $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
             $response = Http::withToken(Session::get('access_token'))->get($apiURL);
             if(!empty($response)){
@@ -471,6 +482,15 @@ class AuthController extends Controller
                             {
                                 break;
                             }
+
+                            foreach($questions as $index=>$question_rating )
+                            {
+                                if($question_rating->bucket == 3)
+                                {
+                                    $compare_graphs_rating[$question_rating->display_order - 1] = $question_rating->question_value;   
+                                }
+                               
+                            }
                         }
                     }
                     if(isset($compareable->phase_code))
@@ -492,12 +512,39 @@ class AuthController extends Controller
                             break;
                         }
                     }
+
+                    foreach($contrast->question_averages as $contrast_index=>$question_average)
+                    {
+                        if($question_average->bucket == 3)
+                        {
+                            $compare_graphs[$question_average->display_order - 1] = $question_average->question_average;   
+                        }
+                    
+                    }
                 }
 
             }
+
+            //get saved action plans 1
+            $myactions = array();
+            $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/1';
+            $myactions_api = Http::withToken(Session::get('access_token'))->get($apiURL);  
+            $myactions_api = json_decode($myactions_api);
+            if(isset($myactions_api->data)){
+                $myactions = $myactions_api->data;
+            }
+            
+            //get saved action plans 2
+            $myactions_two = array();
+            $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/actions/2';
+            $myactions_api = Http::withToken(Session::get('access_token'))->get($apiURL);  
+            $myactions_api = json_decode($myactions_api);
+            if(isset($myactions_api->data)){
+                $myactions_two = $myactions_api->data;
+            }
     
             $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-            return view('export_report',compact('phase_distribution', 'states','phase_code','question_values','contrast_values','phase_code_description'));
+            return view('export_report',compact('compare_graphs','compare_graphs_rating','myactions','myactions_two','phase_distribution', 'states','phase_code','question_values','contrast_values','phase_code_description'));
         }
     }
 }
