@@ -1,7 +1,16 @@
 <div class="border-0">
 @if(count($myactions) > 0)
-    <div class="col-lg-9 mx-auto">
-        <canvas id="meaning-chart-employee" height="60"></canvas>
+    <div class="col-lg-9  mx-auto">
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <label class="chart-left-label f-semibold mb-0">
+                    Average Score for loyalty, retention and advocacy
+                </label>
+            </div>
+            <div class="col-lg-8">
+                <canvas id="meaning-chart-employee" height="60"></canvas>
+            </div>
+        </div>
         <div class="text-center">
             <ul class="list-unstyled mb-0 indicator-container list-inline">
                 <li class="list-inline-item mt-3 me-4">
@@ -15,13 +24,40 @@
     </div>
     <div class="chart-seperate-border mb-4"></div>
     <div class="col-lg-9 mx-auto mb-4">
-        <canvas id="meaning-chart-employee_inner1" height="60"></canvas>
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <label class="chart-left-label f-semibold mb-0">
+                    The organization provides a better place to work than our competititors
+                </label>
+            </div>
+            <div class="col-lg-8">
+                <canvas id="meaning-chart-employee_inner1" height="60"></canvas>
+            </div>
+        </div>
     </div>
     <div class="col-lg-9 mx-auto mb-4">
-        <canvas id="meaning-chart-employee_inner2" height="60"></canvas>
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <label class="chart-left-label f-semibold mb-0">
+                    I have no reason to look elsewhere for a job
+                </label>
+            </div>
+            <div class="col-lg-8">
+                <canvas id="meaning-chart-employee_inner2" height="60"></canvas>
+            </div>
+        </div>
     </div>
     <div class="col-lg-9 mx-auto">
-        <canvas id="meaning-chart-employee_inner3" height="60"></canvas>
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <label class="chart-left-label f-semibold mb-0">
+                    I would definitely recommend this organization as a place to work
+                </label>
+            </div>
+            <div class="col-lg-8">
+                <canvas id="meaning-chart-employee_inner3" height="60"></canvas>
+            </div>
+        </div>
         <div class="text-center">
             <ul class="list-unstyled mb-0 indicator-container list-inline">
                 <li class="list-inline-item mt-3 me-4">
@@ -67,11 +103,42 @@
         and Progress is for you. Focusing on specific engagement drivers will help strengthen your engagement. 
     </p>
     <div class="col-lg-9 mx-auto mb-5">
-        <canvas id="meaning-chart-employee_inner5" height="60"></canvas>
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <label class="chart-left-label f-semibold mb-0">
+                    Overall Average all 21
+                </label>
+            </div>
+            <div class="col-lg-8">
+                <canvas id="meaning-chart-employee_inner5" height="60"></canvas>
+            </div>
+        </div>
+        <div class="text-center">
+            <ul class="list-unstyled mb-0 indicator-container list-inline">
+                <li class="list-inline-item mt-3 me-4">
+                    <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                </li>
+                <li class="list-inline-item mt-3">
+                    <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="chart-seperate-border mb-5"></div>
     <div class="col-lg-9 mx-auto">
-        <canvas id="meaning-chart-employee_inner6" height="60"></canvas>
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <label class="chart-left-label f-semibold mb-0">
+                    Feeling of Purpose & Inspiration<br />
+                    Feeling toward Organizational Patterns<br />
+                    Feeling of Mastery<br />
+                    Feeling of Autonomy
+                </label>
+            </div>
+            <div class="col-lg-8">
+                <canvas id="meaning-chart-employee_inner6" height="60"></canvas>
+            </div>
+        </div>
         <div class="text-center">
             <ul class="list-unstyled mb-0 pb-3 indicator-container list-inline">
                 <li class="list-inline-item mt-3 me-4">
@@ -184,7 +251,7 @@
         const Chart_employee = new Chart(ctx_employee, {
             type: "bar",
             data: {
-                labels: ["Average Score for loyalty,", "retention and advocacy"],
+                labels: ["", ""],
                 datasets: [
                 {
                     data: [1, 9],
@@ -217,7 +284,7 @@
         const Chart_employee_inner1 = new Chart(ctx_employee_inner1, {
             type: "bar",
             data: {
-                labels: ["The organization provides a better place to work than our competititors", ""],
+                labels: ["", ""],
                 datasets: [
                 {
                     data: ["<?= $compare_graphs_rating[0] ?>", "<?= $compare_graphs[0] ?>"],
@@ -248,7 +315,7 @@
         const Chart_employee_inner2 = new Chart(ctx_employee_inner2, {
             type: "bar",
             data: {
-                labels: ["i have no reason to look elsewhere for a job", ""],
+                labels: ["", ""],
                 datasets: [
                 {
                     data: ["<?= $compare_graphs_rating[1] ?>", "<?= $compare_graphs[1] ?>"],
@@ -279,7 +346,7 @@
         const Chart_employee_inner3 = new Chart(ctx_employee_inner3, {
             type: "bar",
             data: {
-                labels: ["i would definitely recommend this organization as a place to work", ""],
+                labels: ["", ""],
                 datasets: [
                 {
                     data: ["<?= $compare_graphs_rating[2] ?>", "<?= $compare_graphs[2] ?>"],
@@ -322,7 +389,7 @@
         const Chart_employee_inner5 = new Chart(ctx_employee_inner5, {
             type: "bar",
             data: {
-                labels: ["Overall Average all 21", ""],
+                labels: ["", ""],
                 datasets: [
                 {
                     data: [1, 9],
@@ -353,8 +420,8 @@
         const Chart_employee_inner6 = new Chart(ctx_employee_inner6, {
             type: "bar",
             data: {
-                labels: [" Feeling of Purpose & Inspiration","Feeling toward Organizational Patterns",
-            "Feeling of Mastery","Feeling of Autonomy"],
+                labels: [" ","",
+            "",""],
                 datasets: [
                 {
                     data: [1, 8,1, 4],

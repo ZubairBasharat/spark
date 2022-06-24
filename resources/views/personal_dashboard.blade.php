@@ -179,7 +179,7 @@
         </div>
         @if(count($myactions) > 0)
         <div class="head mt-4">
-          <h2>You Compared to Others in the world</h2>
+          <h2>How you feel about your company</h2>
         </div>
         @endif
         <div>
