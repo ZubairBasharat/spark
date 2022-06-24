@@ -542,9 +542,27 @@ class AuthController extends Controller
             if(isset($myactions_api->data)){
                 $myactions_two = $myactions_api->data;
             }
+
+            
+            //engagement
+            $top_strength = array(0 => 0, 1=>0, 2=>0);
+            $top_improvements = array(0 => 0, 1=>0, 2=>0);
+            $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/engagement';
+            $engagement = Http::withToken(Session::get('access_token'))->get($apiURL);  
+            $engagement = json_decode($engagement);
+            if(isset($engagement->data)){
+                $lowest_engagements = $engagement->data->lowest_engagement;
+                foreach($lowest_engagements as $index=>$lowest_engagement){
+                    $top_strength[$index] = $lowest_engagement->rating;
+                }
+                $highest_engagements = $engagement->data->highest_engagement;
+                foreach($highest_engagements as $index=>$highest_engagement){
+                    $top_improvements[$index] = $highest_engagement->rating;
+                }
+            }
     
             $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-            return view('export_report',compact('compare_graphs','compare_graphs_rating','myactions','myactions_two','phase_distribution', 'states','phase_code','question_values','contrast_values','phase_code_description'));
+            return view('export_report',compact('top_strength','top_improvements','compare_graphs','compare_graphs_rating','myactions','myactions_two','phase_distribution', 'states','phase_code','question_values','contrast_values','phase_code_description'));
         }
     }
 }
