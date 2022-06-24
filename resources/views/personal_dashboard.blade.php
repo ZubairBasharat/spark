@@ -480,7 +480,10 @@
       "<?php if(count($phase_distribution) == 0){ ?>"
         var labels_ = ['DatA Not Available'];
         var data_= [1];
-        "<?php } ?>"
+        "<?php }else{ ?>"
+          var labels_ = [];
+          var data_ = [];
+          "<?php } ?>"
      
       "<?php
       foreach($phase_distribution as $index=>$phase){ ?>"
