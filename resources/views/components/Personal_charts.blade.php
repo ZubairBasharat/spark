@@ -136,7 +136,7 @@
                 </label>
             </div>
             <div class="col-lg-8">
-                <canvas id="meaning-chart-employee_inner6" height="60"></canvas>
+                <canvas id="meaning-chart-employee_inner6" height="80"></canvas>
             </div>
         </div>
         <div class="text-center">
@@ -255,10 +255,10 @@
             </div>
             <div class="chart-main mt-4">
                 <div class="head mb-0">
-                    <h2>Feeling of Autonomy</h2>
+                    <h2>Feeling of Mastery</h2>
                 </div>
                 <div class="body border-0 px-4">
-                    <p>This measures how empowered you feel to do what you know needs to be done without having to check-in all the time or wait for decisions to be made. Our research shows that autonomy and ownership come from knowing clearly what you need to accomplish, making decisions about how you achieve these goals, learning from the mistakes along the way, and understanding that there is always a way forward, even with great challenges. 
+                    <p>This category focuses on whether you feel equipped to succeed.  Skills and knowledge are the foundation of success. Being naturally interested in one’s work also fuels curiosity and lifelong learning. This alignment supports the ongoing development of skills and knowledge. Research shows that accepting challenges to use our skills and knowledge while also asking us to get creative places us in a passionate zone. 
                     </p>
                     <div class="row">
                         <div class="col-lg-5">
