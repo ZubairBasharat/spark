@@ -157,14 +157,25 @@
                     <h2>Feeling of Purpose & Inspiration</h2>
                 </div>
                 <div class="body border-0 px-4">
-                    <p>Believing in company values, feeling personally aligned to them and 
+                    <p>
+                        Believing in company values, feeling personally aligned to them and 
                         feeling inspired by the vision are critical components of engagement. 
                         You will not attain passion without investing in these aspects of your culture.  
                         The vision represents our collective aspiration. The values speak to how we will 
                         operate as we achieve that vision. And, celebration encourages us in our pursuits. 
                         Celebrating accomplishments, along the way, is a distinguishing feature of passionate people.
                     </p>
-                    <canvas id="meaning-chart-employee_inner7" height="auto"></canvas>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
+                                I believe in the values of my team & Organization<br /><br />I believe in the vision of my team & Organization<br /><br />
+                                I regularly celebrate my accomplishment at work<br /><br />I am able to be true to my personal Values at work
+                            </label>
+                        </div>
+                        <div class="col-lg-8">
+                            <canvas id="meaning-chart-employee_inner7" height="auto"></canvas>
+                        </div>
+                    </div>
                     <div class="text-center">
                         <ul class="list-unstyled mb-0 pb-3 indicator-container list-inline">
                             <li class="list-inline-item mt-3 me-4">
@@ -184,7 +195,18 @@
                 <div class="body border-0 px-4">
                     <p>This measures how empowered you feel to do what you know needs to be done without having to check-in all the time or wait for decisions to be made. Our research shows that autonomy and ownership come from knowing clearly what you need to accomplish, making decisions about how you achieve these goals, learning from the mistakes along the way, and understanding that there is always a way forward, even with great challenges. 
                     </p>
-                    <canvas id="meaning-chart-employee_inner9" height="auto"></canvas>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
+                                I am able to learn and grow from my mistakes<br /><br />I have clear prioritized goals<br /><br />
+                                I am able to make decision about the way my work gets done<br /><br />I have the real sense of ownership for my work<br /><br />
+                                I see the challenges i face i opportunities not immovable road blocks
+                            </label>
+                        </div>
+                        <div class="col-lg-8">
+                            <canvas id="meaning-chart-employee_inner9" height="220px"></canvas>
+                        </div>
+                    </div>
                     <div class="text-center">
                         <ul class="list-unstyled mb-0 pb-3 indicator-container list-inline">
                             <li class="list-inline-item mt-3 me-4">
@@ -206,7 +228,19 @@
                 <div class="body border-0 px-4">
                     <p>This category has eight elements ranging from communications to support as well as the importance of contribution. Notice how the three communication statements relate (i.e., general communications, input and feedback). Then consider the support systems from policies to resources to the team. And, finally, notice how connected people feel to the purpose of the organization and the contributions of their peers. 
                     </p>
-                    <canvas id="meaning-chart-employee_inner8" height="auto"></canvas>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
+                                The Organization Communicates Changes And Other Critical Infomation Effectively<br /><br />The Policies Of This Organization Are Personnel Freindly<br /><br />
+                                I have The Resources I Need To Be Successful<br /><br />I Feel That Everyone In The Company Is Commited to a high  Quality Standard In their work<br /><br />
+                                The organization seeks my input on things that matter<br /><br />I get lot of meaningful Feedbacks on my performance at work<br /><br />I work on a great team with people who support<br /><br />
+                                the Mission and purpose of the company makes my work here important
+                            </label>
+                        </div>
+                        <div class="col-lg-7">
+                            <canvas id="meaning-chart-employee_inner8" height="400px"></canvas>
+                        </div>
+                    </div>
                     <div class="text-center">
                         <ul class="list-unstyled mb-0 pb-3 indicator-container list-inline">
                             <li class="list-inline-item mt-3 me-4">
@@ -226,7 +260,17 @@
                 <div class="body border-0 px-4">
                     <p>This measures how empowered you feel to do what you know needs to be done without having to check-in all the time or wait for decisions to be made. Our research shows that autonomy and ownership come from knowing clearly what you need to accomplish, making decisions about how you achieve these goals, learning from the mistakes along the way, and understanding that there is always a way forward, even with great challenges. 
                     </p>
-                    <canvas id="meaning-chart-employee_inner10" height="auto"></canvas>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
+                                I Have the skills to do my job well<br /><br />I have the knowledge i need to excel in this week<br /><br />
+                                I am able to be creative in the way i work<br /><br />i am naturally interested in the kind of work i am  doing
+                            </label>
+                        </div>
+                        <div class="col-lg-7">
+                            <canvas id="meaning-chart-employee_inner10" height="150px"></canvas>
+                        </div>
+                    </div>
                     <div class="text-center">
                         <ul class="list-unstyled mb-0 pb-3 indicator-container list-inline">
                             <li class="list-inline-item mt-3 me-4">
@@ -452,8 +496,7 @@
         const Chart_employee_inner7 = new Chart(ctx_employee_inner7, {
             type: "bar",
             data: {
-                labels: ["I believe in the values of my team & Organization","I believe in the vision of my team & Organization",
-            "I regularly celebrate my accomplishment at work","I am able to be true to my personal Values at work"],
+                labels: ["","","",""],
                 datasets: [
                 {
                     data: [1, 8,1, 4],
@@ -484,10 +527,7 @@
         const Chart_employee_inner8 = new Chart(ctx_employee_inner8, {
             type: "bar",
             data: {
-                labels: ["The Organization Communicates Changes And Other Critical Infomation Effectively","The Policies Of This Organization Are Personnel Freindly",
-            "I have The Resources I Need To Be Successful","I Feel That Everyone In The Company Is Commited to a high  Quality Standard In their work",
-        "The organization seeks my input on things that matter","I get lot of meaningful Feedbacks on my performance at work","I work on a great team with people who support ",
-    "the Mission and purpose of the company makes my work here important"],
+                labels: ["","","","","","","",""],
                 datasets: [
                 {
                     data: [1, 8,1, 4,1, 8,1, 4],
@@ -518,9 +558,7 @@
         const Chart_employee_inner9 = new Chart(ctx_employee_inner9, {
             type: "bar",
             data: {
-                labels: ["I am able to learn and grow from my mistakes","I have clear prioritized goals",
-            "I am able to make decision about the way my work gets done","I have the real sense of ownership for my work",
-            "I see the challenges i face i opportunities not immovable road blocks"],
+                labels: ["","","","",""],
                 datasets: [
                 {
                     data: [1, 8,1, 4,1, 4],
@@ -551,8 +589,7 @@
         const Chart_employee_inner10 = new Chart(ctx_employee_inner10, {
             type: "bar",
             data: {
-                labels: ["I Have the skills to do my job well","I have the knowledge i need to excel in this week",
-            "I am able to be creative in the way i work","i am naturally interested in the kind of work i am  doing"],
+                labels: ["","","",""],
                 datasets: [
                 {
                     data: [1, 8,1, 4],
