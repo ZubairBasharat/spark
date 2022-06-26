@@ -127,7 +127,7 @@
                       data-bs-parent="#innerAccordion"
                     >
                       <div class="accordion-body">
-
+                        {{isset($descriptions[$available_action_plan->id][$available_action_plan->short_description][$available_action_plan->threshold_low][$available_action_plan->threshold_high][$available_action_plan->question_id]) ? $descriptions[$available_action_plan->id][$available_action_plan->short_description][$available_action_plan->threshold_low][$available_action_plan->threshold_high][$available_action_plan->question_id] : ''}}
                       </div>
                       <div class="transform-heading" style="background: none !important">
 

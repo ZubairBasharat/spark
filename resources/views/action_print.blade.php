@@ -94,20 +94,12 @@
               <div>
               @foreach($myactions_two as $myaction_two)  
                 <h4 class="text-uppercase">
-                  <i class="bi bi-star-fill"></i>&nbsp;&nbsp;Celebrate SMALL Get
+                  <i class="bi bi-star-fill"></i>&nbsp;&nbsp;
                   {{$myaction_two->action->short_description}}
                 </h4>
                 <div class="px-md-4 px-2 px-xl-5">
                   <p>
-                    Ensure you are clear on the values of your team/organization
-                    and how they are defined in practice. For example, if
-                    integrity is a value, reflect on what behaviors represent
-                    integrity in the context of your organization. If you work
-                    in insurance, it might be expressed by ensuring claims are
-                    paid fairly and in a timely fashion, according to the
-                    contract. Values are not theoretical notions but are defined
-                    by behaviors that speak to how the work gets done within
-                    your organization.
+                  {{isset($descriptions[$myaction_two->action->id][$myaction_two->action->short_description][$myaction_two->action->threshold_low][$myaction_two->action->threshold_high][$myaction_two->action->question_id]) ? $descriptions[$myaction_two->action->id][$myaction_two->action->short_description][$myaction_two->action->threshold_low][$myaction_two->action->threshold_high][$myaction_two->action->question_id] : ''}}
                   </p>
                 </div>
               @endforeach  
