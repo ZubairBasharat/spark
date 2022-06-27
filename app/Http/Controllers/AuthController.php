@@ -72,6 +72,21 @@ class AuthController extends Controller
         $questions = array();
         $compare_graphs = array(0=>0,0=>0,0=>0);
         $compare_graphs_rating = array(0=>0,0=>0,0=>0);
+        $feeling_of_Purpose_Inspiration_compareable = 0;
+        $feeling_mastery_compareable = 0;
+        $feeling_mastery_contrast = 0;
+        $feeling_autonomy_compareable = 0;
+        $feeling_autonomy_contrast = 0;
+        $feeling_origanizational_compareable = 0;
+        $feeling_origanizational_contrast = 0;
+        $feeling_of_Purpose_Inspiration_contrast = 0;
+        $fuel_passion_compareable = 0;
+        $fuel_passion_compareable_total = 0;
+        $fuel_passion_contrast = 0;
+        $fuel_passion_contrast_total = 0;
+        $top_strength = array(0 => 0, 1=>0, 2=>0);
+        $top_improvements = array(0 => 0, 1=>0, 2=>0);
+
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
         $response = Http::withToken(Session::get('access_token'))->get($apiURL);
         if(!empty($response)){
@@ -80,8 +95,6 @@ class AuthController extends Controller
                 $response = $response->data;
                 if(isset($response->phase_distribution))
                 $phase_distribution = $response->phase_distribution;
-
-
             }
         }
 
@@ -109,13 +122,39 @@ class AuthController extends Controller
                     {
                         $compare_graphs_rating[$question_rating->display_order - 1] = $question_rating->question_value;   
                     }
+                    if($question_rating->bucket == 2)
+                    {
+                        $fuel_passion_compareable += $question_rating->question_value;
+                        $fuel_passion_compareable_total++;
+                    }
                    
                 }
+                $fuel_passion_compareable = $fuel_passion_compareable/$fuel_passion_compareable_total;
 
+                if(isset($compareable->category_comparables)){
+                    foreach($compareable->category_comparables as $category_comparable){
+                        if($category_comparable->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed"){
+                            $feeling_of_Purpose_Inspiration_compareable = $category_comparable->category_average;
+
+                        }
+                        if($category_comparable->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed"){
+                            $feeling_origanizational_compareable = $category_comparable->category_average;
+                        }
+                        if($category_comparable->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed"){
+                            $feeling_mastery_compareable = $category_comparable->category_average;
+                        }
+                        if($category_comparable->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed"){
+                            $feeling_autonomy_compareable = $category_comparable->category_average;
+                        }
+                    }
+                }
             }
+
 
             if(isset($compareable->phase_code))
             $phase_code = $compareable->phase_code;
+
+            
         }
 
         $contrast = $this->contrast();
@@ -134,6 +173,8 @@ class AuthController extends Controller
                     break;
                 }
             }
+
+
             
             foreach($contrast->question_averages as $contrast_index=>$question_average)
             {
@@ -141,9 +182,32 @@ class AuthController extends Controller
                 {
                     $compare_graphs[$question_average->display_order - 1] = $question_average->question_average;   
                 }
+                if($question_average->bucket == 2)
+                {
+                    $fuel_passion_contrast += $question_average->question_average;  
+                    $fuel_passion_contrast_total++; 
+                }
                
             }
+            $fuel_passion_contrast = $fuel_passion_contrast/$fuel_passion_contrast_total;
         }
+            if(isset($contrast->category_averages)){
+                foreach($contrast->category_averages as $average)
+                {
+                    if($average->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed"){
+                        $feeling_of_Purpose_Inspiration_contrast = $average->category_average;
+                    }
+                    if($average->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed"){
+                        $feeling_origanizational_contrast = $average->category_average;
+                    }
+                    if($average->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed"){
+                        $feeling_mastery_contrast = $average->category_average;
+                    }
+                    if($average->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed"){
+                        $feeling_autonomy_contrast = $average->category_average;
+                    }
+                }
+            }
         }
 
         //get saved action plans 1
@@ -165,8 +229,6 @@ class AuthController extends Controller
         }
 
         //engagement
-        $top_strength = array(0 => 0, 1=>0, 2=>0);
-        $top_improvements = array(0 => 0, 1=>0, 2=>0);
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/engagement';
         $engagement = Http::withToken(Session::get('access_token'))->get($apiURL);  
         $engagement = json_decode($engagement);
@@ -183,7 +245,7 @@ class AuthController extends Controller
         // print_r($top_improvements);die;
         $resume = $request->is_resume;
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-        return view('personal_dashboard',compact('compare_graphs_rating','compare_graphs','top_improvements','top_strength','phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
+        return view('personal_dashboard',compact('feeling_mastery_contrast','feeling_mastery_compareable','feeling_autonomy_compareable','feeling_autonomy_contrast','feeling_origanizational_contrast','feeling_origanizational_compareable','feeling_of_Purpose_Inspiration_contrast','feeling_of_Purpose_Inspiration_compareable','fuel_passion_contrast','fuel_passion_compareable','compare_graphs_rating','compare_graphs','top_improvements','top_strength','phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
     }
 
     public function comparable()

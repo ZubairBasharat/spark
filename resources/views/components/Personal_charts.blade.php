@@ -436,7 +436,7 @@
                 labels: ["", ""],
                 datasets: [
                 {
-                    data: [1, 9],
+                    data: ["<?= $fuel_passion_compareable; ?>", "<?= $fuel_passion_contrast ?>"],
                     backgroundColor: ["#ED1846", "#F15A22"],
                     borderColor: ["#ED1846", "#F15A22"],
                     borderWidth: 1,
@@ -464,16 +464,16 @@
         const Chart_employee_inner6 = new Chart(ctx_employee_inner6, {
             type: "bar",
             data: {
-                labels: [" ","",
-            "",""],
+                labels: [" "," "," "," "," "," "," "," "],
                 datasets: [
                 {
-                    data: [1, 8,1, 4],
+                    data: ["<?= $feeling_of_Purpose_Inspiration_compareable ?>", "<?= $feeling_of_Purpose_Inspiration_contrast ?>", "<?= $feeling_origanizational_compareable ?>", "<?= $feeling_origanizational_contrast ?>", "<?= $feeling_mastery_compareable ?>", "<?= $feeling_mastery_contrast ?>", "<?= $feeling_autonomy_compareable ?>", "<?= $feeling_autonomy_contrast ?>"],
                     backgroundColor: ["#ED1846", "#7E706C"],
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
-                    borderRadius: 4,
-                    barThickness:20
+                    // borderRadius: 4,
+                    // barThickness:20,
+                    barPercentage: 1.2
                 },
                 ],
             },
