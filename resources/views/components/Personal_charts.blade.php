@@ -496,10 +496,10 @@
         const Chart_employee_inner7 = new Chart(ctx_employee_inner7, {
             type: "bar",
             data: {
-                labels: ["","","",""],
+                labels: ["","","","","","","",""],
                 datasets: [
                 {
-                    data: [1, 8,1, 4],
+                    data: ["<?= $inspiration_compareable[0] ?>", "<?= $inspiration_contrast[0] ?>","<?= $inspiration_compareable[1] ?>", "<?= $inspiration_contrast[1] ?>", "<?= $inspiration_compareable[2] ?>", "<?= $inspiration_contrast[2] ?>","<?= $inspiration_compareable[3] ?>", "<?= $inspiration_contrast[3] ?>"],
                     backgroundColor: ["#ED1846", "#7E706C"],
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
@@ -527,10 +527,10 @@
         const Chart_employee_inner8 = new Chart(ctx_employee_inner8, {
             type: "bar",
             data: {
-                labels: ["","","","","","","",""],
+                labels: ["","","","","","","","","","","","","","","",""],
                 datasets: [
                 {
-                    data: [1, 8,1, 4,1, 8,1, 4],
+                    data: ["<?= $organizational_compareable[0] ?>", "<?= $organizational_contrast[0] ?>","<?= $organizational_compareable[1] ?>", "<?= $organizational_contrast[1] ?>","<?= $organizational_compareable[2] ?>", "<?= $organizational_contrast[2] ?>","<?= $organizational_compareable[3] ?>", "<?= $organizational_contrast[3] ?>","<?= $organizational_compareable[4] ?>", "<?= $organizational_contrast[4] ?>","<?= $organizational_compareable[5] ?>", "<?= $organizational_contrast[5] ?>","<?= $organizational_compareable[6] ?>", "<?= $organizational_contrast[6] ?>","<?= $organizational_compareable[7] ?>", "<?= $organizational_contrast[7] ?>"],
                     backgroundColor: ["#ED1846", "#7E706C"],
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
@@ -558,10 +558,10 @@
         const Chart_employee_inner9 = new Chart(ctx_employee_inner9, {
             type: "bar",
             data: {
-                labels: ["","","","",""],
+                labels: ["","","","","","","","","",""],
                 datasets: [
                 {
-                    data: [1, 8,1, 4,1, 4],
+                    data: ["<?= $autonomy_compareable[0] ?>", "<?= $autonomy_contrast[0] ?>","<?= $autonomy_compareable[1] ?>", "<?= $autonomy_contrast[1] ?>","<?= $autonomy_compareable[2] ?>", "<?= $autonomy_contrast[2] ?>", "<?= $autonomy_compareable[3] ?>", "<?= $autonomy_contrast[3] ?>","<?= $autonomy_compareable[4] ?>", "<?= $autonomy_contrast[4] ?>"],
                     backgroundColor: ["#ED1846", "#7E706C"],
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
@@ -589,10 +589,10 @@
         const Chart_employee_inner10 = new Chart(ctx_employee_inner10, {
             type: "bar",
             data: {
-                labels: ["","","",""],
+                labels: ["","","","","","","",""],
                 datasets: [
                 {
-                    data: [1, 8,1, 4],
+                    data: ["<?= $mastery_compareable[0]  ?>", "<?= $mastery_contrast[0] ?>","<?= $mastery_compareable[1]  ?>", "<?= $mastery_contrast[1] ?>","<?= $mastery_compareable[2]  ?>", "<?= $mastery_contrast[2] ?>","<?= $mastery_compareable[3]  ?>", "<?= $mastery_contrast[3] ?>"],
                     backgroundColor: ["#ED1846", "#7E706C"],
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,

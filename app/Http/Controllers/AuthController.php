@@ -86,6 +86,22 @@ class AuthController extends Controller
         $fuel_passion_contrast_total = 0;
         $top_strength = array(0 => 0, 1=>0, 2=>0);
         $top_improvements = array(0 => 0, 1=>0, 2=>0);
+        $inspiration_compareable = array(0 => 0, 1=>0, 2=>0, 3=>0);
+        $inspiration_compareable_index = 0;
+        $mastery_compareable = array(0 => 0, 1=>0, 2=>0, 3=>0);
+        $mastery_compareable_index = 0;
+        $organizational_compareable = array(0 => 0, 1=>0, 2=>0, 3=>0,4 => 5, 5=>0, 6=>0, 7=>0);
+        $organizational_compareable_index = 0;
+        $autonomy_compareable = array(0 => 0, 1=>0, 2=>0, 3=>0,4 => 5);
+        $autonomy_compareable_index = 0;
+        $autonomy_contrast = array(0 => 0, 1=>0, 2=>0, 3=>0,4 => 5);
+        $autonomy_contrast_index = 0;
+        $inspiration_contrast = array(0 => 0, 1=>0, 2=>0, 3=>0);
+        $inspiration_contrast_index = 0;
+        $organizational_contrast = array(0 => 0, 1=>0, 2=>0, 3=>0,4 => 5, 5=>0, 6=>0, 7=>0);
+        $organizational_contrast_index = 0;
+        $mastery_contrast = array(0 => 0, 1=>0, 2=>0, 3=>0);
+        $mastery_contrast_index = 0;
 
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
         $response = Http::withToken(Session::get('access_token'))->get($apiURL);
@@ -126,6 +142,27 @@ class AuthController extends Controller
                     {
                         $fuel_passion_compareable += $question_rating->question_value;
                         $fuel_passion_compareable_total++;
+                    }
+
+                    if($question_rating->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed")
+                    {
+                        $inspiration_compareable[$inspiration_compareable_index] = $question_rating->question_value;
+                        $inspiration_compareable_index++;
+                    }
+                    if($question_rating->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed")
+                    {
+                        $organizational_compareable[$organizational_compareable_index] = $question_rating->question_value;
+                        $organizational_compareable_index++;
+                    }
+                    if($question_rating->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed")
+                    {
+                        $autonomy_compareable[$autonomy_compareable_index] = $question_rating->question_value;
+                        $autonomy_compareable_index++;
+                    }
+                    if($question_rating->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed")
+                    {
+                        $mastery_compareable[$mastery_compareable_index] = $question_rating->question_value;
+                        $mastery_compareable_index++;
                     }
                    
                 }
@@ -187,6 +224,27 @@ class AuthController extends Controller
                     $fuel_passion_contrast += $question_average->question_average;  
                     $fuel_passion_contrast_total++; 
                 }
+
+                if($question_average->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed")
+                {
+                    $inspiration_contrast[$inspiration_contrast_index] = $question_average->question_average;
+                    $inspiration_contrast_index++;
+                }
+                if($question_average->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed")
+                {
+                    $organizational_contrast[$organizational_contrast_index] = $question_average->question_average;
+                    $organizational_contrast_index++;
+                }
+                if($question_average->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed")
+                {
+                    $autonomy_contrast[$autonomy_contrast_index] = $question_average->question_average;
+                    $autonomy_contrast_index++;
+                }
+                if($question_average->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed")
+                {
+                    $mastery_contrast[$mastery_contrast_index] = $question_average->question_average;
+                    $mastery_contrast_index++;
+                }
                
             }
             $fuel_passion_contrast = $fuel_passion_contrast/$fuel_passion_contrast_total;
@@ -245,7 +303,7 @@ class AuthController extends Controller
         // print_r($top_improvements);die;
         $resume = $request->is_resume;
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-        return view('personal_dashboard',compact('feeling_mastery_contrast','feeling_mastery_compareable','feeling_autonomy_compareable','feeling_autonomy_contrast','feeling_origanizational_contrast','feeling_origanizational_compareable','feeling_of_Purpose_Inspiration_contrast','feeling_of_Purpose_Inspiration_compareable','fuel_passion_contrast','fuel_passion_compareable','compare_graphs_rating','compare_graphs','top_improvements','top_strength','phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
+        return view('personal_dashboard',compact('mastery_contrast','mastery_compareable','autonomy_contrast','autonomy_compareable','organizational_contrast','organizational_compareable','inspiration_contrast','inspiration_compareable','feeling_mastery_contrast','feeling_mastery_compareable','feeling_autonomy_compareable','feeling_autonomy_contrast','feeling_origanizational_contrast','feeling_origanizational_compareable','feeling_of_Purpose_Inspiration_contrast','feeling_of_Purpose_Inspiration_compareable','fuel_passion_contrast','fuel_passion_compareable','compare_graphs_rating','compare_graphs','top_improvements','top_strength','phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
     }
 
     public function comparable()
