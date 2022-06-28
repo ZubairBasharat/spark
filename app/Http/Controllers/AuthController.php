@@ -576,6 +576,37 @@ class AuthController extends Controller
             $phase_code = "";
             $compare_graphs = array(0=>0,0=>0,0=>0);
             $compare_graphs_rating = array(0=>0,0=>0,0=>0);
+            $feeling_of_Purpose_Inspiration_compareable = 0;
+            $feeling_mastery_compareable = 0;
+            $feeling_mastery_contrast = 0;
+            $feeling_autonomy_compareable = 0;
+            $feeling_autonomy_contrast = 0;
+            $feeling_origanizational_compareable = 0;
+            $feeling_origanizational_contrast = 0;
+            $feeling_of_Purpose_Inspiration_contrast = 0;
+            $fuel_passion_compareable = 0;
+            $fuel_passion_compareable_total = 0;
+            $fuel_passion_contrast = 0;
+            $fuel_passion_contrast_total = 0;
+            $top_strength = array(0 => 0, 1=>0, 2=>0);
+            $top_improvements = array(0 => 0, 1=>0, 2=>0);
+            $inspiration_compareable = array(0 => 0, 1=>0, 2=>0, 3=>0);
+            $inspiration_compareable_index = 0;
+            $mastery_compareable = array(0 => 0, 1=>0, 2=>0, 3=>0);
+            $mastery_compareable_index = 0;
+            $organizational_compareable = array(0 => 0, 1=>0, 2=>0, 3=>0,4 => 5, 5=>0, 6=>0, 7=>0);
+            $organizational_compareable_index = 0;
+            $autonomy_compareable = array(0 => 0, 1=>0, 2=>0, 3=>0,4 => 5);
+            $autonomy_compareable_index = 0;
+            $autonomy_contrast = array(0 => 0, 1=>0, 2=>0, 3=>0,4 => 5);
+            $autonomy_contrast_index = 0;
+            $inspiration_contrast = array(0 => 0, 1=>0, 2=>0, 3=>0);
+            $inspiration_contrast_index = 0;
+            $organizational_contrast = array(0 => 0, 1=>0, 2=>0, 3=>0,4 => 5, 5=>0, 6=>0, 7=>0);
+            $organizational_contrast_index = 0;
+            $mastery_contrast = array(0 => 0, 1=>0, 2=>0, 3=>0);
+            $mastery_contrast_index = 0;
+
             $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
             $response = Http::withToken(Session::get('access_token'))->get($apiURL);
             if(!empty($response)){
@@ -611,10 +642,56 @@ class AuthController extends Controller
                                 {
                                     $compare_graphs_rating[$question_rating->display_order - 1] = $question_rating->question_value;   
                                 }
+
+                                if($question_rating->bucket == 2)
+                                {
+                                    $fuel_passion_compareable += $question_rating->question_value;
+                                    $fuel_passion_compareable_total++;
+                                }
+            
+                                if($question_rating->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed")
+                                {
+                                    $inspiration_compareable[$inspiration_compareable_index] = $question_rating->question_value;
+                                    $inspiration_compareable_index++;
+                                }
+                                if($question_rating->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed")
+                                {
+                                    $organizational_compareable[$organizational_compareable_index] = $question_rating->question_value;
+                                    $organizational_compareable_index++;
+                                }
+                                if($question_rating->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed")
+                                {
+                                    $autonomy_compareable[$autonomy_compareable_index] = $question_rating->question_value;
+                                    $autonomy_compareable_index++;
+                                }
+                                if($question_rating->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed")
+                                {
+                                    $mastery_compareable[$mastery_compareable_index] = $question_rating->question_value;
+                                    $mastery_compareable_index++;
+                                }
                                
                             }
-                        }
+                            $fuel_passion_compareable = $fuel_passion_compareable/$fuel_passion_compareable_total;
+            
+                            if(isset($compareable->category_comparables)){
+                                foreach($compareable->category_comparables as $category_comparable){
+                                    if($category_comparable->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed"){
+                                        $feeling_of_Purpose_Inspiration_compareable = $category_comparable->category_average;
+            
+                                    }
+                                    if($category_comparable->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed"){
+                                        $feeling_origanizational_compareable = $category_comparable->category_average;
+                                    }
+                                    if($category_comparable->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed"){
+                                        $feeling_mastery_compareable = $category_comparable->category_average;
+                                    }
+                                    if($category_comparable->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed"){
+                                        $feeling_autonomy_compareable = $category_comparable->category_average;
+                                    }
+                                }
+                            }
                     }
+                }
                     if(isset($compareable->phase_code))
                     $phase_code = $compareable->phase_code;
                 }
@@ -641,11 +718,57 @@ class AuthController extends Controller
                         {
                             $compare_graphs[$question_average->display_order - 1] = $question_average->question_average;   
                         }
+
+                        if($question_average->bucket == 2)
+                        {
+                            $fuel_passion_contrast += $question_average->question_average;  
+                            $fuel_passion_contrast_total++; 
+                        }
+        
+                        if($question_average->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed")
+                        {
+                            $inspiration_contrast[$inspiration_contrast_index] = $question_average->question_average;
+                            $inspiration_contrast_index++;
+                        }
+                        if($question_average->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed")
+                        {
+                            $organizational_contrast[$organizational_contrast_index] = $question_average->question_average;
+                            $organizational_contrast_index++;
+                        }
+                        if($question_average->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed")
+                        {
+                            $autonomy_contrast[$autonomy_contrast_index] = $question_average->question_average;
+                            $autonomy_contrast_index++;
+                        }
+                        if($question_average->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed")
+                        {
+                            $mastery_contrast[$mastery_contrast_index] = $question_average->question_average;
+                            $mastery_contrast_index++;
+                        }
+                       
+                    }
+                    $fuel_passion_contrast = $fuel_passion_contrast/$fuel_passion_contrast_total;
                     
+                    }
+                    if(isset($contrast->category_averages)){
+                        foreach($contrast->category_averages as $average)
+                        {
+                            if($average->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed"){
+                                $feeling_of_Purpose_Inspiration_contrast = $average->category_average;
+                            }
+                            if($average->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed"){
+                                $feeling_origanizational_contrast = $average->category_average;
+                            }
+                            if($average->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed"){
+                                $feeling_mastery_contrast = $average->category_average;
+                            }
+                            if($average->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed"){
+                                $feeling_autonomy_contrast = $average->category_average;
+                            }
+                        }
                     }
                 }
 
-            }
 
             //get saved action plans 1
             $myactions = array();
@@ -684,7 +807,7 @@ class AuthController extends Controller
             }
     
             $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-            return view('export_report',compact('top_strength','top_improvements','compare_graphs','compare_graphs_rating','myactions','myactions_two','phase_distribution', 'states','phase_code','question_values','contrast_values','phase_code_description'));
+            return view('export_report',compact('mastery_contrast','mastery_compareable','autonomy_contrast','autonomy_compareable','organizational_contrast','organizational_compareable','inspiration_contrast','inspiration_compareable','feeling_autonomy_contrast','feeling_autonomy_compareable','feeling_mastery_contrast','feeling_mastery_compareable','feeling_origanizational_contrast','feeling_origanizational_compareable','feeling_of_Purpose_Inspiration_contrast','feeling_of_Purpose_Inspiration_compareable','fuel_passion_contrast','fuel_passion_compareable','top_strength','top_improvements','compare_graphs','compare_graphs_rating','myactions','myactions_two','phase_distribution', 'states','phase_code','question_values','contrast_values','phase_code_description'));
         }
     }
 
