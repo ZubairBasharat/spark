@@ -635,7 +635,7 @@ class AuthController extends Controller
                             {
                                 break;
                             }
-
+                        }
                             foreach($questions as $index=>$question_rating )
                             {
                                 if($question_rating->bucket == 3)
@@ -671,8 +671,8 @@ class AuthController extends Controller
                                 }
                                
                             }
+                           
                             $fuel_passion_compareable = $fuel_passion_compareable/$fuel_passion_compareable_total;
-            
                             if(isset($compareable->category_comparables)){
                                 foreach($compareable->category_comparables as $category_comparable){
                                     if($category_comparable->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed"){
@@ -690,13 +690,12 @@ class AuthController extends Controller
                                     }
                                 }
                             }
-                    }
                 }
                     if(isset($compareable->phase_code))
                     $phase_code = $compareable->phase_code;
                 }
             }
-    
+            // echo  $fuel_passion_compareable;die;
             $contrast = $this->contrast();
             if(!empty($contrast))
             {
