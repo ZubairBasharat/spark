@@ -638,7 +638,7 @@
             "I have The Resources I Need To Be Successful"],
                 datasets: [
                 {
-                    data: ['<?= $top_strength[0] ?>', '<?= $top_strength[1] ?>', '<?= $top_strength[2]?>'],
+                    data: ['<?= $top_improvements[0] ?>', '<?= $top_improvements[1] ?>', '<?= $top_improvements[2]?>'],
                     backgroundColor: ["#ED1846", "#FFC20E","#03BD5B"],
                     borderColor: ["#ED1846", "#FFC20E","#03BD5B"],
                     borderWidth: 1,
@@ -690,7 +690,7 @@
             "I have clear prioritized goals"],
                 datasets: [
                 {
-                    data: ['<?= $top_improvements[0] ?>', '<?= $top_improvements[1] ?>', '<?= $top_improvements[2]?>'],
+                    data: ['<?= $top_strength[0] ?>', '<?= $top_strength[1] ?>', '<?= $top_strength[2]?>'],
                     backgroundColor: ["#7E706C", "#0F0F10","#8D2F07"],
                     borderColor: ["#7E706C", "#0F0F10","#8D2F07"],
                     borderWidth: 1,
