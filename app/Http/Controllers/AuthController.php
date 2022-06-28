@@ -102,6 +102,10 @@ class AuthController extends Controller
         $organizational_contrast_index = 0;
         $mastery_contrast = array(0 => 0, 1=>0, 2=>0, 3=>0);
         $mastery_contrast_index = 0;
+        $company_compareable = 0;
+        $company_compareable_total = 0;
+        $company_contrast = 0;
+        $company_contrast_total = 0;
 
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
         $response = Http::withToken(Session::get('access_token'))->get($apiURL);
@@ -136,7 +140,10 @@ class AuthController extends Controller
                 {
                     if($question_rating->bucket == 3)
                     {
-                        $compare_graphs_rating[$question_rating->display_order - 1] = $question_rating->question_value;   
+                        $compare_graphs_rating[$question_rating->display_order - 1] = $question_rating->question_value; 
+                        
+                        $company_compareable += $question_rating->question_value;
+                        $company_compareable_total++;
                     }
                     if($question_rating->bucket == 2)
                     {
@@ -167,6 +174,7 @@ class AuthController extends Controller
                    
                 }
                 $fuel_passion_compareable = $fuel_passion_compareable/$fuel_passion_compareable_total;
+                $company_compareable = $company_compareable/$company_compareable_total;
 
                 if(isset($compareable->category_comparables)){
                     foreach($compareable->category_comparables as $category_comparable){
@@ -217,7 +225,10 @@ class AuthController extends Controller
             {
                 if($question_average->bucket == 3)
                 {
-                    $compare_graphs[$question_average->display_order - 1] = $question_average->question_average;   
+                    $compare_graphs[$question_average->display_order - 1] = $question_average->question_average; 
+
+                    $company_contrast += $question_average->question_average;
+                    $company_contrast_total++;
                 }
                 if($question_average->bucket == 2)
                 {
@@ -248,6 +259,7 @@ class AuthController extends Controller
                
             }
             $fuel_passion_contrast = $fuel_passion_contrast/$fuel_passion_contrast_total;
+            $company_contrast = $company_contrast/$company_contrast_total;
         }
             if(isset($contrast->category_averages)){
                 foreach($contrast->category_averages as $average)
@@ -303,7 +315,7 @@ class AuthController extends Controller
         // print_r($top_improvements);die;
         $resume = $request->is_resume;
         $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-        return view('personal_dashboard',compact('mastery_contrast','mastery_compareable','autonomy_contrast','autonomy_compareable','organizational_contrast','organizational_compareable','inspiration_contrast','inspiration_compareable','feeling_mastery_contrast','feeling_mastery_compareable','feeling_autonomy_compareable','feeling_autonomy_contrast','feeling_origanizational_contrast','feeling_origanizational_compareable','feeling_of_Purpose_Inspiration_contrast','feeling_of_Purpose_Inspiration_compareable','fuel_passion_contrast','fuel_passion_compareable','compare_graphs_rating','compare_graphs','top_improvements','top_strength','phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
+        return view('personal_dashboard',compact('company_contrast','company_compareable','mastery_contrast','mastery_compareable','autonomy_contrast','autonomy_compareable','organizational_contrast','organizational_compareable','inspiration_contrast','inspiration_compareable','feeling_mastery_contrast','feeling_mastery_compareable','feeling_autonomy_compareable','feeling_autonomy_contrast','feeling_origanizational_contrast','feeling_origanizational_compareable','feeling_of_Purpose_Inspiration_contrast','feeling_of_Purpose_Inspiration_compareable','fuel_passion_contrast','fuel_passion_compareable','compare_graphs_rating','compare_graphs','top_improvements','top_strength','phase_distribution', 'states','resume','phase_code','question_values','contrast_values','phase_code_description','myactions','myactions_two'));
     }
 
     public function comparable()
@@ -606,6 +618,10 @@ class AuthController extends Controller
             $organizational_contrast_index = 0;
             $mastery_contrast = array(0 => 0, 1=>0, 2=>0, 3=>0);
             $mastery_contrast_index = 0;
+            $company_compareable_total = 0;
+            $company_compareable = 0;
+            $company_contrast_total = 0;
+            $company_contrast = 0;
 
             $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
             $response = Http::withToken(Session::get('access_token'))->get($apiURL);
@@ -640,7 +656,10 @@ class AuthController extends Controller
                             {
                                 if($question_rating->bucket == 3)
                                 {
-                                    $compare_graphs_rating[$question_rating->display_order - 1] = $question_rating->question_value;   
+                                    $compare_graphs_rating[$question_rating->display_order - 1] = $question_rating->question_value;  
+                                    
+                                    $company_compareable += $question_rating->question_value;
+                                    $company_compareable_total++;
                                 }
 
                                 if($question_rating->bucket == 2)
@@ -648,6 +667,7 @@ class AuthController extends Controller
                                     $fuel_passion_compareable += $question_rating->question_value;
                                     $fuel_passion_compareable_total++;
                                 }
+
             
                                 if($question_rating->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed")
                                 {
@@ -673,6 +693,7 @@ class AuthController extends Controller
                             }
                            
                             $fuel_passion_compareable = $fuel_passion_compareable/$fuel_passion_compareable_total;
+                            $company_compareable = $company_compareable/$company_compareable_total;
                             if(isset($compareable->category_comparables)){
                                 foreach($compareable->category_comparables as $category_comparable){
                                     if($category_comparable->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed"){
@@ -715,7 +736,10 @@ class AuthController extends Controller
                     {
                         if($question_average->bucket == 3)
                         {
-                            $compare_graphs[$question_average->display_order - 1] = $question_average->question_average;   
+                            $compare_graphs[$question_average->display_order - 1] = $question_average->question_average; 
+                            
+                            $company_contrast += $question_average->question_average;
+                            $company_contrast_total++;
                         }
 
                         if($question_average->bucket == 2)
@@ -747,6 +771,7 @@ class AuthController extends Controller
                        
                     }
                     $fuel_passion_contrast = $fuel_passion_contrast/$fuel_passion_contrast_total;
+                    $company_contrast = $company_contrast/$company_contrast_total;
                     
                     }
                     if(isset($contrast->category_averages)){
@@ -806,7 +831,7 @@ class AuthController extends Controller
             }
     
             $states = array("A"=>"Frustrated", "B"=>"Unfulfilled", "C"=>"Stagnated", "D"=> "Disconnected", "E"=> "Neutral", "F"=>"Energized", "G"=> "Engaged", "H"=> "Passionately Engaged"); 
-            return view('export_report',compact('mastery_contrast','mastery_compareable','autonomy_contrast','autonomy_compareable','organizational_contrast','organizational_compareable','inspiration_contrast','inspiration_compareable','feeling_autonomy_contrast','feeling_autonomy_compareable','feeling_mastery_contrast','feeling_mastery_compareable','feeling_origanizational_contrast','feeling_origanizational_compareable','feeling_of_Purpose_Inspiration_contrast','feeling_of_Purpose_Inspiration_compareable','fuel_passion_contrast','fuel_passion_compareable','top_strength','top_improvements','compare_graphs','compare_graphs_rating','myactions','myactions_two','phase_distribution', 'states','phase_code','question_values','contrast_values','phase_code_description'));
+            return view('export_report',compact('company_contrast','company_compareable','mastery_contrast','mastery_compareable','autonomy_contrast','autonomy_compareable','organizational_contrast','organizational_compareable','inspiration_contrast','inspiration_compareable','feeling_autonomy_contrast','feeling_autonomy_compareable','feeling_mastery_contrast','feeling_mastery_compareable','feeling_origanizational_contrast','feeling_origanizational_compareable','feeling_of_Purpose_Inspiration_contrast','feeling_of_Purpose_Inspiration_compareable','fuel_passion_contrast','fuel_passion_compareable','top_strength','top_improvements','compare_graphs','compare_graphs_rating','myactions','myactions_two','phase_distribution', 'states','phase_code','question_values','contrast_values','phase_code_description'));
         }
     }
 

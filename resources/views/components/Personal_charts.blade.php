@@ -298,7 +298,7 @@
                 labels: ["", ""],
                 datasets: [
                 {
-                    data: [1, 9],
+                    data: ["<?= $company_compareable ?>", "<?= $company_contrast ?>"],
                     backgroundColor: ["#ED1846", "#F15A22"],
                     borderColor: ["#ED1846", "#F15A22"],
                     borderWidth: 1,
