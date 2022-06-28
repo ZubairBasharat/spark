@@ -126,17 +126,17 @@
     </div>
     <div class="chart-seperate-border mb-5"></div>
     <div class="col-lg-9 mx-auto">
-        <div class="row align-items-center">
+        <div class="row">
             <div class="col-lg-4">
                 <label class="chart-left-label f-semibold mb-0">
-                    Feeling of Purpose & Inspiration<br />
-                    Feeling toward Organizational Patterns<br />
-                    Feeling of Mastery<br />
+                    Feeling of Purpose & Inspiration<br /><br />
+                    Feeling toward Organizational Patterns<br /><br />
+                    Feeling of Mastery<br /><br />
                     Feeling of Autonomy
                 </label>
             </div>
             <div class="col-lg-8">
-                <canvas id="meaning-chart-employee_inner6" height="80"></canvas>
+                <canvas id="meaning-chart-employee_inner6" height="110px"></canvas>
             </div>
         </div>
         <div class="text-center">
@@ -165,7 +165,7 @@
                         operate as we achieve that vision. And, celebration encourages us in our pursuits. 
                         Celebrating accomplishments, along the way, is a distinguishing feature of passionate people.
                     </p>
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col-lg-4">
                             <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
                                 I believe in the values of my team & Organization<br /><br />I believe in the vision of my team & Organization<br /><br />
@@ -173,7 +173,7 @@
                             </label>
                         </div>
                         <div class="col-lg-8">
-                            <canvas id="meaning-chart-employee_inner7" height="auto"></canvas>
+                            <canvas id="meaning-chart-employee_inner7" height="180px"></canvas>
                         </div>
                     </div>
                     <div class="text-center">
@@ -260,7 +260,7 @@
                 <div class="body border-0 px-4">
                     <p>This category focuses on whether you feel equipped to succeed.  Skills and knowledge are the foundation of success. Being naturally interested in one’s work also fuels curiosity and lifelong learning. This alignment supports the ongoing development of skills and knowledge. Research shows that accepting challenges to use our skills and knowledge while also asking us to get creative places us in a passionate zone. 
                     </p>
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col-lg-5">
                             <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
                                 I Have the skills to do my job well<br /><br />I have the knowledge i need to excel in this week<br /><br />
@@ -268,7 +268,7 @@
                             </label>
                         </div>
                         <div class="col-lg-7">
-                            <canvas id="meaning-chart-employee_inner10" height="150px"></canvas>
+                            <canvas id="meaning-chart-employee_inner10" height="200px"></canvas>
                         </div>
                     </div>
                     <div class="text-center">
@@ -471,8 +471,8 @@
                     backgroundColor: ["#ED1846", "#7E706C"],
                     borderColor: ["#ED1846", "#7E706C"],
                     borderWidth: 1,
-                    // borderRadius: 4,
-                    // barThickness:20,
+                    borderRadius: 4,
+                    barThickness:20,
                     barPercentage: 1.2
                 },
                 ],

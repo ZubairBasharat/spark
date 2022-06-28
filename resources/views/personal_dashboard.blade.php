@@ -110,6 +110,16 @@
               </div>
               <div class="body">
                 <canvas id="meaning-chart" height="60"></canvas>
+                <div class="text-center">
+                  <ul class="list-unstyled mb-0 indicator-container list-inline">
+                    <li class="list-inline-item mt-3 me-4">
+                      <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                    </li>
+                    <li class="list-inline-item mt-3">
+                      <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
+                    </li>
+                  </ul>
+                </div>
                 <div class="chart-seperate-border"></div>
                 <canvas id="meaning-group-chart" height="auto"></canvas>
                 <div class="text-center">
@@ -132,6 +142,16 @@
               </div>
               <div class="body">
                 <canvas id="progress-chart" height="60"></canvas>
+                <div class="text-center">
+                  <ul class="list-unstyled mb-0 indicator-container list-inline">
+                    <li class="list-inline-item mt-3 me-4">
+                      <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                    </li>
+                    <li class="list-inline-item mt-3">
+                      <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
+                    </li>
+                  </ul>
+                </div>
                 <div class="chart-seperate-border"></div>
                 <canvas id="progress-group-chart" height="auto"></canvas>
                 <div class="text-center">

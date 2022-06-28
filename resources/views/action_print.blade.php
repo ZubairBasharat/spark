@@ -21,6 +21,32 @@
         margin-top:20px;
         size:auto;
       }
+      .print-title {
+        background: -moz-linear-gradient(
+        90deg,
+        #ffc20e 39.79%,
+        rgba(255, 194, 14, 0.26) 100%
+        );
+        background: -webkit-linear-gradient(
+        90deg,
+        #ffc20e 39.79%,
+        rgba(255, 194, 14, 0.26) 100%
+        );
+        background: -o-linear-gradient(
+        90deg,
+        #ffc20e 39.79%,
+        rgba(255, 194, 14, 0.26) 100%
+        );
+        background: linear-gradient(
+        90deg,
+        #ffc20e 39.79%,
+        rgba(255, 194, 14, 0.26) 100%
+        );
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+        border-radius: 8px;
+        -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;
+        padding: 15px 20px;
+      }
     </style>
     <section class="p-md-5 p-4 mt-md-4 mt-2">
       <div class="bg-white print-page p-4 col-lg-9 mx-auto">
