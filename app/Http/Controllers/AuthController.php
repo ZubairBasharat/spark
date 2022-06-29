@@ -43,6 +43,7 @@ class AuthController extends Controller
         Session::put('refresh_token',$response->refresh_token);
         $user_details = $this->user_details();
         $user_details = json_decode($user_details)->data;
+        Session::put('auth-user',$user_details);
         Session::put('user_name',$user_details->name);
         Session::put('participant_id',$user_details->last_participant->id);
         

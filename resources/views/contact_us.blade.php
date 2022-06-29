@@ -14,15 +14,15 @@
     <form class="auth-form">
       <div class="dataset-field">
         <label>First Name <sub>*</sub></label>
-        <input type="text" class="d-block" name="first_name" placeholder="Enter your first name" />
+        <input type="text" value="{{$user->first_name}}" class="d-block" name="first_name" placeholder="Enter your first name" />
       </div>
       <div class="dataset-field mb-3">
         <label>Last Name <sub>*</sub></label>
-        <input type="text" class="d-block" name="last_name" placeholder="Enter your last name" />
+        <input type="text" class="d-block" value="{{$user->last_name}}" name="last_name" placeholder="Enter your last name" />
       </div>
       <div class="dataset-field mb-3">
         <label>Email <sub>*</sub></label>
-        <input type="email" class="d-block" name="email" placeholder="Enter your last name" />
+        <input type="email" class="d-block" value="{{$user->email}}" name="email" placeholder="Enter your last name" />
       </div>
       <div class="dataset-field mb-3">
         <label>Your Message <sub>*</sub></label>

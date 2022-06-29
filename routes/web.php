@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +20,8 @@ Route::middleware(['verified_token'])->group(function () {
         return view('about_us');
     });
     Route::get('/contact', function () {
-        return view('contact_us');
+        $user = session("auth-user");
+        return view('contact_us',compact('user'));
     });
     Route::get('/personal-dashboard', [AuthController::class, 'personalDashboard']);
     Route::get('/resources', function () {
