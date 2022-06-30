@@ -24,17 +24,17 @@
                     <a href="{{url('/resources')}}" class="text-decoration-none">Resources</a>
                 </li>
                 <li>
-                    <a href="#" class="text-decoration-none">Privacy Policy</a>
+                    <a href="https://spark-engagement.com/privacy/" target="_blank" class="text-decoration-none">Privacy Policy</a>
                 </li>
             </ul>
             <ul class="footer-helper-links d-flex list-unstyled ms-md-auto me-md-0 mx-auto mb-0 mt-3 mt-md-0">
                 <li>
-                    <a href="#" class="text-decoration-none"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.facebook.com/sparkengagement/" target="_blank" class="text-decoration-none"><i class="bi bi-facebook"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="text-decoration-none"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.linkedin.com/company/sparkengagement/about/" target="_blank" class="text-decoration-none"><i class="bi bi-linkedin"></i></a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#" class="text-decoration-none"><i class="bi bi-twitter"></i></a>
                 </li>
                 <li>
@@ -42,7 +42,7 @@
                 </li>
                 <li>
                     <a href="#" class="text-decoration-none"><i class="bi bi-instagram"></i></a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
