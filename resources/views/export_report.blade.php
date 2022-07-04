@@ -35,7 +35,7 @@
     <section class="theme-container mt-4">
     
       <div>
-        <div class="print-box-des">
+        <div>
         <div class="row">
           <div class="col-12">
             <div>

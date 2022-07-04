@@ -21,15 +21,15 @@
             <div class="dropdown">
                 <button class="border-0 bg-transparent d-flex align-items-center" type="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('/assets/images/avatar.png')}}" width="50px" height="50px" class="rounded-circle me-3"
-                        alt="username" />
+                    <img src="{{asset('/assets/images/dummy.png')}}" width="50px" height="50px" class="rounded-circle me-3"
+                        alt="{{Session::get('user_name')}}" style=" object-fit: contain;box-shadow: 0px 1px 9px 0px rgb(0 0 0 / 30%);" />
                     <span class="me-3">{{Session::get('user_name')}}</span>
                     <i class="bi bi-chevron-down text-red"></i>
                 </button>
-                <ul class="dropdown-menu">
-                    <li class="dropdown-item">
+                <ul class="dropdown-menu dropdown-menu-end">
+                    {{--<li class="dropdown-item">
                         <a href="#" class="text-decoration-none d-block">Profile</a>
-                    </li>
+                    </li>--}}
                     <li class="dropdown-item">
                         <a href="{{url('logout')}}" class="text-decoration-none d-block">Logout</a>
                     </li>

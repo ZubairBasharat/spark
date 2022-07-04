@@ -42,4 +42,7 @@ Route::middleware(['verified_token'])->group(function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/forget-password', function () {
+    return view('forget_password');
+});
 Route::POST('submit_login',[AuthController::class, 'login']);

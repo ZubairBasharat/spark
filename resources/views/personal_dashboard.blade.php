@@ -48,7 +48,7 @@
                 sollicitudin leo elit, at fermentum enim maximus vel. Cras ac finibus elit. Ut sed aliquam dolor. Duis a
                 velit vitae velit consequat fringilla quis id tortor.
               </p> -->
-              <button class="theme-btn mb-5 more_btn">MORE ABOUT YOU</button>
+              <button class="theme-btn mb-5 more_btn">Load More</button>
             </div>
           </div>
           <div class="col-lg-6 col-12">
@@ -101,7 +101,8 @@
             </div>
           </div>
         </div>
-        <h1 class="section-title">How We Identify Your Engagement State</h1>
+        <h1 class="section-title">More About You</h1>
+        <h1 class="section-title" style="font-size: 25px;font-weight:500;">How We Identify Your Engagement State</h1>
         <div class="row">
           <div class="col-lg-6">
             <div class="chart-main">
@@ -138,7 +139,7 @@
           <div class="col-lg-6">
             <div class="chart-main">
               <div class="head">
-                <h2>Progress</h2>
+                <h2>Meaning </h2>
               </div>
               <div class="body">
                 <canvas id="progress-chart" height="60"></canvas>
@@ -190,7 +191,7 @@
       </div>
       <div class="dougnut-chart-main">
         <div class="head">
-          <h2>You Compared to Others in the world</h2>
+          <h2>You Compared to Others in the World</h2>
         </div>
         <div class="body">
           <div class="dougnut-chart-container">
