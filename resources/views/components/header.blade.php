@@ -50,16 +50,16 @@
     <div class="menu-content">
         <ul type="none" class="list-unstyled text-start p-0">
             <li>
-                <a href="{{url('/about-us')}}" class="d-block px-4 py-3 text-grey text-decoration-none "> About </a>
+                <a href="{{url('/about-us')}}" class="d-block px-4 py-3 text-grey text-decoration-none {{activeMenu('about-us')}} {{activeMenu('/')}}"> About </a>
             </li>
             <li>
-                <a href="{{url('personal-dashboard')}}" class="d-block px-4 py-3 text-grey text-decoration-none "> My Personal Dashboard </a>
+                <a href="{{url('personal-dashboard')}}" class="d-block px-4 py-3 text-grey text-decoration-none {{activeMenu('personal-dashboard')}}"> My Personal Dashboard </a>
             </li>
             <li>
-                <a href="{{url('action-plan')}}" class="d-block px-4 py-3 text-grey text-decoration-none "> My Action Plan </a>
+                <a href="{{url('action-plan')}}" class="d-block px-4 py-3 text-grey text-decoration-none {{activeMenu('action-plan')}}"> My Action Plan </a>
             </li>
             <li>
-                <a href="{{url('resources')}}" class="d-block px-4 py-3 text-grey text-decoration-none "> Resources </a>
+                <a href="{{url('resources')}}" class="d-block px-4 py-3 text-grey text-decoration-none {{activeMenu('resources')}}"> Resources </a>
             </li>
         </ul>
     </div>

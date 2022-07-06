@@ -31,7 +31,7 @@
                 understanding and make you stand out among your collegues.
               </p>
               <a
-                href="#"
+                href="javascript:void(0)"
                 class="d-inline-flex align-items-center text-uppercase"
               >
                 LEARN MORE&nbsp;<i class="bi bi-arrow-right"></i>
@@ -53,7 +53,7 @@
                 conditions that make it easier or more difficult!
               </p>
               <a
-                href="#"
+                href="javascript:void(0)"
                 class="d-inline-flex align-items-center text-uppercase"
               >
                 LEARN MORE&nbsp;<i class="bi bi-arrow-right"></i>
@@ -74,7 +74,7 @@
                 Sign up for our bi-weekly tip! 100% actionable and impactful!
               </p>
               <a
-                href="#"
+                href="javascript:void(0)"
                 class="d-inline-flex align-items-center text-uppercase"
               >
                 LEARN MORE&nbsp;<i class="bi bi-arrow-right"></i>
@@ -96,7 +96,7 @@
                 engagement!
               </p>
               <a
-                href="#"
+                href="javascript:void(0)"
                 class="d-inline-flex align-items-center text-uppercase"
               >
                 LEARN MORE&nbsp;<i class="bi bi-arrow-right"></i>
@@ -119,7 +119,7 @@
                 tricks!
               </p>
               <a
-                href="#"
+                href="javascript:void(0)"
                 class="d-inline-flex align-items-center text-uppercase"
               >
                 LEARN MORE&nbsp;<i class="bi bi-arrow-right"></i>
@@ -142,7 +142,7 @@
                 learn to support
               </p>
               <a
-                href="#"
+                href="javascript:void(0)"
                 class="d-inline-flex align-items-center text-uppercase"
               >
                 LEARN MORE&nbsp;<i class="bi bi-arrow-right"></i>
@@ -163,10 +163,4 @@
       type="text/javascript"
       src="{{asset('/assets/libraries/jquery/jquery.min.js')}}"
     ></script>
-    <script type="text/javascript">
-      $(window).on("load", function () {
-        $("#spark-header").load("./layout/header.html");
-        $("#site-footer").load("./layout/footer.html");
-      });
-    </script>
     @endsection

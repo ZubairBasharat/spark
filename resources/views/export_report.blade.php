@@ -17,6 +17,7 @@
       .footer-layer-bottom {
         display: none !important;
       }
+
       section {
         padding: 0px !important;
         margin: 0px !important;
@@ -25,6 +26,16 @@
         box-shadow: none;
         width:100% !important;
       }
+      .d-flex{
+        display: flex;
+        -webkit-display: flex;
+        -moz-display: flex;
+        -ms--display: flex;
+        float:left;
+      }
+      .chart-main .row{
+        flex-wrap:nowrap !important;
+      }
       @page {
         margin-left:0;
         margin-right:0;
@@ -32,7 +43,7 @@
         size:auto;
       }
     </style>
-    <section class="theme-container mt-4">
+    <section class="theme-container mt-4" id="export_report_container">
     
       <div>
         <div>
@@ -133,15 +144,17 @@
       </div>
       <div class="center flex-wrap flex-md-nowrap mt-5">
             <a href="{{url('personal-dashboard')}}" style="text-decoration: none;"><button class="theme-btn hover me-md-2 ">Return to Dashboard</button></a>
-            <a onclick="window.print()" style="text-decoration: none;"><button class="theme-btn mt-4 mt-md-0">Print pdf</button></a>
+            <a onclick="generatePDF()" style="text-decoration: none;"><button class="theme-btn mt-4 mt-md-0">Print pdf</button></a>
         </div>
       </div>
     </section>
     <div class="footer-layer-bottom">
       <img src="{{asset('assets/images/bottom-layer.svg')}}" alt="bottom Layer" class="w-100" />
     </div>
-    <footer id="site-footer"></footer>
     <!-- Modals -->
+    @include('components.popups')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script type="text/javascript" src="{{asset('assets/libraries/jsPdf/html2.bundle.min.js')}}"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
       integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
@@ -150,6 +163,23 @@
     ></script>
     <script src="{{asset('/assets/js/charts.js')}}"></script>
     <script>
+      function generatePDF() {
+       
+				const element = document.getElementById('export_report_container');
+        const doc = new jsPDF("p", "px", [459,594]);
+        domtoimage.toPng(element)
+        .then(function(dataUrl) {
+          console.log(dataUrl);
+          //window.open(dataUrl);
+          const pdfFileName = "Sparkdlens-" + Math.random() * 10000000 + ".pdf";
+          doc.addImage(dataUrl, "JPEG", 0, 0, [459, 594], undefined, "FAST");
+          // doc.save(pdfFileName);
+        //  $(".site__logo img").attr('src',dataUrl);
+        })
+        .catch(function(error) {
+          console.error('oops, something went wrong!', error);
+        });
+			}
       "<?php if(count($phase_distribution) == 0){ ?>"
         var labels_ = ['DatA Not Available'];
         var data_= [1];

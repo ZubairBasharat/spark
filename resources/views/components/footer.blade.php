@@ -24,7 +24,7 @@
                     <a href="{{url('/resources')}}" class="text-decoration-none">Resources</a>
                 </li>
                 <li>
-                    <a href="https://spark-engagement.com/privacy/" target="_blank" class="text-decoration-none">Privacy Policy</a>
+                    <a href="{{url('/privacy')}}" target="_blank" class="text-decoration-none">Privacy Policy</a>
                 </li>
             </ul>
             <ul class="footer-helper-links d-flex list-unstyled ms-md-auto me-md-0 mx-auto mb-0 mt-3 mt-md-0">

@@ -176,15 +176,8 @@
         class="w-100"
       />
     </div>
-    <footer id="site-footer"></footer>
     <script
       type="text/javascript"
       src="{{asset('/assets/libraries/jquery/jquery.min.js')}}"
     ></script>
-    <script type="text/javascript">
-      $(window).on("load", function () {
-        $("#spark-header").load("./layout/header.html");
-        $("#site-footer").load("./layout/footer.html");
-      });
-    </script>
   @endsection

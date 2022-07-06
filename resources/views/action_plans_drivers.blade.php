@@ -210,10 +210,6 @@
       src="{{asset('/assets/libraries/jquery/jquery.min.js')}}"
     ></script>
     <script type="text/javascript">
-      $(window).on("load", function () {
-        $("#spark-header").load("./layout/header.html");
-        $("#site-footer").load("./layout/footer.html");
-      });
       $(document).on('click','.save_action_plan_btn',function(){
         // $('.save_action_plan_btn').prop('disabled', true);
         var id = $(this).data('id');

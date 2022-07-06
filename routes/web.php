@@ -33,6 +33,7 @@ Route::middleware(['verified_token'])->group(function () {
         return view('steps');
     });
     Route::get('/myActionPlans',[AuthController::class, 'actionPlans']);
+    Route::get('/privacy',[AuthController::class, 'privacy']);
     Route::get('/driver-action-plans',[AuthController::class, 'actionPlansDriver']);
     Route::GET('logout',[AuthController::class, 'logout']);
     Route::GET('delete-action/{action_id}/{action_type}', [AuthController::class, 'deleteAction']);

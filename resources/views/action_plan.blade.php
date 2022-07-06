@@ -144,7 +144,7 @@
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="accordion-box h-100">
+              <div class="accordion-box h-100 pb-2">
                 <div class="transform-heading">
                   <h6 class="mb-0">My action plan</h6>
                 </div>
@@ -191,13 +191,16 @@
     </div>
     <footer id="site-footer"></footer>
     <div class="modal fade" id="confirmation_modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmation_modal_label" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-          <div class="modal-body py-4">
+          <div class="modal-body py-5">
             <div class="text-center">
               <img src="{{asset('assets/images/check-fill-circle.svg')}}" height="100px" />
               <p class="my-4">Your action plan has been saved successfully</p>
-              <a href="{{url('/personal-dashboard?is_resume=true')}}" class="text-decoration-none dash-btn text-uppercase">Go to dashboard</a>
+              <div class="d-flex justify-content-center">
+                <a href="{{url('/personal-dashboard?is_resume=true')}}" class="text-decoration-none dash-btn text-uppercase me-3">Save and return to dashboard</a>
+                <a href="#" data-bs-dismiss="modal" class="text-decoration-none dash-btn bg-success border-success text-white text-uppercase">Save and add more actions</a>
+              </div>
             </div>
           </div>
         </div>
@@ -208,10 +211,6 @@
       src="{{asset('/assets/libraries/jquery/jquery.min.js')}}"
     ></script>
     <script type="text/javascript">
-      $(window).on("load", function () {
-        $("#spark-header").load("./layout/header.html");
-        $("#site-footer").load("./layout/footer.html");
-      });
       $(document).on('click','.save_action_plan_btn',function(){
         $('.save_action_plan_btn').prop('disabled', true);
         var id = $(this).data('id');

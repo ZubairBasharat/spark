@@ -330,7 +330,9 @@ class AuthController extends Controller
         $apiURL = $this->base_url.'/api/participants/'.Session::get('participant_id').'/contrast';
         return $response = Http::withToken(Session::get('access_token'))->get($apiURL);   
     }
-
+    public function privacy(){
+        return view('privacy');
+    }
     public function actionPlans()
     {
         $myactions_ids_array = array();
