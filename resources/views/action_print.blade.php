@@ -53,9 +53,11 @@
         <div>
           <img src="{{asset('/assets/images/slide-logo.png')}}" alt="slide-logo" />
           <div class="print-content">
+            @if(count($myactions) > 0)
             <div class="print-title my-4 text-center">
               <h5 class="mb-0">My Action Plan</h5>
             </div>
+            @endif
             <div>
             @foreach($myactions as $index=>$myaction)
               <h4 class="text-uppercase">
@@ -114,9 +116,11 @@
               <br>
               <br>
               @endforeach
+              @if(count($myactions_two) > 0)
               <div class="print-title my-4 text-center">
                 <h5 class="mb-0">Engagement Drivers</h5>
               </div>
+              @endif
               <div>
               @foreach($myactions_two as $myaction_two)  
                 <h4 class="text-uppercase">
@@ -157,13 +161,18 @@
               </div>
             </div>
           </div>
+          @if(count($myactions_two) == 0 && count($myactions) == 0)
+            <h4 style="text-align: center;">You have not yet saved an action plan</h4>
+          @endif
         </div>
       </div>
       <div class="col-lg-9 mx-auto text-center mt-5">
         <button
           type="button"
-          class="border-0 mx-auto print-btn rounded-pill text-white f-medium px-4 text-uppercase"
+          class="border-0 mx-auto print-btn rounded-pill text-white f-medium px-4 text-uppercase"  @if(count($myactions_two) == 0 && count($myactions) == 0) disabled @endif
+          @if(count($myactions_two) > 0 || count($myactions) > 0)
           onclick="window.print()"
+          @endif
         >
           print pdf
         </button>
