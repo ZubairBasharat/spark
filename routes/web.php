@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-echo phpinfo();die;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
