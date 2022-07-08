@@ -15,12 +15,17 @@
           <div class="progress-container mx-auto">
             <ul class="progress-steps ps-0 mb-0">
               <li data-counter="1" class="active"></li>
-              <li data-counter="2"></li>
-              <li data-counter="3"></li>
+              <li data-counter="2" @if($resume) class="active" @endif></li>
+              <li data-counter="3" @if($resume) class="active" @endif></li>
               <li data-counter="4"></li>
             </ul>
           </div>
         </div>
+        @if(session('error_message'))
+        <div id="alert_message" class="mt-3 alert alert-danger alert-dismissible col-md-12">
+          <strong>{{session('error_message')}}</strong>
+        </div>
+        @endif
         <div class="end mt-20 mb-20">
           <a href="{{url('export-report')}}" style="text-decoration: none;"><button class="export-report">Export REPORT</button></a>
         </div>
@@ -234,7 +239,7 @@
    
     <script>
       "<?php if(count($phase_distribution) == 0){ ?>"
-        var labels_ = ['DatA Not Available'];
+        var labels_ = ['Data Not Available'];
         var data_= [1];
         "<?php }else{ ?>"
           var labels_ = [];

@@ -5,7 +5,7 @@
         <div class="progress-wrapper bg-white">
           <div class="progress-container mx-auto">
             <ul class="progress-steps ps-0 mb-0">
-              <li data-counter="1"></li>
+              <li data-counter="1" class="active"></li>
               <li data-counter="2" class="active"></li>
               <li data-counter="3"></li>
               <li data-counter="4"></li>

@@ -8,7 +8,7 @@
               <li data-counter="1" class="active"></li>
               <li data-counter="2" class="active"></li>
               <li data-counter="3" class="active"></li>
-              <li data-counter="4"></li>
+              <li data-counter="4" class="active"></li>
             </ul>
           </div>
         </div>

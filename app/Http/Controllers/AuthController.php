@@ -369,6 +369,9 @@ class AuthController extends Controller
         $available_action_plans = !empty($available_action_plans)? (isset($available_action_plans->data) ? $available_action_plans->data :array())  : array();
         $phase_code = $phase_code != "" ? $states[$phase_code] : '';
         // print_r($available_action_plans);die;
+        if(count($available_action_plans) == 0){
+            return redirect('personal-dashboard')->with(['error_message'=> 'Action Planning Not Available for you']);
+        }
         return view('action_plan', compact('myactions', 'phase_code','available_action_plans','description','myactions_ids_array'));
     }
     public function actionPlansDriver()
