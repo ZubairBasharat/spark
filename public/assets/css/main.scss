@@ -897,9 +897,9 @@ footer {
     h1 {
         font-weight: 600;
         font-size: 46px;
-        line-height: 27px;
+        line-height: 1.3;
         color: #2c2c2c;
-        margin-bottom: 28px;
+        margin-bottom: 20px;
     }
     h2 {
         font-weight: 600;
@@ -957,7 +957,13 @@ footer {
                 text-align: center;
                 cursor: pointer;
                 transition: 0.2s all;
-                opacity: 0.4;
+                
+                @media(max-width:767px){
+                    opacity: 0.8;
+                }
+                @media(min-width:768px){
+                    opacity: 0.4;
+                }
                 &.last {
                     width: 172.5px;
                 }
@@ -969,7 +975,12 @@ footer {
                     margin-bottom: 5px;
                 }
                 a {
-                    visibility: hidden;
+                    @media(max-width:767px){
+                        visibility: visible;
+                    }
+                    @media(min-width:768px){
+                        visibility: hidden;
+                    }
                     font-weight: 700;
                     font-size: 8.7px;
                     line-height: 16px;
@@ -1514,7 +1525,9 @@ footer {
 #innerAccordionMain{
 
     .accordion-button.inner-btn{
-        background:#FFC20E !important;
+        &:not(.collapsed){
+            background:#FFC20E !important;
+        }
         &:not(.collapsed):after {
             content: "\f282" !important;
             color:#151515;

@@ -133,7 +133,7 @@
                       <div class="transform-heading" style="background: none !important">
                       <!-- <a href="{{url('save-action-plan', $available_action_plan->id)}}"> -->
                         <button type="text" data-id="{{$available_action_plan->id}}" data-plan ="{{$available_action_plan->short_description}}" class="border-0 save_action_plan_btn">
-                        Add Action Plan
+                        Add New option!
                       </button>
                     <!-- </a> -->
                       </div>
