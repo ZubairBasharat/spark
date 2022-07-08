@@ -30,6 +30,7 @@
               <h6>Your Personal Dashboard</h6>
               <h1>Hi {{Session::get('user_name')}}!</h1>
               <h2>Your Engagement State: <span class="text-red">{{isset($states[$phase_code]) ?  $states[$phase_code] : ''}}</span></h2>
+              @if(isset($states[$phase_code] ))
               <h3>Definition of {{isset($states[$phase_code]) ?  $states[$phase_code] : ''}}</h3>
               <div class="more_data_content mb-4">
                 @php
@@ -42,13 +43,18 @@
                 @endphp
                 {!!$description!!}
               </div>
+              @else
+                <h4>No Data is available</h4>
+              @endif
               <!-- <p>
                 Cras vel tortor nec nunc porttitor ornare pellentesque et est. Nam viverra sollicitudin molestie.
                 Pellentesque sed mi convallis sapien aliquet consequat sed vel nunc. Donec viverra cursus magna. Fusce
                 sollicitudin leo elit, at fermentum enim maximus vel. Cras ac finibus elit. Ut sed aliquam dolor. Duis a
                 velit vitae velit consequat fringilla quis id tortor.
               </p> -->
+              @if(isset($states[$phase_code] ))
               <button class="theme-btn mb-5 more_btn">Load More</button>
+              @endif
             </div>
           </div>
           <div class="col-lg-6 col-12">
