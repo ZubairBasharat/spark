@@ -44,7 +44,7 @@ class AuthController extends Controller
         $user_details = $this->user_details();
         $user_details = json_decode($user_details)->data;
         Session::put('auth-user',$user_details);
-        Session::put('user_name',$user_details->name);
+        Session::put('user_name',$user_details->first_name.' '.$user_details->last_name);
         Session::put('participant_id',$user_details->last_participant->id);
         
         return redirect('/');
