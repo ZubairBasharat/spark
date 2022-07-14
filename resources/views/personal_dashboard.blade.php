@@ -121,28 +121,49 @@
                 <h2>Meaning</h2>
               </div>
               <div class="body">
-                <canvas id="meaning-chart" height="60"></canvas>
-                <div class="text-center">
-                  <ul class="list-unstyled mb-0 indicator-container list-inline">
-                    <li class="list-inline-item mt-3 me-4">
-                      <span class="chart-indicator red me-2"></span>&nbsp;Your Score
-                    </li>
-                    <li class="list-inline-item mt-3">
-                      <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
-                    </li>
-                  </ul>
+                <div class="row align-items-center">
+                  <div class="col-lg-3">
+                    <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
+                      Your Score<br /><br />
+                      Others in the world
+                    </label>
+                  </div>
+                  <div class="col-lg-9">
+                    <canvas id="meaning-chart" height="100px"></canvas>
+                  </div>
+                  <div class="text-center">
+                    <ul class="list-unstyled mb-0 indicator-container list-inline">
+                      <li class="list-inline-item mt-3 me-4">
+                        <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                      </li>
+                      <li class="list-inline-item mt-3">
+                        <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div class="chart-seperate-border"></div>
-                <canvas id="meaning-group-chart" height="auto"></canvas>
-                <div class="text-center">
-                  <ul class="list-unstyled mb-0 indicator-container list-inline">
-                    <li class="list-inline-item mt-3 me-4">
-                      <span class="chart-indicator red me-2"></span>&nbsp;You
-                    </li>
-                    <li class="list-inline-item mt-3 grey">
-                    <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
-                    </li>
-                  </ul>
+                <div class="row align-items-center">
+                  <div class="col-lg-3">
+                    <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
+                      Feeling Of Past work meaning<br /><br /><br />
+                      Feeling Of work meaning<br /><br /><br />
+                      Feeling Of Past work meaning
+                    </label>
+                  </div>
+                  <div class="col-lg-9">
+                    <canvas id="meaning-group-chart" height="auto"></canvas>
+                  </div>
+                  <div class="text-center">
+                    <ul class="list-unstyled mb-0 indicator-container list-inline">
+                      <li class="list-inline-item mt-3 me-4">
+                        <span class="chart-indicator red me-2"></span>&nbsp;You
+                      </li>
+                      <li class="list-inline-item mt-3 grey">
+                      <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -153,28 +174,49 @@
                 <h2>Meaning </h2>
               </div>
               <div class="body">
-                <canvas id="progress-chart" height="60"></canvas>
-                <div class="text-center">
-                  <ul class="list-unstyled mb-0 indicator-container list-inline">
-                    <li class="list-inline-item mt-3 me-4">
-                      <span class="chart-indicator red me-2"></span>&nbsp;Your Score
-                    </li>
-                    <li class="list-inline-item mt-3">
-                      <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
-                    </li>
-                  </ul>
+                <div class="row align-items-center">
+                  <div class="col-lg-3">
+                    <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
+                      Your Score<br /><br />
+                      Others in the world
+                    </label>
+                  </div>
+                  <div class="col-lg-9">
+                    <canvas id="progress-chart" height="100"></canvas>
+                  </div>
+                  <div class="text-center">
+                    <ul class="list-unstyled mb-0 indicator-container list-inline">
+                      <li class="list-inline-item mt-3 me-4">
+                        <span class="chart-indicator red me-2"></span>&nbsp;Your Score
+                      </li>
+                      <li class="list-inline-item mt-3">
+                        <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div class="chart-seperate-border"></div>
-                <canvas id="progress-group-chart" height="auto"></canvas>
-                <div class="text-center">
-                  <ul class="list-unstyled mb-0 indicator-container list-inline">
-                    <li class="list-inline-item mt-3 me-4">
-                      <span class="chart-indicator red me-2"></span>&nbsp;You
-                    </li>
-                    <li class="list-inline-item mt-3 grey">
-                    <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
-                    </li>
-                  </ul>
+                <div class="row align-items-center">
+                  <div class="col-lg-3">
+                    <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
+                      Feeling Of Past work meaning<br /><br /><br />
+                      Feeling Of work meaning<br /><br /><br />
+                      Feeling Of Past work meaning
+                    </label>
+                  </div>
+                  <div class="col-lg-9">
+                    <canvas id="progress-group-chart" height="auto"></canvas>
+                  </div>
+                  <div class="text-center">
+                    <ul class="list-unstyled mb-0 indicator-container list-inline">
+                      <li class="list-inline-item mt-3 me-4">
+                        <span class="chart-indicator red me-2"></span>&nbsp;You
+                      </li>
+                      <li class="list-inline-item mt-3 grey">
+                      <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -355,7 +397,7 @@
 const myChart3 = new Chart(ctx3, {
     type: "bar",
     data: {
-        labels: ["Feeling Of Career meaning", "Feeling Of work meaning", "Feeling Of Past work meaning"],
+        labels: ["", "", ""],
         datasets: [
         {
             label: "You",
@@ -396,7 +438,7 @@ const myChart3 = new Chart(ctx3, {
     const myChart4 = new Chart(ctx4, {
     type: "bar",
     data: {
-    labels: ["Feeling Of Career meaning", "Feeling Of work meaning", "Feeling Of Past work meaning"],
+    labels: ["", "", ""],
     datasets: [
         {
         label: "You",
@@ -438,7 +480,7 @@ const ctx1 = document.getElementById("meaning-chart").getContext("2d");
 const myChart1 = new Chart(ctx1, {
     type: "bar",
     data: {
-        labels: ["Your Score", "Others in the world"],
+        labels: ["", ""],
         datasets: [
         {
             label: "Feeling Of Overall Meaning",
@@ -471,7 +513,7 @@ const myChart1 = new Chart(ctx1, {
     const myChart2 = new Chart(ctx2, {
     type: "bar",
     data: {
-        labels: ["Your Score", "Others in the world"],
+        labels: ["", ""],
         datasets: [
         {
             label: "Feeling Of Overall Progress",
