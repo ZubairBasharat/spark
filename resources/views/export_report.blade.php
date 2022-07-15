@@ -56,7 +56,7 @@
               <h1 style="font-size: 34px;font-weight:600;color: rgba(0, 0, 0, 0.87);">Hi {{Session::get('user_name')}}!</h1>
               <h2 style="font-size: 20px;">Your Engagement State: <span class="text-red">{{(isset($states[$phase_code])) ?  $states[$phase_code] : ''}}</span></h2>
             </div>
-            <div class="report-blocks-main border-0">
+            <div class="report-blocks-main border-0" style="border:0px !important;">
               <div class="body mx-auto position-relative" style=" width: fit-content;">
                 <h5 class="progress-text meaning" style="left: -58px;top: 41%;">Meaning</h5>
                 <div class="blocks">
@@ -140,14 +140,13 @@
           @include('components.Personal_charts')
         </div>
         </div>
-
-      </div>
-      <div class="center flex-wrap flex-md-nowrap mt-5">
-            <a href="{{url('personal-dashboard')}}" style="text-decoration: none;"><button class="theme-btn hover me-md-2 ">Return to Dashboard</button></a>
-            <a onclick="generatePDF()" style="text-decoration: none;"><button class="theme-btn mt-4 mt-md-0">Print pdf</button></a>
         </div>
       </div>
     </section>
+    <div class="center flex-wrap flex-md-nowrap mt-5">
+      <a href="{{url('personal-dashboard')}}" style="text-decoration: none;"><button class="theme-btn hover me-md-2 ">Return to Dashboard</button></a>
+      <a onclick="generatePDF()" style="text-decoration: none;"><button class="theme-btn mt-4 mt-md-0">Download pdf</button></a>
+    </div>
     <div class="footer-layer-bottom">
       <img src="{{asset('assets/images/bottom-layer.svg')}}" alt="bottom Layer" class="w-100" />
     </div>
@@ -166,15 +165,15 @@
       function generatePDF() {
        
 				const element = document.getElementById('export_report_container');
-        const doc = new jsPDF("p", "px", [459,594]);
+        const doc = new jsPDF("p", "px", [1350,5850]);
         domtoimage.toPng(element)
         .then(function(dataUrl) {
           console.log(dataUrl);
           //window.open(dataUrl);
           const pdfFileName = "Sparkdlens-" + Math.random() * 10000000 + ".pdf";
-          doc.addImage(dataUrl, "JPEG", 0, 0, [459, 594], undefined, "FAST");
-          // doc.save(pdfFileName);
-        //  $(".site__logo img").attr('src',dataUrl);
+          doc.addImage(dataUrl, "JPEG", 0, 0, 1350, 5850, undefined, "FAST");
+          doc.save(pdfFileName);
+         $(".site__logo img").attr('src',dataUrl);
         })
         .catch(function(error) {
           console.error('oops, something went wrong!', error);

@@ -196,7 +196,6 @@ class AuthController extends Controller
                 }
             }
 
-
             if(isset($compareable->phase_code))
             $phase_code = $compareable->phase_code;
 
