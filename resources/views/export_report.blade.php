@@ -173,7 +173,7 @@
           const pdfFileName = "Sparkdlens-" + Math.random() * 10000000 + ".pdf";
           doc.addImage(dataUrl, "JPEG", 0, 0, 1350, 5850, undefined, "FAST");
           doc.save(pdfFileName);
-         $(".site__logo img").attr('src',dataUrl);
+        //  $(".site__logo img").attr('src',dataUrl);
         })
         .catch(function(error) {
           console.error('oops, something went wrong!', error);
