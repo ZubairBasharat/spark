@@ -262,8 +262,12 @@
         </div>
       </div>
       <div class="center flex-wrap flex-md-nowrap">
-        <a href="{{url($resume?'driver-action-plans':'myActionPlans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">{{$resume?"Resume":"Start"}} action planning</button></a>
+        <a href="{{url('myActionPlans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">Start action planning</button></a>
+        @if(count($myactions) > 0)
+        <a href="{{url('driver-action-plans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">Resume action planning</button></a>
+        @endif
         <a href="{{url('export-report')}}" style="text-decoration: none;"><button class="theme-btn hover w-238 mt-4 mt-md-0">Export Report</button></a>
+
       </div>
     </section>
     <div>
