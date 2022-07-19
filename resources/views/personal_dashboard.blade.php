@@ -262,7 +262,7 @@
         </div>
       </div>
       <div class="center flex-wrap flex-md-nowrap">
-        <a href="{{url('myActionPlans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">Start action planning</button></a>
+        <a href="{{url('myActionPlans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">{{(count($myactions) > 0 ? 'Start' : 'Resume')}} action planning</button></a>
         @if(count($myactions) > 0)
         <a href="{{url('driver-action-plans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">Resume action planning</button></a>
         @endif
