@@ -879,14 +879,15 @@ footer .footer-bottom-side {
 }
 
 .plan-video-section.red {
-  background-color: #DC3A59;
+  background-color: #dc3a59;
 }
 
 .plan-video-section.red ul li::before {
   background-image: url(../images/pointer-yellow.svg);
 }
 
-.plan-video-section.red .plans-detail h5, .plan-video-section.red ul li {
+.plan-video-section.red .plans-detail h5,
+.plan-video-section.red ul li {
   color: #fff;
 }
 
@@ -1653,6 +1654,9 @@ footer .footer-bottom-side {
     font-weight: 600;
     font-size: 25px;
   }
+  .btn-unsm-full a, .btn-unsm-full button {
+    width: 100%;
+  }
   .chart-desc-p {
     font-size: 16px;
   }
@@ -1867,7 +1871,7 @@ footer .footer-bottom-side {
 }
 
 #innerAccordionMain .accordion-button.inner-btn:not(.collapsed) {
-  background: #FFC20E !important;
+  background: #ffc20e !important;
 }
 
 #innerAccordionMain .accordion-button.inner-btn:not(.collapsed):after {
@@ -1913,6 +1917,6 @@ footer .footer-bottom-side {
 }
 
 .indicator-container .chart-indicator.orange {
-  background-color: #F15A22;
+  background-color: #f15a22;
 }
 /*# sourceMappingURL=main.css.map */

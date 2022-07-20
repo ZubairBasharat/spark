@@ -78,7 +78,8 @@ textarea {
             font-size: 15px;
             line-height: 22px;
             color: #666666;
-            &:hover , &.active {
+            &:hover,
+            &.active {
                 color: $red;
             }
         }
@@ -672,28 +673,29 @@ footer {
     }
 }
 .plan-video-section {
-    &:not(.red){
+    &:not(.red) {
         background: linear-gradient(
             180deg,
             #ffc20e -6.41%,
             rgba(255, 194, 14, 0.26) 100%
         );
-        .plans-detail h5{
+        .plans-detail h5 {
             color: #000000;
         }
-        ul li{
+        ul li {
             color: rgba(0, 0, 0, 0.7);
         }
-        ul li::before{
+        ul li::before {
             background-image: url(../images/pointer.svg);
         }
     }
-    &.red{
-        background-color:#DC3A59;
-        ul li::before{
+    &.red {
+        background-color: #dc3a59;
+        ul li::before {
             background-image: url(../images/pointer-yellow.svg);
         }
-        .plans-detail h5,ul li{
+        .plans-detail h5,
+        ul li {
             color: #fff;
         }
     }
@@ -957,11 +959,11 @@ footer {
                 text-align: center;
                 cursor: pointer;
                 transition: 0.2s all;
-                
-                @media(max-width:767px){
+
+                @media (max-width: 767px) {
                     opacity: 0.8;
                 }
-                @media(min-width:768px){
+                @media (min-width: 768px) {
                     opacity: 0.4;
                 }
                 &.last {
@@ -975,10 +977,10 @@ footer {
                     margin-bottom: 5px;
                 }
                 a {
-                    @media(max-width:767px){
+                    @media (max-width: 767px) {
                         visibility: visible;
                     }
-                    @media(min-width:768px){
+                    @media (min-width: 768px) {
                         visibility: hidden;
                     }
                     font-weight: 700;
@@ -1320,6 +1322,11 @@ footer {
             font-size: 25px;
         }
     }
+    .btn-unsm-full {
+        a , button {
+            width: 100%;
+        }
+    }
     .chart-desc-p {
         font-size: 16px;
     }
@@ -1517,55 +1524,54 @@ footer {
     font-size: 14px;
     font-weight: 400;
     transition: 0.3s all ease-in-out;
-    &:hover{
-      color:#fff;
-      background-color:$red;
+    &:hover {
+        color: #fff;
+        background-color: $red;
     }
 }
-#innerAccordionMain{
-
-    .accordion-button.inner-btn{
-        &:not(.collapsed){
-            background:#FFC20E !important;
+#innerAccordionMain {
+    .accordion-button.inner-btn {
+        &:not(.collapsed) {
+            background: #ffc20e !important;
         }
         &:not(.collapsed):after {
             content: "\f282" !important;
-            color:#151515;
+            color: #151515;
             font-size: 18px;
             top: 35px;
         }
         &.collapsed:after {
             content: "\f286" !important;
-            color:#151515;
+            color: #151515;
             font-size: 18px;
             top: 35px;
         }
     }
 }
-.print-box-des{
-  max-width: 1075px;
-  margin-left:auto;
-  margin-right:auto;
-  padding:30px;
-  box-shadow: 1px 4px 19px rgba(0, 0, 0, 0.12);
+.print-box-des {
+    max-width: 1075px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    box-shadow: 1px 4px 19px rgba(0, 0, 0, 0.12);
 }
-.indicator-container{
-    li{
-        font-size:12px;
+.indicator-container {
+    li {
+        font-size: 12px;
     }
-    .chart-indicator{
+    .chart-indicator {
         width: 10.39px;
         height: 10.39px;
-        border-radius:50%;
+        border-radius: 50%;
         display: inline-block;
-        &.red{
-            background-color:$red;
+        &.red {
+            background-color: $red;
         }
-        &.grey{
-            background-color:#979797;
+        &.grey {
+            background-color: #979797;
         }
-        &.orange{
-            background-color: #F15A22;
+        &.orange {
+            background-color: #f15a22;
         }
     }
 }

@@ -261,12 +261,12 @@
           @include('components.Personal_charts')
         </div>
       </div>
-      <div class="center flex-wrap flex-md-nowrap">
-        <a href="{{url('myActionPlans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">{{(count($myactions) == 0 ? 'Start' : 'Resume')}} action planning</button></a>
+      <div class="center flex-wrap flex-md-nowrap  btn-unsm-full">
+        <a href="{{url('myActionPlans')}}" style="text-decoration: none;"><button class="theme-btn mt-2 me-md-2 mt-lg-0">{{(count($myactions) == 0 ? 'Start' : 'Resume')}} action planning</button></a>
         @if(count($myactions) > 0)
-        <a href="{{url('driver-action-plans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2">Resume action planning 2</button></a>
+        <a href="{{url('driver-action-plans')}}" style="text-decoration: none;"><button class="theme-btn me-md-2 mt-2 mt-lg-0">Resume action planning 2</button></a>
         @endif
-        <a href="{{url('export-report')}}" style="text-decoration: none;"><button class="theme-btn hover w-238 mt-4 mt-md-0">Export Report</button></a>
+        <a href="{{url('export-report')}}" style="text-decoration: none;"><button class="theme-btn hover  mt-2 mt-lg-0">Export Report</button></a>
 
       </div>
     </section>
