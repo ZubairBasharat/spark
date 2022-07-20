@@ -166,8 +166,8 @@
           @endif
         </div>
       </div>
-      <div class="col-lg-9 mx-auto text-center mt-5">
-        <button
+        <div class="col-lg-9 mx-auto text-center mt-5">
+          <button
           type="button"
           class="border-0 mx-auto print-btn rounded-pill text-white f-medium px-4 text-uppercase"  @if(count($myactions_two) == 0 && count($myactions) == 0) disabled @endif
           @if(count($myactions_two) > 0 || count($myactions) > 0)

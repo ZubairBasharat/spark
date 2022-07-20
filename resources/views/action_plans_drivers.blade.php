@@ -199,7 +199,10 @@
             <div class="text-center">
               <img src="{{asset('assets/images/check-fill-circle.svg')}}" height="100px" />
               <p class="my-4">Your action plan has been saved successfully</p>
-              <a href="{{url('/personal-dashboard')}}" class="text-decoration-none dash-btn text-uppercase">Go to dashboard</a>
+              <div class="d-flex justify-content-center">
+                <a href="{{url('/personal-dashboard')}}" class="me-3 text-decoration-none dash-btn text-uppercase">Go to dashboard</a>
+                <a href="#" data-bs-dismiss="modal" class="text-decoration-none dash-btn bg-success border-success text-white text-uppercase">Save and add more actions</a>
+              </div>
             </div>
           </div>
         </div>
