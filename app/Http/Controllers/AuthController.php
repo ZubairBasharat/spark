@@ -196,7 +196,6 @@ class AuthController extends Controller
                 }
             }
 
-
             if(isset($compareable->phase_code))
             $phase_code = $compareable->phase_code;
 
@@ -239,21 +238,25 @@ class AuthController extends Controller
 
                 if($question_average->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed")
                 {
+                    $feeling_of_Purpose_Inspiration_contrast = $question_average->question_average;
                     $inspiration_contrast[$inspiration_contrast_index] = $question_average->question_average;
                     $inspiration_contrast_index++;
                 }
                 if($question_average->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed")
                 {
+                    $feeling_origanizational_contrast = $question_average->question_average;
                     $organizational_contrast[$organizational_contrast_index] = $question_average->question_average;
                     $organizational_contrast_index++;
                 }
                 if($question_average->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed")
                 {
+                    $feeling_mastery_contrast = $question_average->question_average;
                     $autonomy_contrast[$autonomy_contrast_index] = $question_average->question_average;
                     $autonomy_contrast_index++;
                 }
                 if($question_average->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed")
                 {
+                    $feeling_autonomy_contrast = $question_average->question_average;
                     $mastery_contrast[$mastery_contrast_index] = $question_average->question_average;
                     $mastery_contrast_index++;
                 }
@@ -262,23 +265,23 @@ class AuthController extends Controller
             $fuel_passion_contrast = $fuel_passion_contrast/$fuel_passion_contrast_total;
             $company_contrast = $company_contrast/$company_contrast_total;
         }
-            if(isset($contrast->category_averages)){
-                foreach($contrast->category_averages as $average)
-                {
-                    if($average->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed"){
-                        $feeling_of_Purpose_Inspiration_contrast = $average->category_average;
-                    }
-                    if($average->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed"){
-                        $feeling_origanizational_contrast = $average->category_average;
-                    }
-                    if($average->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed"){
-                        $feeling_mastery_contrast = $average->category_average;
-                    }
-                    if($average->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed"){
-                        $feeling_autonomy_contrast = $average->category_average;
-                    }
-                }
-            }
+            // if(isset($contrast->category_averages)){
+            //     foreach($contrast->category_averages as $average)
+            //     {
+            //         if($average->category_id == "e8a8a5ef-9763-11ec-8166-0800273b46ed"){
+            //             $feeling_of_Purpose_Inspiration_contrast = $average->category_average;
+            //         }
+            //         if($average->category_id == "e8a8a770-9763-11ec-8166-0800273b46ed"){
+            //             $feeling_origanizational_contrast = $average->category_average;
+            //         }
+            //         if($average->category_id == "e8a8ab91-9763-11ec-8166-0800273b46ed"){
+            //             $feeling_mastery_contrast = $average->category_average;
+            //         }
+            //         if($average->category_id == "e8a8acfc-9763-11ec-8166-0800273b46ed"){
+            //             $feeling_autonomy_contrast = $average->category_average;
+            //         }
+            //     }
+            // }
         }
 
         //get saved action plans 1
