@@ -146,7 +146,7 @@
                 <div class="row align-items-center">
                   <div class="col-lg-3">
                     <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
-                      Feeling Of Past work meaning<br /><br /><br />
+                      Feeling Of Career meaning<br /><br /><br />
                       Feeling Of work meaning<br /><br /><br />
                       Feeling Of Past work meaning
                     </label>
@@ -171,7 +171,7 @@
           <div class="col-lg-6">
             <div class="chart-main">
               <div class="head">
-                <h2>Meaning </h2>
+                <h2>Progress</h2>
               </div>
               <div class="body">
                 <div class="row align-items-center">
@@ -199,9 +199,9 @@
                 <div class="row align-items-center">
                   <div class="col-lg-3">
                     <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
-                      Feeling Of Past work meaning<br /><br /><br />
-                      Feeling Of work meaning<br /><br /><br />
-                      Feeling Of Past work meaning
+                      Feeling Of Career progress<br /><br /><br />
+                      Feeling Of work progress<br /><br /><br />
+                      Feeling Of Past work progress
                     </label>
                   </div>
                   <div class="col-lg-9">
