@@ -209,7 +209,7 @@ class AuthController extends Controller
             $contrast = json_decode($contrast);
             if(isset($contrast->data))
             $contrast = $contrast->data;
-            $contrast_type = $contrast->type;
+            $contrast_type = isset($contrast->type) ? $contrast->type : 1;
             if(isset($contrast->question_averages)){
             foreach($contrast->question_averages as $contrast_index=>$average)
             {
@@ -733,7 +733,7 @@ class AuthController extends Controller
             {
                 $contrast = json_decode($contrast);
                 if(isset($contrast->data)){
-                    $contrast = $contrast->data;
+                    $contrast = isset($contrast->type) ? $contrast->type : 1;
                     $contrast_type = $contrast->type;
                     foreach($contrast->question_averages as $contrast_index=>$average)
                     {
