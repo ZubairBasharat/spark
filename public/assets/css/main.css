@@ -1919,4 +1919,18 @@ footer .footer-bottom-side {
 .indicator-container .chart-indicator.orange {
   background-color: #f15a22;
 }
+
+@media (max-width: 1366px) {
+  #meaning-chart-employee_inner8 {
+    height: 390px !important;
+    width: 318px;
+  }
+}
+
+@media (min-width: 1366px) {
+  #meaning-chart-employee_inner8 {
+    height: 390px !important;
+    width: 318px;
+  }
+}
 /*# sourceMappingURL=main.css.map */

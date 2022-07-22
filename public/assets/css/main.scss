@@ -1575,3 +1575,13 @@ footer {
         }
     }
 }
+#meaning-chart-employee_inner8{
+    @media(max-width:1366px){
+        height:390px !important;
+        width: 318px;
+    }
+    @media(min-width:1366px){
+        height: 390px !important;
+        width: 318px;
+    }
+}
