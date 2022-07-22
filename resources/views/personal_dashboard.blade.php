@@ -125,7 +125,11 @@
                   <div class="col-lg-3">
                     <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
                       Your Score<br /><br />
+                      @if($contrast_type == 1)
                       Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                     </label>
                   </div>
                   <div class="col-lg-9">
@@ -137,7 +141,11 @@
                         <span class="chart-indicator red me-2"></span>&nbsp;Your Score
                       </li>
                       <li class="list-inline-item mt-3">
-                        <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
+                        <span class="chart-indicator orange me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                       </li>
                     </ul>
                   </div>
@@ -160,7 +168,11 @@
                         <span class="chart-indicator red me-2"></span>&nbsp;You
                       </li>
                       <li class="list-inline-item mt-3 grey">
-                      <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                      <span class="chart-indicator grey me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                       </li>
                     </ul>
                   </div>
@@ -178,7 +190,11 @@
                   <div class="col-lg-3">
                     <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
                       Your Score<br /><br />
+                      @if($contrast_type == 1)
                       Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                     </label>
                   </div>
                   <div class="col-lg-9">
@@ -190,7 +206,11 @@
                         <span class="chart-indicator red me-2"></span>&nbsp;Your Score
                       </li>
                       <li class="list-inline-item mt-3">
-                        <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
+                        <span class="chart-indicator orange me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                       </li>
                     </ul>
                   </div>
@@ -213,7 +233,11 @@
                         <span class="chart-indicator red me-2"></span>&nbsp;You
                       </li>
                       <li class="list-inline-item mt-3 grey">
-                      <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                      <span class="chart-indicator grey me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                       </li>
                     </ul>
                   </div>
@@ -244,7 +268,11 @@
       </div>
       <div class="dougnut-chart-main">
         <div class="head">
-          <h2>You Compared to Others in the World</h2>
+          <h2>You Compared to  @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif</h2>
         </div>
         <div class="body">
           <div class="dougnut-chart-container">
@@ -413,7 +441,7 @@ const myChart3 = new Chart(ctx3, {
             data: ["<?= $question_values[0] ?>", "<?= $question_values[1] ?>", "<?= $question_values[2] ?>"],
         },
         {
-            label: "Others in the world",
+            label: " @if($contrast_type == 1) Others in the world @else Others in your organization @endif",
             backgroundColor: "#979797",
             borderColor: "#979797",
             borderRadius: 4,
@@ -454,7 +482,7 @@ const myChart3 = new Chart(ctx3, {
         data: ["<?= $question_values[3] ?>", "<?= $question_values[4] ?>", "<?= $question_values[5] ?>"]
         },
         {
-        label: "Others in the world",
+        label: " @if($contrast_type == 1) Others in the world @else Others in your organization @endif",
         backgroundColor: "#979797",
         borderColor: "#979797",
         borderRadius: 4,

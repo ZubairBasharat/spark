@@ -17,7 +17,11 @@
                     <span class="chart-indicator red me-2"></span>&nbsp;Your Score
                 </li>
                 <li class="list-inline-item mt-3">
-                    <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
+                    <span class="chart-indicator orange me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                 </li>
             </ul>
         </div>
@@ -64,7 +68,11 @@
                     <span class="chart-indicator red me-2"></span>&nbsp;Your Score
                 </li>
                 <li class="list-inline-item mt-3">
-                    <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                    <span class="chart-indicator grey me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                 </li>
             </ul>
         </div>
@@ -119,7 +127,11 @@
                     <span class="chart-indicator red me-2"></span>&nbsp;Your Score
                 </li>
                 <li class="list-inline-item mt-3">
-                    <span class="chart-indicator orange me-2"></span>&nbsp;Others in the world
+                    <span class="chart-indicator orange me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                 </li>
             </ul>
         </div>
@@ -145,7 +157,11 @@
                     <span class="chart-indicator red me-2"></span>&nbsp;Your Score
                 </li>
                 <li class="list-inline-item mt-3">
-                    <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                    <span class="chart-indicator grey me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                 </li>
             </ul>
         </div>
@@ -182,7 +198,11 @@
                                 <span class="chart-indicator red me-2"></span>&nbsp;Your Score
                             </li>
                             <li class="list-inline-item mt-3">
-                                <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                                <span class="chart-indicator grey me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                             </li>
                         </ul>
                     </div>
@@ -213,7 +233,11 @@
                                 <span class="chart-indicator red me-2"></span>&nbsp;Your Score
                             </li>
                             <li class="list-inline-item mt-3">
-                                <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                                <span class="chart-indicator grey me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                             </li>
                         </ul>
                     </div>
@@ -247,7 +271,11 @@
                                 <span class="chart-indicator red me-2"></span>&nbsp;Your Score
                             </li>
                             <li class="list-inline-item mt-3">
-                                <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                                <span class="chart-indicator grey me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                             </li>
                         </ul>
                     </div>
@@ -277,7 +305,11 @@
                                 <span class="chart-indicator red me-2"></span>&nbsp;Your Score
                             </li>
                             <li class="list-inline-item mt-3">
-                                <span class="chart-indicator grey me-2"></span>&nbsp;Others in the world
+                                <span class="chart-indicator grey me-2"></span>&nbsp; @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif
                             </li>
                         </ul>
                     </div>

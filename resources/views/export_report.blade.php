@@ -123,7 +123,11 @@
         </div>
         <div class="dougnut-chart-main mb-0 mt-3">
             <div class="head bg-transparent border-0 mb-0 p-0 text-center">
-                <h2 style="font-size: 26px;">You Compared to Others in the world</h2>
+                <h2 style="font-size: 26px;">You Compared to  @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif</h2>
             </div>
             <div class="body border-0 py-0">
                 <div class="dougnut-chart-container">
@@ -132,7 +136,11 @@
             </div>
             @if(count($myactions) > 0)
         <div class="head mt-4">
-          <h2>You Compared to Others in the world</h2>
+          <h2>You Compared to  @if($contrast_type == 1)
+                      Others in the world
+                      @else
+                      Others in your organization
+                      @endif</h2>
         </div>
         @endif
         <div>
@@ -287,7 +295,7 @@ const myChart3 = new Chart(ctx3, {
             data: ["<?= $question_values[0] ?>", "<?= $question_values[1] ?>", "<?= $question_values[2] ?>"]
         },
         {
-            label: "Others in the world",
+            label: " @if($contrast_type == 1) Others in the world @else Others in your organization @endif",
             backgroundColor: "#979797",
             borderColor: "#979797",
             borderWidth: 1,
@@ -326,7 +334,7 @@ const myChart3 = new Chart(ctx3, {
         data: ["<?= $question_values[3] ?>", "<?= $question_values[4] ?>", "<?= $question_values[5] ?>"]
         },
         {
-        label: "Others in the world",
+        label: " @if($contrast_type == 1) Others in the world @else Others in your organization @endif",
         backgroundColor: "#979797",
         borderColor: "#979797",
         borderWidth: 1,
@@ -355,7 +363,7 @@ const ctx1 = document.getElementById("meaning-chart").getContext("2d");
 const myChart1 = new Chart(ctx1, {
     type: "bar",
     data: {
-        labels: ["Your Score", "Others in the world"],
+        labels: ["Your Score", " @if($contrast_type == 1) Others in the world @else Others in your organization @endif"],
         datasets: [
         {
             label: "Feeling Of Overall Meaning",
@@ -387,7 +395,7 @@ const myChart1 = new Chart(ctx1, {
     const myChart2 = new Chart(ctx2, {
     type: "bar",
     data: {
-        labels: ["Your Score", "Others in the world"],
+        labels: ["Your Score", " @if($contrast_type == 1) Others in the world @else Others in your organization @endif"],
         datasets: [
         {
             label: "Feeling Of Overall Meaning",
