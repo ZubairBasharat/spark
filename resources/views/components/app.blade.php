@@ -9,7 +9,7 @@
     <meta author="Mian Roshan" content="Full Stack developer" />
     <title>Spark&nbsp;|&nbsp;Home</title>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libraries/bootstrap/bootstrap.min.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/main.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/main.css?v=1')}}" />
     <link rel="icon" href="{{asset('assets/images/favicon-large.png')}}" sizes="192x192" />
     <link rel="apple-touch-icon" href="{{asset('assets/images/favicon.png')}}" />
     <script type="text/javascript" src="{{asset('assets/libraries/jquery/jquery.min.js')}}"></script>

@@ -253,7 +253,7 @@
                     <p>This category has eight elements ranging from communications to support as well as the importance of contribution. Notice how the three communication statements relate (i.e., general communications, input and feedback). Then consider the support systems from policies to resources to the team. And, finally, notice how connected people feel to the purpose of the organization and the contributions of their peers. 
                     </p>
                     <div class="row">
-                        <div class="col-lg-5 pt-1">
+                        <div class="col-lg-5 pt-2">
                             <label class="chart-left-label f-semibold mb-0" style="font-size:10px;">
                                 The Organization Communicates Changes And Other Critical Infomation Effectively<br /><br />The Policies Of This Organization Are Personnel Freindly<br /><br />
                                 I have The Resources I Need To Be Successful<br /><br />I Feel That Everyone In The Company Is Commited to a high  Quality Standard In their work<br /><br />
