@@ -11,7 +11,8 @@ use Psy\CodeCleaner\IssetPass;
 
 class AuthController extends Controller
 {
-    public $base_url = "https://testing.sparkdlens.com";
+    // public $base_url = "https://testing.sparkdlens.com";
+    public $base_url = "http://3.97.226.161";
     public function login(Request $request)
     {
         $validatedData = $request->validate([
